@@ -26,10 +26,10 @@ export const loadPomodoroCSVFromToken = async () => {
     let filePath;
     if (token) {
       // Si un token est présent, charger le fichier correspondant
-      filePath = `/schedules/${token}.csv`;
+      filePath = `./schedules/${token}.csv`;
     } else {
       // Fichier par défaut si aucun token n'est fourni
-      filePath = '/schedules/demo.csv';
+      filePath = './schedules/demo.csv';
       console.warn('Aucun token trouvé dans l\'URL, chargement du planning de démonstration');
     }
     
