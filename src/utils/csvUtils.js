@@ -1,4 +1,5 @@
 // src/utils/csvUtils.js
+
 /**
  * Utilitaires pour charger et traiter un fichier CSV de planning Pomodoro
  */
