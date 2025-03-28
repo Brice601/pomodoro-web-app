@@ -1,8 +1,9 @@
-// src/components/Navbar.jsx
+// src/components/NavBar.jsx
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -81,4 +82,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavBar;
