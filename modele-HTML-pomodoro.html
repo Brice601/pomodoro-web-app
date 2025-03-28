@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modèle d'emploi du temps Pomodoro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        .user-info {
+            background-color: #e8f5e9;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #a5d6a7;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 5px;
+        }
+        label {
+            font-weight: bold;
+        }
+        .instructions {
+            background-color: #f8f9fa;
+            border-left: 5px solid #4CAF50;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .type-selector {
+            width: 100%;
+        }
+        .add-row, .export-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.8em;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <h1>Modèle d'emploi du temps Pomodoro</h1>
+    
+    <!-- Formulaire d'information personnelle -->
+    <div class="user-info">
+        <h3>Vos informations</h3>
+        <div class="form-group">
+            <label for="civilite">Civilité :</label>
+            <select id="civilite" class="form-control">
+                <option value="M.">Monsieur</option>
+                <option value="Mme">Madame</option>
+                <option value="">Non spécifié</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" class="form-control" placeholder="Votre nom de famille">
+        </div>
+        <div class="form-group">
+            <label for="prenom">Prénom :</label>
+            <input type="text" id="prenom" class="form-control" placeholder="Votre prénom">
+        </div>
+    </div>
+    
+    <div class="instructions">
+        <h3>Instructions :</h3>
+        <ol>
+            <li>Remplissez vos informations personnelles ci-dessus (ces informations apparaîtront dans votre application).</li>
+            <li>Modifiez le tableau ci-dessous pour créer votre emploi du temps personnalisé.</li>
+            <li>Utilisez le bouton "Ajouter une ligne" pour ajouter de nouvelles activités.</li>
+            <li>Une fois terminé, cliquez sur "Exporter en CSV" pour télécharger votre emploi du temps.</li>
+            <li>Types d'activités disponibles : work (travail), break-short (pause courte), break-long (pause longue), break-meal (repas), sport</li>
+        </ol>
+    </div>
+    
+    <table id="scheduleTable">
+        <thead>
+            <tr>
+                <th>Heure de début</th>
+                <th>Heure de fin</th>
+                <th>Activité</th>
+                <th>Type</th>
+                <th>Thème (optionnel)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="scheduleBody">
+            <!-- Les lignes seront générées par JavaScript -->
+        </tbody>
+    </table>
+    
+    <button class="add-row" onclick="addRow()">Ajouter une ligne</button>
+    <button class="export-btn" onclick="exportToCSV()">Exporter en CSV</button>
+    
+    <footer>
+        <p>Modèle pour application Pomodoro Personnalisé</p>
+        <p>Architecte IA - <a href="https://architecte-ia.fr">www.architecte-ia.fr</a></p>
+    </footer>
+
+    <script>
+        // Données initiales basées sur l'emploi du temps fourni
+        const initialSchedule = [
+            { start: "05:00:00", end: "05:45:00", activity: "Sport", type: "sport", theme: "" },
+            { start: "05:45:00", end: "06:30:00", activity: "Pause petit déjeuner", type: "break-long", theme: "" },
+            { start: "06:30:00", end: "06:55:00", activity: "Travail - Projet A", type: "work", theme: "Projet A" },
+            { start: "06:55:00", end: "07:00:00", activity: "Pause courte", type: "break-short", theme: "" },
+            { start: "07:00:00", end: "07:25:00", activity: "Travail - Projet A", type: "work", theme: "Projet A" },
+            { start: "07:25:00", end: "07:30:00", activity: "Pause courte", type: "break-short", theme: "" },
+            { start: "07:30:00", end: "07:55:00", activity: "Travail - Projet A", type: "work", theme: "Projet A" },
+            { start: "07:55:00", end: "08:00:00", activity: "Pause courte", type: "break-short", theme: "" },
+            { start: "08:00:00", end: "08:25:00", activity: "Travail - Projet B", type: "work", theme: "Projet B" },
+            { start: "08:25:00", end: "08:40:00", activity: "Pause longue", type: "break-long", theme: "" },
+            { start: "08:40:00", end: "09:05:00", activity: "Travail - Projet B", type: "work", theme: "Projet B" },
+            { start: "09:05:00", end: "09:10:00", activity: "Pause courte", type: "break-short", theme: "" },
+            { start: "09:10:00", end: "09:35:00", activity: "Travail - Projet B", type: "work", theme: "Projet B" },
+            { start: "09:35:00", end: "09:40:00", activity: "Pause courte", type: "break-short", theme: "" },
+            { start: "09:40:00", end: "10:05:00", activity: "Travail - Projet B", type: "work", theme: "Projet B" },
+            { start: "10:05:00", end: "10:10:00", activity: "Pause courte", type: "break-short", theme: "" },
+            { start: "10:10:00", end: "10:35:00", activity: "Travail - Projet C", type: "work", theme: "Projet C" },
+            { start: "10:35:00", end: "10:50:00", activity: "Pause longue", type: "break-long", theme: "" },
+            { start: "10:50:00", end: "11:15:00", activity: "Travail - Projet C", type: "work", theme: "Projet C" },
+            { start: "11:15:00", end: "11:20:00", activity: "Pause courte", type: "break-short", theme: "" },
+            { start: "11:20:00", end: "11:45:00", activity: "Travail - Projet C", type: "work", theme: "Projet C" },
+            { start: "11:45:00", end: "11:50:00", activity: "Pause courte", type: "break-short", theme: "" },
+            { start: "11:50:00", end: "12:15:00", activity: "Travail - Projet C", type: "work", theme: "Projet C" },
+            { start: "12:15:00", end: "13:15:00", activity: "Pause déjeuner", type: "break-meal", theme: "" },
+            { start: "13:15:00", end: "13:40:00", activity: "Travail - Projet D", type: "work", theme: "Projet D" },
+            { start: "13:40:00", end: "13:45:00", activity: "Pause courte", type: "break-short", theme: "" },
+            { start: "13:45:00", end: "14:10:00", activity: "Travail - Projet D", type: "work", theme: "Projet D" },
+            { start: "14:10:00", end: "14:15:00", activity: "Pause courte", type: "break-short", theme: "" },
+            { start: "14:15:00", end: "14:40:00", activity: "Travail - Projet D", type: "work", theme: "Projet D" },
+            { start: "14:40:00", end: "14:45:00", activity: "Pause courte", type: "break-short", theme: "" },
+            { start: "14:45:00", end: "15:10:00", activity: "Travail - Projet D", type: "work", theme: "Projet D" },
+            { start: "15:10:00", end: "15:25:00", activity: "Pause longue", type: "break-long", theme: "" },
+            { start: "15:25:00", end: "15:50:00", activity: "Travail - Langue étrangère", type: "work", theme: "Langue" },
+            { start: "15:50:00", end: "15:55:00", activity: "Pause courte", type: "break-short", theme: "" },
+            { start: "15:55:00", end: "16:20:00", activity: "Travail - Langue étrangère", type: "work", theme: "Langue" },
+            { start: "16:20:00", end: "16:25:00", activity: "Pause courte", type: "break-short", theme: "" },
+            { start: "16:25:00", end: "16:50:00", activity: "Travail - Langue étrangère", type: "work", theme: "Langue" },
+            { start: "16:50:00", end: "16:55:00", activity: "Pause courte", type: "break-short", theme: "" },
+            { start: "16:55:00", end: "17:20:00", activity: "Travail - Langue étrangère", type: "work", theme: "Langue" },
+            { start: "17:20:00", end: "17:35:00", activity: "Pause longue", type: "break-long", theme: "" },
+            { start: "17:35:00", end: "18:00:00", activity: "Travail - Lecture", type: "work", theme: "Lecture" },
+            { start: "18:00:00", end: "19:00:00", activity: "Pause dîner", type: "break-meal", theme: "" }
+        ];
+        
+        // Types d'activités disponibles
+        const activityTypes = [
+            "work",
+            "break-short",
+            "break-long",
+            "break-meal",
+            "sport"
+        ];
+        
+        // Fonction pour créer un sélecteur de type
+        function createTypeSelector(selectedType) {
+            const select = document.createElement("select");
+            select.className = "type-selector";
+            
+            activityTypes.forEach(type => {
+                const option = document.createElement("option");
+                option.value = type;
+                option.textContent = type;
+                if (type === selectedType) {
+                    option.selected = true;
+                }
+                select.appendChild(option);
+            });
+            
+            return select;
+        }
+        
+        // Fonction pour ajouter une ligne au tableau
+        function addRow(data = { start: "", end: "", activity: "", type: "work", theme: "" }) {
+            const tbody = document.getElementById("scheduleBody");
+            const row = document.createElement("tr");
+            
+            // Créer les cellules
+            const startCell = document.createElement("td");
+            const startInput = document.createElement("input");
+            startInput.type = "time";
+            startInput.value = data.start.slice(0, 5);
+            startInput.step = "1";
+            startCell.appendChild(startInput);
+            
+            const endCell = document.createElement("td");
+            const endInput = document.createElement("input");
+            endInput.type = "time";
+            endInput.value = data.end.slice(0, 5);
+            endInput.step = "1";
+            endCell.appendChild(endInput);
+            
+            const activityCell = document.createElement("td");
+            const activityInput = document.createElement("input");
+            activityInput.type = "text";
+            activityInput.value = data.activity;
+            activityCell.appendChild(activityInput);
+            
+            const typeCell = document.createElement("td");
+            const typeSelector = createTypeSelector(data.type);
+            typeCell.appendChild(typeSelector);
+            
+            const themeCell = document.createElement("td");
+            const themeInput = document.createElement("input");
+            themeInput.type = "text";
+            themeInput.value = data.theme;
+            themeCell.appendChild(themeInput);
+            
+            const actionCell = document.createElement("td");
+            const deleteBtn = document.createElement("button");
+            deleteBtn.className = "delete-btn";
+            deleteBtn.textContent = "Supprimer";
+            deleteBtn.onclick = function() {
+                tbody.removeChild(row);
+            };
+            actionCell.appendChild(deleteBtn);
+            
+            // Ajouter les cellules à la ligne
+            row.appendChild(startCell);
+            row.appendChild(endCell);
+            row.appendChild(activityCell);
+            row.appendChild(typeCell);
+            row.appendChild(themeCell);
+            row.appendChild(actionCell);
+            
+            // Ajouter la ligne au tableau
+            tbody.appendChild(row);
+        }
+        
+        // Fonction pour exporter les données en CSV
+        function exportToCSV() {
+            // Récupérer les informations personnelles
+            const civilite = document.getElementById("civilite").value;
+            const nom = document.getElementById("nom").value;
+            const prenom = document.getElementById("prenom").value;
+            
+            // Vérifier si les champs nom et prénom sont remplis
+            if (!nom || !prenom) {
+                alert("Merci de remplir au moins votre nom et prénom avant d'exporter.");
+                return;
+            }
+            
+            const rows = [];
+            
+            // Ajouter les informations personnelles en commentaire au début du CSV
+            rows.push("# Informations personnelles");
+            rows.push(`# Civilite: ${civilite}`);
+            rows.push(`# Nom: ${nom}`);
+            rows.push(`# Prenom: ${prenom}`);
+            rows.push("# Ne modifiez pas ces lignes, elles sont nécessaires pour la personnalisation de votre application");
+            rows.push("");
+            
+            // Ajouter l'en-tête des données du planning
+            rows.push(["start", "end", "activity", "type", "theme"].join(","));
+            
+            const tableRows = document.querySelectorAll("#scheduleBody tr");
+            tableRows.forEach(row => {
+                const startInput = row.cells[0].querySelector("input");
+                const endInput = row.cells[1].querySelector("input");
+                const activityInput = row.cells[2].querySelector("input");
+                const typeSelect = row.cells[3].querySelector("select");
+                const themeInput = row.cells[4].querySelector("input");
+                
+                // S'assurer que les heures ont le format HH:MM:SS
+                const start = startInput.value + ":00";
+                const end = endInput.value + ":00";
+                
+                // Échapper les virgules dans le texte
+                const activity = activityInput.value.includes(",") 
+                    ? `"${activityInput.value}"` 
+                    : activityInput.value;
+                
+                const theme = themeInput.value.includes(",") 
+                    ? `"${themeInput.value}"` 
+                    : themeInput.value;
+                
+                rows.push([start, end, activity, typeSelect.value, theme].join(","));
+            });
+            
+            const csvContent = rows.join("\n");
+            
+            // Créer un lien pour télécharger le fichier
+            const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            
+            // Générer un nom de fichier avec le nom et prénom
+            const fileName = `pomodoro_${nom.toLowerCase()}_${prenom.toLowerCase()}.csv`;
+            
+            link.setAttribute("href", url);
+            link.setAttribute("download", fileName);
+            link.style.visibility = "hidden";
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        // Initialiser le tableau avec les données
+        window.onload = function() {
+            initialSchedule.forEach(item => {
+                addRow(item);
+            });
+        };
+    </script>
+</body>
+</html>
