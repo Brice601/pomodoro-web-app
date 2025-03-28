@@ -2,6 +2,7 @@
 import React, { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import FAQItem from '../components/FAQItem';
+import { trackDownloadTemplate, trackPurchaseAttempt, trackFileUpload } from '../utils/analyticsUtils';
 
 const PomodoroServicePage = () => {
   const navigate = useNavigate();
