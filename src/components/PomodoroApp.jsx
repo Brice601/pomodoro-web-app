@@ -40,6 +40,38 @@ const PomodoroApp = () => {
     error: null
   });
 
+  // Fonction pour calculer le temps total par thème
+  const calculateTimePerTheme = (scheduleItems) => {
+    const themeTimeMap = {};
+    
+    const workActivities = scheduleItems.filter(item => item.type === 'work');
+    
+    workActivities.forEach(activity => {
+      if (!activity.theme) return;
+      
+      const theme = activity.theme;
+      
+      const startParts = activity.start.split(':').map(Number);
+      const endParts = activity.end.split(':').map(Number);
+      
+      const startMinutes = startParts[0] * 60 + startParts[1];
+      const endMinutes = endParts[0] * 60 + endParts[1];
+      
+      let duration = endMinutes - startMinutes;
+      if (duration < 0) {
+        duration += 24 * 60;
+      }
+      
+      if (themeTimeMap[theme]) {
+        themeTimeMap[theme] += duration;
+      } else {
+        themeTimeMap[theme] = duration;
+      }
+    });
+    
+    return themeTimeMap;
+  };
+
   // Fonction pour charger les données depuis le CSV
   const loadScheduleFromCSV = async () => {
     try {
@@ -363,20 +395,32 @@ const PomodoroApp = () => {
           </div>
         </div>
         
-        {/* Afficher les thèmes de travail uniques */}
+        {/* Afficher les thèmes de travail uniques AVEC TEMPS TOTAL */}
         <h3 className="text-lg font-semibold mb-2 mt-4">Thèmes de travail</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-          {Array.from(new Set(schedule.filter(item => item.theme).map(item => item.theme))).map((theme, index) => {
-            const themeItems = schedule.filter(item => item.theme === theme);
-            const timeRanges = themeItems.map(item => `${item.start.substring(0, 5)}-${item.end.substring(0, 5)}`).join(', ');
+          {(() => {
+            // Calculer le temps par thème
+            const themeTimeMap = calculateTimePerTheme(schedule);
             
-            return (
-              <div key={index} className="p-2 bg-gray-100 rounded">
-                <div className="font-medium">{theme}</div>
-                <div className="text-xs">{timeRanges}</div>
-              </div>
-            );
-          })}
+            // Afficher chaque thème unique
+            return Array.from(new Set(schedule.filter(item => item.theme).map(item => item.theme))).map((theme, index) => {
+              const themeItems = schedule.filter(item => item.theme === theme);
+              const timeRanges = themeItems.map(item => `${item.start.substring(0, 5)}-${item.end.substring(0, 5)}`).join(', ');
+              
+              // Récupérer le temps total pour ce thème
+              const totalMinutes = themeTimeMap[theme] || 0;
+              
+              return (
+                <div key={index} className="p-2 bg-gray-100 rounded">
+                  <div className="flex justify-between items-center">
+                    <div className="font-medium">{theme}</div>
+                    <div className="text-sm font-medium text-blue-600">{totalMinutes} min</div>
+                  </div>
+                  <div className="text-xs">{timeRanges}</div>
+                </div>
+              );
+            });
+          })()}
         </div>
       </div>
       
