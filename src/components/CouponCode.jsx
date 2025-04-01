@@ -76,7 +76,7 @@ const CouponCode = ({ onApplyCoupon }) => {
           value={couponCode}
           onChange={(e) => setCouponCode(e.target.value)}
           placeholder="Entrez votre code"
-          className="border border-gray-300 rounded px-3 py-2 flex-grow"
+          className="border border-gray-300 rounded px-3 py-2 sm:w-3/5 flex-grow"
           disabled={isLoading}
         />
         <button
