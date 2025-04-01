@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Fichiers liés à l'affiche Pomodoro
+public/affiche-Pomodoro.html
+capture-affiche.mjs
+affiche-pomodoro-a3.png

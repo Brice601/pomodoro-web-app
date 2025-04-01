@@ -55,7 +55,7 @@ const HomePage = () => {
       ],
       price: '5€',
       isAvailable: true,
-      image: "/images/CapturePomodoro1-600.PNG",
+      image: "/images/CapturePomodoro1-1200.PNG",
       link: '/pomodoro',
     }
   ];
