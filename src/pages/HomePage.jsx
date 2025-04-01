@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import FeatureCard from '../components/FeatureCard';
 import TestimonialCard from '../components/TestimonialCard';
 import ServiceCard from '../components/ServiceCard';
+import VideoPlayer from '../components/VideoPlayer';
 
 const HomePage = () => {
   const features = [
@@ -138,6 +139,9 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+
+      {/* Video Section */}
+      <VideoPlayer />
 
       {/* Preview Section */}
       <section className="py-16 bg-gray-50">

@@ -3,6 +3,7 @@ import React, { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import FAQItem from '../components/FAQItem';
 import { trackDownloadTemplate, trackPurchaseAttempt, trackFileUpload } from '../utils/analyticsUtils';
+import VideoPlayer from '../components/VideoPlayer';
 
 const PomodoroServicePage = () => {
   const navigate = useNavigate();
@@ -332,6 +333,9 @@ const PomodoroServicePage = () => {
             </Link>
           </div>
         </div>
+
+        {/* Video Section */}
+        <VideoPlayer />
         
         {/* Checkout Section */}
         <div id="commander" className="py-12 bg-gray-50 rounded-xl">
