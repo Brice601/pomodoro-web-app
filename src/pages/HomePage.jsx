@@ -55,7 +55,7 @@ const HomePage = () => {
       ],
       price: '5€',
       isAvailable: true,
-      image: "/images/CapturePomodoro1-1200.PNG",
+      image: "/images/pomodoro-app-preview-cropped.png",
       link: '/pomodoro',
     }
   ];
@@ -150,7 +150,7 @@ const HomePage = () => {
             <div className="lg:w-1/2">
               <div className="bg-white rounded-lg shadow-xl overflow-hidden">
                 <img 
-                  src="/images/CapturePomodoro1-600.PNG"
+                  src="/images/pomodoro-app-preview-cropped.png"
                   alt="Aperçu de l'application Pomodoro" 
                   className="w-full h-auto"
                   onError={(e) => {

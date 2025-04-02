@@ -176,7 +176,7 @@ const PomodoroServicePage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
           <div>
             <img 
-              src="/images/CapturePomodoro1-1200.PNG" 
+              src="/images/pomodoro-app-preview-cropped.png" 
               alt="Aperçu de l'application Pomodoro" 
               className="rounded-lg shadow-lg w-full h-auto"
               onError={(e) => {
