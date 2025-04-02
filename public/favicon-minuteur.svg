@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Groupe du minuteur -->
+  <g transform="translate(33, 33) scale(0.18)">
+    <!-- Cercle extérieur bleu -->
+    <circle cx="0" cy="0" r="120" fill="none" stroke="#0E86E8" stroke-width="20" />
+    
+    <!-- Bouton du minuteur -->
+    <rect x="-30" y="-170" width="60" height="30" rx="10" fill="#0E86E8" />
+
+    <!-- Bouton du minuteur partie haute -->
+    <rect x="-10" y="-145" width="20" height="20" rx="1" fill="#0E86E8" />
+    
+    <!-- Secteur circulaire bleu (progression) - Ajusté pour l'espace blanc -->
+    <circle cx="0" cy="0" r="50" fill="none" stroke="#0E86E8" stroke-width="100" 
+            stroke-dasharray="104 627" stroke-dashoffset="104" transform="rotate(-90)">
+      <animate 
+        attributeName="stroke-dashoffset" 
+        from="104" 
+        to="0" 
+        dur="2s" 
+        fill="freeze" />
+    </circle>
+  </g>
+</svg>
