@@ -5,7 +5,7 @@ const VideoPlayer = ({ videoId = "YOUR_YOUTUBE_VIDEO_ID", title = "Comment crée
   const [consentGiven, setConsentGiven] = useState(false);
   
   // Thumbnail générée à partir de l'ID YouTube
-  const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+  const thumbnailUrl = `/images/youtube/miniature-pomodoro-youtube.webp`;
   
   const handlePlayClick = () => {
     setConsentGiven(true);
@@ -22,6 +22,7 @@ const VideoPlayer = ({ videoId = "YOUR_YOUTUBE_VIDEO_ID", title = "Comment crée
             alt={title}
             className="w-full h-auto object-cover"
             onError={(e) => {
+              e.target.onerror = null; // Empêche la boucle infinie si l'image ne se charge pas
               // Fallback vers une miniature de résolution inférieure si maxresdefault n'existe pas
               e.target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
             }}
