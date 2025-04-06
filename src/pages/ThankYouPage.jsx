@@ -98,102 +98,95 @@ Cordialement
             </div>
             
             {/* Section pour l'envoi du fichier CSV */}
-            {csvContent && !emailSent ? (
-              <div className="mt-8 p-4 bg-yellow-50 rounded-lg border border-yellow-200 text-left">
-                <h2 className="text-lg font-semibold mb-3 text-yellow-800">
-                  Dernière étape importante
+            <div className="mt-8 p-4 bg-blue-50 rounded-lg border border-blue-200 text-left">
+              <div className="flex items-center mb-3">
+                <svg className="h-6 w-6 text-blue-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h2 className="text-lg font-semibold text-blue-800">
+                  Dernière étape : envoi de votre fichier
                 </h2>
-                <p className="text-yellow-700 mb-4">
-                  Pour compléter votre commande, veuillez envoyer votre fichier CSV pour que nous puissions créer votre application Pomodoro personnalisée.
-                </p>
-                <div className="flex flex-col md:flex-row md:items-center gap-4">
+              </div>
+              <p className="text-blue-700 mb-4">
+                Pour finaliser votre commande, veuillez envoyer votre fichier CSV par email afin que nous puissions créer votre application Pomodoro personnalisée.
+              </p>
+              
+              {csvContent && !emailSent ? (
+                <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
                   <button
                     onClick={sendEmailWithCSV}
-                    className="px-6 py-3 bg-yellow-600 text-white font-medium rounded-lg hover:bg-yellow-700 transition duration-300 flex items-center justify-center"
+                    className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300 flex items-center justify-center"
                   >
                     <svg className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                     Télécharger et envoyer mon fichier
                   </button>
-                  <span className="text-sm text-yellow-600">
+                  <span className="text-sm text-blue-600">
                     Cela téléchargera votre fichier et ouvrira votre client email
                   </span>
                 </div>
-                
-                <div className="mt-4 border-t border-yellow-200 pt-4">
-                  <p className="text-sm text-yellow-700 font-medium mb-2">
-                    Si votre client email ne s'ouvre pas automatiquement :
+              ) : emailSent ? (
+                <div className="flex items-center bg-green-50 p-3 rounded-lg border border-green-200 mb-4">
+                  <svg className="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <p className="text-green-700">
+                    Fichier téléchargé avec succès. N'oubliez pas d'envoyer l'email avec votre fichier joint !
                   </p>
-                  <ol className="text-sm text-yellow-700 list-decimal pl-5 space-y-2">
-                    <li>
-                      <span className="font-medium">Envoyez un email manuellement</span> à <span className="font-medium">brice@architecte-ia.fr</span>
-                    </li>
-                    <li>
-                      <span className="font-medium">Indiquez comme objet</span> : "Commande Pomodoro - {orderNumber}"
-                    </li>
+                </div>
+              ) : null}
+              
+              <div className="border-t border-blue-200 pt-4">
+                <p className="text-blue-700 font-medium mb-2">
+                  Veuillez suivre ces étapes pour nous envoyer votre fichier :
+                </p>
+                <ol className="text-blue-700 list-decimal pl-5 space-y-2">
+                  <li>
+                    <span className="font-medium">Envoyez un email</span> à <span className="font-medium">brice@architecte-ia.fr</span>
+                  </li>
+                  <li>
+                    <span className="font-medium">Indiquez comme objet</span> : "Commande Pomodoro - {orderNumber}"
+                  </li>
+                  {csvContent ? (
                     <li>
                       <span className="font-medium">Joignez le fichier CSV</span> que vous venez de télécharger (stocké habituellement dans le dossier "Téléchargements")
                     </li>
+                  ) : (
                     <li>
-                      <span className="font-medium">Précisez votre email</span> : {userEmail}
+                      <span className="font-medium">Joignez votre fichier CSV</span> avec votre planning personnalisé
                     </li>
-                  </ol>
+                  )}
+                  <li>
+                    <span className="font-medium">Précisez votre email</span> : {userEmail || "votre adresse email"}
+                  </li>
+                </ol>
+                
+                <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-3">
+                  <button
+                    onClick={copyInstructions}
+                    className="text-sm text-blue-600 hover:text-blue-800 underline flex items-center"
+                  >
+                    <svg className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                    </svg>
+                    Copier ces instructions
+                  </button>
                   
-                  <div className="mt-3 flex flex-col sm:flex-row sm:items-center gap-3">
-                    <button
-                      onClick={copyInstructions}
-                      className="text-sm text-yellow-600 hover:text-yellow-800 underline flex items-center"
-                    >
-                      <svg className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-                      </svg>
-                      Copier ces instructions
-                    </button>
-                    
-                    <span className="text-sm text-yellow-700">ou</span>
-                    
-                    <a 
-                      href={`mailto:votre-email@exemple.com?subject=${encodeURIComponent(`Commande Pomodoro - ${orderNumber}`)}&body=${encodeURIComponent(`Bonjour,\n\nVoici mon fichier CSV pour la création de mon application Pomodoro personnalisée.\n\nNuméro de commande: ${orderNumber}\nEmail: ${userEmail}\n\nN'oubliez pas de joindre votre fichier CSV.\n\nCordialement`)}`}
-                      className="text-blue-600 hover:underline inline-flex items-center"
-                    >
-                      <svg className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                      Ouvrir votre client email
-                    </a>
-                  </div>
+                  <span className="text-sm text-blue-600">ou</span>
+                  
+                  <a 
+                    href={`mailto:brice@architecte-ia.fr?subject=${encodeURIComponent(`Commande Pomodoro - ${orderNumber}`)}&body=${encodeURIComponent(`Bonjour,\n\nVoici mon fichier CSV pour la création de mon application Pomodoro personnalisée.\n\nNuméro de commande: ${orderNumber}\nEmail: ${userEmail || "votre adresse email"}\n\nN'oubliez pas de joindre votre fichier CSV.\n\nCordialement`)}`}
+                    className="text-blue-600 hover:underline inline-flex items-center"
+                  >
+                    <svg className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    Ouvrir votre client email
+                  </a>
                 </div>
               </div>
-            ) : emailSent ? (
-              <div className="mt-8 p-4 bg-green-50 rounded-lg border border-green-200 text-left">
-                <div className="flex items-center">
-                  <svg className="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <h2 className="text-lg font-semibold text-green-800">
-                    Parfait, c'est presque terminé !
-                  </h2>
-                </div>
-                <p className="text-green-700 mt-2">
-                  N'oubliez pas d'envoyer l'email avec votre fichier joint. Nous traiterons votre demande dès réception et vous enverrons votre lien personnalisé dans les 24 heures.
-                </p>
-              </div>
-            ) : (
-              <div className="mt-8 p-4 bg-red-50 rounded-lg border border-red-200 text-left">
-                <div className="flex items-center">
-                  <svg className="h-6 w-6 text-red-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                  </svg>
-                  <h2 className="text-lg font-semibold text-red-800">
-                    Attention, action requise
-                  </h2>
-                </div>
-                <p className="text-red-700 mt-2">
-                  Votre fichier CSV n'a pas été récupéré. Veuillez envoyer votre fichier CSV à <strong>brice@architecte-ia.fr</strong> en indiquant votre numéro de commande : <strong>{orderNumber}</strong>
-                </p>
-              </div>
-            )}
+            </div>
             
             <div className="mb-8 mt-8">
               <h2 className="text-xl font-semibold mb-4 text-gray-800">Voici ce qui va se passer maintenant</h2>
