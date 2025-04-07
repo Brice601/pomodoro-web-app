@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const VideoPlayer = ({ videoId = "YOUR_YOUTUBE_VIDEO_ID", title = "Comment créer et utiliser votre planning Pomodoro personnalisé" }) => {
+const VideoPlayer = ({ videoId = "B13LhAcrXoA", title = "Comment créer et utiliser votre planning Pomodoro personnalisé" }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [consentGiven, setConsentGiven] = useState(false);
   
