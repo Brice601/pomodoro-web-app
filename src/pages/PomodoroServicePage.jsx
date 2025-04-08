@@ -1,5 +1,5 @@
 // src/pages/PomodoroServicePage.jsx
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import FAQItem from '../components/FAQItem';
 import VideoPlayer from '../components/VideoPlayer';
@@ -76,6 +76,38 @@ const PomodoroServicePage = () => {
     // Suivi de l'événement d'application de coupon
     trackCouponUsage(couponInfo.code);
   };
+  // Ajoutez cette fonction après les autres fonctions mais avant le return
+  const saveDataBeforePayment = () => {
+    // Stocker l'email et les informations du coupon
+    sessionStorage.setItem('pomodoro_user_email', email);
+    
+    if (appliedCoupon) {
+      sessionStorage.setItem('pomodoro_coupon_code', appliedCoupon.code);
+      sessionStorage.setItem('pomodoro_coupon_discount', appliedCoupon.discount.toString());
+    }
+    
+    // Stocker le fichier CSV si disponible
+    if (csvFile) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        sessionStorage.setItem('pomodoro_csv_content', event.target.result);
+        sessionStorage.setItem('pomodoro_csv_filename', csvFile.name);
+      };
+      reader.readAsText(csvFile);
+    }
+  };
+  // Ajoutez cet effet après la fonction saveDataBeforePayment mais avant le return
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      saveDataBeforePayment();
+    };
+    
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [email, csvFile, appliedCoupon]);
   // Comparaison avec d'autres solutions
   const comparisons = [
     {
