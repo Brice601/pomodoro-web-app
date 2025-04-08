@@ -70,57 +70,12 @@ const PomodoroServicePage = () => {
     
     return errors;
   };
-
   // Fonction pour gérer l'application d'un coupon
   const handleCouponApplied = (couponInfo) => {
     setAppliedCoupon(couponInfo);
     // Suivi de l'événement d'application de coupon
     trackCouponUsage(couponInfo.code);
   };
-
-  // Fonction pour gérer la soumission du paiement
-  const handlePaymentSubmit = (e, couponApplied) => {
-    e.preventDefault();
-    const errors = validateForm();
-    setFormErrors(errors);
-    
-    if (Object.keys(errors).length > 0) {
-      return false;
-    }
-
-    setIsSubmitting(true);
-
-    // Suivi de l'événement d'achat
-    trackPurchaseAttempt({
-      hasCoupon: !!couponApplied,
-      couponCode: couponApplied?.code,
-      discount: couponApplied?.discount,
-      finalPrice: couponApplied 
-        ? 5 - (5 * couponApplied.discount) / 100 
-        : 5.00
-    });
-    
-    // Stocker les informations
-    sessionStorage.setItem('pomodoro_csv_filename', csvFile ? csvFile.name : '');
-    sessionStorage.setItem('pomodoro_user_email', email);
-    
-    // Stocker le contenu du fichier CSV si disponible
-    if (csvFile) {
-      const reader = new FileReader();
-      reader.onload = (fileEvent) => {
-        const csvContent = fileEvent.target.result;
-        sessionStorage.setItem('pomodoro_csv_content', csvContent);
-        
-        // Une fois les données stockées, soumettre le formulaire
-        e.target.form.submit();
-      };
-      reader.readAsText(csvFile);
-    } else {
-      // Si pas de fichier, soumettre directement
-      e.target.form.submit();
-    }
-  };
-
   // Comparaison avec d'autres solutions
   const comparisons = [
     {
@@ -483,17 +438,44 @@ const PomodoroServicePage = () => {
                           {/* Bouton PayPal intégré */}
                           <div className="paypal-button-container" id="paypal-button">
                             {!appliedCoupon ? (
-                              // Bouton PayPal prix normal - corrigé
+                              // Bouton PayPal prix normal - existant
                               <form 
                                 action="https://www.paypal.com/ncp/payment/VPG26JKQ252CS" 
                                 method="post" 
-                                onSubmit={(e) => handlePaymentSubmit(e)}
+                                target="_blank" 
                                 style={{ display: 'inline-grid', justifyItems: 'center', alignContent: 'start', gap: '0.5rem' }}
+                                onSubmit={(e) => {
+                                  const errors = validateForm();
+                                  setFormErrors(errors);
+                                  
+                                  if (Object.keys(errors).length > 0) {
+                                    e.preventDefault();
+                                    return false;
+                                  }
+
+                                  // Suivi de l'événement d'achat sans coupon
+                                  trackPurchaseAttempt({
+                                    hasCoupon: false,
+                                    finalPrice: 5.00
+                                  });
+                                  
+                                  // Si le formulaire est valide, stocker les informations
+                                  sessionStorage.setItem('pomodoro_csv_filename', csvFile ? csvFile.name : '');
+                                  sessionStorage.setItem('pomodoro_user_email', email);
+                                  
+                                  // On stocke aussi le contenu du fichier CSV si disponible
+                                  if (csvFile) {
+                                    const reader = new FileReader();
+                                    reader.onload = (e) => {
+                                      const csvContent = e.target.result;
+                                      sessionStorage.setItem('pomodoro_csv_content', csvContent);
+                                    };
+                                    reader.readAsText(csvFile);
+                                  }
+                                  
+                                  return true;
+                                }}
                               >
-                                {/* Ajoutez des champs cachés pour la redirection */}
-                                <input type="hidden" name="return" value={window.location.origin + "/thank-you"} />
-                                <input type="hidden" name="cancel_return" value={window.location.origin + "/pomodoro"} />
-                                
                                 <input 
                                   style={{ 
                                     textAlign: 'center', 
@@ -521,17 +503,48 @@ const PomodoroServicePage = () => {
                                 </section>
                               </form>
                             ) : (
-                              // Bouton PayPal prix réduit - corrigé
+                              // Bouton PayPal prix réduit
                               <form 
                                 action="https://www.paypal.com/ncp/payment/M56RGEQS8U4WJ" 
                                 method="post" 
-                                onSubmit={(e) => handlePaymentSubmit(e, appliedCoupon)}
+                                target="_blank" 
                                 style={{ display: 'inline-grid', justifyItems: 'center', alignContent: 'start', gap: '0.5rem' }}
+                                onSubmit={(e) => {
+                                  const errors = validateForm();
+                                  setFormErrors(errors);
+                                  
+                                  if (Object.keys(errors).length > 0) {
+                                    e.preventDefault();
+                                    return false;
+                                  }
+
+                                  // Suivi de l'événement d'achat avec coupon
+                                  trackPurchaseAttempt({
+                                    hasCoupon: true,
+                                    couponCode: appliedCoupon.code,
+                                    discount: appliedCoupon.discount,
+                                    finalPrice: 5 - (5 * appliedCoupon.discount) / 100
+                                  });
+                                  
+                                  // Si le formulaire est valide, stocker les informations
+                                  sessionStorage.setItem('pomodoro_csv_filename', csvFile ? csvFile.name : '');
+                                  sessionStorage.setItem('pomodoro_user_email', email);
+                                  sessionStorage.setItem('pomodoro_coupon_code', appliedCoupon.code);
+                                  sessionStorage.setItem('pomodoro_coupon_discount', appliedCoupon.discount.toString());
+                                  
+                                  // On stocke aussi le contenu du fichier CSV si disponible
+                                  if (csvFile) {
+                                    const reader = new FileReader();
+                                    reader.onload = (e) => {
+                                      const csvContent = e.target.result;
+                                      sessionStorage.setItem('pomodoro_csv_content', csvContent);
+                                    };
+                                    reader.readAsText(csvFile);
+                                  }
+                                  
+                                  return true;
+                                }}
                               >
-                                {/* Ajoutez des champs cachés pour la redirection */}
-                                <input type="hidden" name="return" value={window.location.origin + "/thank-you"} />
-                                <input type="hidden" name="cancel_return" value={window.location.origin + "/pomodoro"} />
-                                
                                 <input 
                                   style={{ 
                                     textAlign: 'center', 
