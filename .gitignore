@@ -30,4 +30,5 @@ affiche-pomodoro-a3.png
 capture-app.mjs
 pomodoro-app-preview.png
 svg
-
+src/scripts/generate-token.js
+token-registry.json
