@@ -24,23 +24,26 @@ const AppContent = () => {
     return <PomodoroApp />;
   }
   
-  // Sinon, afficher le layout normal avec navbar, contenu et footer
+  // La home (nouvelle vitrine) s'affiche pleine largeur ; les autres pages
+  // conservent leur conteneur historique pour ne pas casser leur mise en page.
+  const Contained = ({ children }) => (
+    <main className="container mx-auto px-4 py-8">{children}</main>
+  );
+
   return (
     <>
       <Navbar />
-      <main className="container mx-auto px-4 py-8">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/pomodoro-demo" element={<PomodoroDemo />} />
-          <Route path="/pomodoro" element={<PomodoroServicePage />} />
-          <Route path="/thank-you" element={<ThankYouPage />} />
-          <Route path="/terms" element={<TermsPage />} />
-          <Route path="/privacy" element={<PrivacyPage />} />
-          {/* Rediriger /services vers la page d'accueil */}
-          <Route path="/services" element={<Navigate to="/" replace />} />
-        </Routes>
-      </main>
+      <Routes>
+        <Route path="/" element={<main><HomePage /></main>} />
+        <Route path="/about" element={<Contained><AboutPage /></Contained>} />
+        <Route path="/pomodoro-demo" element={<Contained><PomodoroDemo /></Contained>} />
+        <Route path="/pomodoro" element={<Contained><PomodoroServicePage /></Contained>} />
+        <Route path="/thank-you" element={<Contained><ThankYouPage /></Contained>} />
+        <Route path="/terms" element={<Contained><TermsPage /></Contained>} />
+        <Route path="/privacy" element={<Contained><PrivacyPage /></Contained>} />
+        {/* Rediriger /services vers la page d'accueil */}
+        <Route path="/services" element={<Navigate to="/" replace />} />
+      </Routes>
       <Footer />
     </>
   );
@@ -49,7 +52,7 @@ const AppContent = () => {
 function App() {
   return (
     <Router>
-      <div className="App bg-gray-100 min-h-screen">
+      <div className="App min-h-screen">
         <GoogleAnalytics />
         <Routes>
           <Route path="*" element={<AppContent />} />

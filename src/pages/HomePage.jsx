@@ -1,380 +1,317 @@
 // src/pages/HomePage.jsx
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import FeatureCard from '../components/FeatureCard';
-import TestimonialCard from '../components/TestimonialCard';
-import ServiceCard from '../components/ServiceCard';
-import VideoPlayer from '../components/VideoPlayer';
 
 const HomePage = () => {
-  const features = [
-    {
-      title: "Planning personnalisé",
-      description: "Créez un planning sur mesure adapté à votre rythme et à vos activités quotidiennes.",
-      icon: "calendar",
-    },
-    {
-      title: "Suivi en temps réel",
-      description: "Visualisez votre progression et recevez des notifications à chaque changement d'activité.",
-      icon: "clock",
-    },
-    {
-      title: "Configuration unique",
-      description: "Configurez une seule fois votre journée et évitez de régler manuellement chaque session Pomodoro.",
-      icon: "lightning",
-    },
-  ];
+  const rootRef = useRef(null);
 
-  const testimonials = [
-    {
-      name: "Marie D.",
-      role: "Développeuse web",
-      content: "Cette application Pomodoro m'a permis de mieux structurer mes journées de travail. Je suis plus productive et moins stressée !",
-      avatar: "https://randomuser.me/api/portraits/women/1.jpg",
-    },
-    {
-      name: "Thomas M.",
-      role: "Étudiant en médecine",
-      content: "L'application est parfaite pour mes sessions de révision. J'aime particulièrement pouvoir définir différents thèmes pour chaque bloc de travail.",
-      avatar: "https://randomuser.me/api/portraits/men/1.jpg",
-    },
-  ];
-  
-  // Services disponibles
-  const currentServices = [
-    {
-      id: 'pomodoro',
-      title: 'Application Pomodoro Personnalisée',
-      description: 'Un planning quotidien adapté à vos besoins avec la méthode Pomodoro.',
-      features: [
-        'Planning personnalisé selon vos besoins',
-        'Interface intuitive et facile à utiliser',
-        'Notifications sonores et visuelles',
-        'Suivi de votre progression quotidienne',
-        'Compatible avec tous les appareils',
-      ],
-      price: '5€',
-      isAvailable: true,
-      image: "/images/pomodoro-app-preview-cropped.png",
-      link: '/pomodoro',
-    }
-  ];
+  // Révélation au scroll (respecte prefers-reduced-motion)
+  useEffect(() => {
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    const els = rootRef.current ? rootRef.current.querySelectorAll('.ai-reveal') : [];
+    els.forEach((el) => el.classList.add('pre'));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) {
+          en.target.classList.remove('pre');
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
 
-  // Services à venir
-  const upcomingServices = [
-    {
-      id: 'python-config',
-      title: 'Configuration d\'environnement Python',
-      description: 'Installation et configuration de l\'environnement Python, Jupyter et bibliothèques essentielles pour l\'analyse de données.',
-      features: [
-        'Installation de Python et des bibliothèques nécessaires',
-        'Configuration de Jupyter Notebook',
-        'Guide personnalisé',
-        'Vérification fonctionnelle',
-      ],
-      price: '50-80€',
-      isAvailable: false,
-      releaseDate: 'Mai 2025',
-      image: '/images/soon.jpg',
-    },
-    {
-      id: 'excel-cleaning',
-      title: 'Nettoyage de données Excel/CSV',
-      description: 'Nettoyage, restructuration et préparation de fichiers de données pour vos analyses.',
-      features: [
-        'Nettoyage des données brutes',
-        'Restructuration selon vos besoins',
-        'Documentation des transformations',
-        'Version avant/après pour comparaison',
-      ],
-      price: '40-70€',
-      isAvailable: false,
-      releaseDate: 'Juin 2025',
-      image: '/images/soon.jpg',
-    },
-    {
-      id: 'excel-automation',
-      title: 'Automatisation de tâches Excel',
-      description: 'Création de macros ou scripts pour automatiser vos tâches Excel récurrentes.',
-      features: [
-        'Automatisation de rapports',
-        'Macros personnalisées',
-        'Fichier Excel fonctionnel',
-        'Documentation d\'utilisation',
-      ],
-      price: '60-100€',
-      isAvailable: false,
-      releaseDate: 'Août 2025',
-      image: '/images/soon.jpg',
-    }
-  ];
+  const handleContact = (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const who = form.who.value.trim();
+    const email = form.email.value.trim();
+    const brief = form.brief.value.trim();
+    const subject = encodeURIComponent(`Demande — ${who || 'nouveau projet'}`);
+    const body = encodeURIComponent(
+      `Bonjour Brice,\n\n${brief}\n\n— ${who}\nEmail : ${email}`
+    );
+    window.location.href = `mailto:brice@architecte-ia.fr?subject=${subject}&body=${body}`;
+  };
 
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="py-12 md:py-20 bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Maximisez votre productivité avec un planning Pomodoro personnalisé
-            </h1>
-            <p className="text-xl md:text-2xl mb-8">
-              Une application simple et efficace pour organiser votre journée selon la méthode Pomodoro, 
-              adaptée à vos besoins spécifiques.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link
-                to="/pomodoro-demo"
-                className="px-6 py-3 bg-white text-blue-600 font-medium rounded-lg shadow-lg hover:bg-gray-100 transition duration-300"
-              >
-                Essayer gratuitement
-              </Link>
-              <Link
-                to="/pomodoro"
-                className="px-6 py-3 bg-transparent border-2 border-white font-medium rounded-lg hover:bg-white hover:text-blue-600 transition duration-300"
-              >
-                Obtenir pour 5€
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div ref={rootRef} className="ai-wrap">
+      <h1 className="ai-sr-only">
+        Architecte IA — mini-applications web sur mesure pour les commerces de la Loire et de toute la France.
+      </h1>
 
-      {/* Video Section */}
-      <VideoPlayer />
-
-      {/* Preview Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <div className="lg:w-1/2">
-              <div className="bg-white rounded-lg shadow-xl overflow-hidden">
-                <img 
-                  src="/images/pomodoro-app-preview-cropped.png"
-                  alt="Aperçu de l'application Pomodoro" 
-                  className="w-full h-auto"
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = 'https://via.placeholder.com/600x400?text=Aperçu+Application+Pomodoro';
-                  }}
-                />
-              </div>
-            </div>
-            <div className="lg:w-1/2">
-              <h2 className="text-3xl font-bold mb-6 text-gray-800">
-                Une application Pomodoro conçue pour tous vos besoins
-              </h2>
-              <p className="text-lg text-gray-600 mb-6">
-                Notre application Pomodoro web vous permet de créer un planning quotidien personnalisé, 
-                avec des périodes de travail et de pause adaptées à votre rythme. Plus besoin de régler 
-                manuellement chaque session : configurez une fois et suivez votre planning toute la journée.
-              </p>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-start">
-                  <svg className="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-700">Planifiez votre journée avec précision</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-700">Gagnez du temps en évitant de reconfigurer chaque session</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-700">Organisez vos tâches par thèmes et priorités</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-700">Visualisez votre progression quotidienne</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-700">Recevez des notifications pour chaque changement d'activité</span>
-                </li>
-              </ul>
-              <Link
-                to="/pomodoro"
-                className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300 inline-block"
-              >
-                Obtenir mon application
-              </Link>
-            </div>
+      {/* PL.00 — HERO */}
+      <section className="ai-hero">
+        <div>
+          <div className="ai-eyebrow ai-mono">
+            <span>PL.00 — Vitrine</span><span className="ai-dot">◆</span><span>Loire (42) + France à distance</span>
+            <span className="ai-rule" />
           </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 text-gray-800">
-              Fonctionnalités clés
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Notre application Pomodoro dispose de nombreuses fonctionnalités pour vous aider 
-              à maximiser votre productivité et mieux gérer votre temps.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <FeatureCard key={index} {...feature} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 text-gray-800">
-              Une offre simple et accessible
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Profitez d'une application Pomodoro personnalisée à un prix abordable.
-            </p>
-          </div>
-
-          <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
-            <div className="bg-blue-600 text-white p-6 text-center">
-              <h3 className="text-2xl font-bold">Application Pomodoro Personnalisée</h3>
-              <div className="text-5xl font-bold my-6">5€</div>
-              <p className="opacity-90">Paiement unique, sans abonnement</p>
-            </div>
-            <div className="p-6">
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-start">
-                  <svg className="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-700">Planning personnalisé selon vos besoins</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-700">Accès illimité à votre planning</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-700">Alertes sonores et visuelles</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-700">Visualisation de votre progression</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-700">Compatible avec tous les appareils</span>
-                </li>
-              </ul>
-              <Link
-                to="/pomodoro"
-                className="w-full px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300 text-center block"
-              >
-                Obtenir mon application
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 text-gray-800">
-              Ce que nos clients disent
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Découvrez les témoignages de personnes qui utilisent notre application Pomodoro.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {testimonials.map((testimonial, index) => (
-              <TestimonialCard key={index} {...testimonial} />
-            ))}
-          </div>
-        </div>
-      </section>
-      
-      {/* Upcoming Services Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 text-gray-800">Services à venir</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Découvrez les nouveaux services que nous développons actuellement. Restez informé en vous inscrivant à notre newsletter.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {upcomingServices.map(service => (
-              <ServiceCard key={service.id} service={service} />
-            ))}
-          </div>
-        </div>
-      </section>
-      
-      {/* Custom Service Request */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md text-center">
-            <h2 className="text-2xl font-bold mb-4 text-gray-800">Besoin d'un service personnalisé ?</h2>
-            <p className="text-gray-600 mb-6">
-              Vous ne trouvez pas ce que vous cherchez ? Contactez-nous pour discuter de vos besoins spécifiques.
-              Nous pouvons développer des solutions sur mesure pour répondre à vos exigences.
-            </p>
-            <Link 
-              to="/about#contact" 
-              className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300 inline-block"
-            >
-              Nous contacter
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-blue-600 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">
-            Prêt à améliorer votre productivité ?
-          </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Obtenez votre application Pomodoro personnalisée dès aujourd'hui et commencez à mieux gérer votre temps.
+          <p className="ai-h1">Votre commerce mérite mieux qu'une <span className="ai-u">page d'horaires.</span></p>
+          <p className="ai-lede">
+            Je conçois et je construis des <b>mini-applications web sur mesure</b> — réservation, prise de RDV,
+            devis instantané, chatbot. Des outils simples, <b>sans commission</b>, qui travaillent pour vous.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link
-              to="/pomodoro"
-              className="px-6 py-3 bg-white text-blue-600 font-medium rounded-lg shadow-lg hover:bg-gray-100 transition duration-300"
-            >
-              Obtenir mon application à 5€
-            </Link>
-            <Link
-              to="/pomodoro-demo"
-              className="px-6 py-3 bg-transparent border-2 border-white font-medium rounded-lg hover:bg-white hover:text-blue-600 transition duration-300"
-            >
-              Essayer la démo
-            </Link>
+          <div className="ai-cta-row">
+            <a className="ai-btn ai-btn-primary" href="#contact">Réserver un appel de 15 min →</a>
+            <a className="ai-btn ai-btn-ghost" href="#realisations">Voir les réalisations</a>
           </div>
+        </div>
+
+        <div className="ai-plate">
+          <span className="ai-cornermark tl" /><span className="ai-cornermark br" />
+          <svg className="ai-draw" viewBox="0 0 440 400" role="img"
+               aria-label="Plan technique d'une mini-application de réservation sur mobile, avec lignes de cote.">
+            <line className="pl-dim" x1="150" y1="40" x2="150" y2="360" />
+            <line className="pl-dim" x1="146" y1="40" x2="154" y2="40" />
+            <line className="pl-dim" x1="146" y1="360" x2="154" y2="360" />
+            <text className="pl-an" x="118" y="205" transform="rotate(-90 118 205)">1 écran · 0 friction</text>
+
+            <rect className="pl-fl pl-lnk" x="176" y="40" width="150" height="320" rx="16" />
+            <rect className="pl-ln" x="188" y="58" width="126" height="286" rx="6" />
+            <rect className="pl-ln" x="188" y="58" width="126" height="34" rx="6" />
+            <text className="pl-anb" x="198" y="79">RÉSERVER</text>
+
+            <rect className="pl-ln" x="199" y="104" width="21" height="18" /><rect className="pl-ln" x="223" y="104" width="21" height="18" /><rect className="pl-ln" x="247" y="104" width="21" height="18" /><rect className="pl-ln" x="271" y="104" width="21" height="18" />
+            <rect className="pl-ln" x="199" y="126" width="21" height="18" /><rect className="pl-ln" x="223" y="126" width="21" height="18" fill="var(--ai-outremer)" /><rect className="pl-ln" x="247" y="126" width="21" height="18" /><rect className="pl-ln" x="271" y="126" width="21" height="18" />
+            <rect className="pl-ln" x="199" y="148" width="21" height="18" /><rect className="pl-ln" x="223" y="148" width="21" height="18" /><rect className="pl-ln" x="247" y="148" width="21" height="18" /><rect className="pl-ln" x="271" y="148" width="21" height="18" />
+
+            <rect className="pl-ln" x="199" y="188" width="45" height="16" rx="3" /><rect className="pl-ln" x="247" y="188" width="45" height="16" rx="3" />
+            <rect className="pl-ln" x="199" y="210" width="45" height="16" rx="3" fill="var(--ai-outremer)" /><rect className="pl-ln" x="247" y="210" width="45" height="16" rx="3" />
+
+            <rect x="199" y="300" width="93" height="26" rx="4" fill="var(--ai-outremer)" />
+            <text className="pl-an" x="216" y="317" fill="#fff">CONFIRMER</text>
+
+            <line className="pl-dim" x1="326" y1="75" x2="392" y2="75" /><circle cx="326" cy="75" r="2.4" fill="var(--ai-outremer)" /><text className="pl-an" x="342" y="72">Sans</text><text className="pl-an" x="342" y="84">commission</text>
+            <line className="pl-dim" x1="326" y1="135" x2="392" y2="135" /><circle cx="326" cy="135" r="2.4" fill="var(--ai-outremer)" /><text className="pl-an" x="356" y="132">Vos</text><text className="pl-an" x="342" y="144">couleurs</text>
+            <line className="pl-dim" x1="326" y1="313" x2="392" y2="313" /><circle cx="326" cy="313" r="2.4" fill="var(--ai-outremer)" /><text className="pl-an" x="352" y="310">Livré</text><text className="pl-an" x="342" y="322">rapidement</text>
+
+            <line className="pl-dim" x1="176" y1="378" x2="326" y2="378" /><line className="pl-dim" x1="176" y1="374" x2="176" y2="382" /><line className="pl-dim" x1="326" y1="374" x2="326" y2="382" />
+            <text className="pl-an" x="214" y="394">échelle 1:1 — sur mesure</text>
+          </svg>
+          <p className="ai-plate-cap ai-mono">Aperçu — votre outil, <b>dessiné avant même de signer.</b></p>
+        </div>
+      </section>
+
+      {/* Bandeau preuve */}
+      <div className="ai-cartouche">
+        <div className="ai-cell"><div className="ai-mono">Métier</div><div className="ai-v">Dév. web<br /><small>data &amp; IA</small></div></div>
+        <div className="ai-cell"><div className="ai-mono">Déjà en ligne</div><div className="ai-v">Logiciel complet<br /><small>conçu de A à Z</small></div></div>
+        <div className="ai-cell"><div className="ai-mono">Sur mesure</div><div className="ai-v">100 %<br /><small>votre besoin</small></div></div>
+        <div className="ai-cell"><div className="ai-mono">Commission</div><div className="ai-v">0 %<br /><small>c'est à vous</small></div></div>
+      </div>
+
+      {/* PL.01 — CONSTAT */}
+      <section className="ai-section ai-reveal">
+        <div className="ai-sec-head">
+          <span className="ai-sec-ref">PL.01 — Constat</span>
+          <h2 className="ai-sec-title">Votre site affiche vos horaires. Et après ?</h2>
+        </div>
+        <div className="ai-grid-3">
+          <div className="ai-card">
+            <div className="ai-idx">A —</div>
+            <h3>Un site qui informe, mais ne travaille pas</h3>
+            <p>Il affiche l'adresse et les horaires. Aucun outil pour réserver, prendre RDV ou demander un devis. Le visiteur repart sans rien faire.</p>
+          </div>
+          <div className="ai-card">
+            <div className="ai-idx">B —</div>
+            <h3>Le téléphone qui sonne pour tout</h3>
+            <p>Chaque réservation, chaque question, c'est vous qui décrochez — souvent pendant le service. Du temps que vous ne passez pas sur votre métier.</p>
+          </div>
+          <div className="ai-card">
+            <div className="ai-idx">C —</div>
+            <h3>Les plateformes qui se servent au passage</h3>
+            <p>Réservation, prise de RDV… les grandes plateformes prennent une commission sur ce qui devrait vous revenir entièrement.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* PL.02 — OUVRAGE */}
+      <section className="ai-section ai-reveal" id="outils">
+        <div className="ai-sec-head">
+          <span className="ai-sec-ref">PL.02 — Ouvrage</span>
+          <h2 className="ai-sec-title">Je construis l'outil qui manque à votre site.</h2>
+        </div>
+        <p className="ai-sec-lead">Sur mesure, à vos couleurs, sans commission. Voici les plus demandés — le vôtre sera taillé pour votre métier.</p>
+        <div className="ai-grid-4">
+          <div className="ai-card">
+            <svg className="ai-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M3 9h18M8 3v4M16 3v4" /><rect x="7" y="13" width="3" height="3" fill="currentColor" stroke="none" /></svg>
+            <h3>Réservation en ligne</h3>
+            <p>Vos clients réservent une table, un créneau, 24h/24. Vous récupérez votre téléphone.</p>
+          </div>
+          <div className="ai-card">
+            <svg className="ai-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 3" /></svg>
+            <h3>Prise de RDV</h3>
+            <p>Un agenda que vos clients remplissent seuls. Fini les allers-retours pour caler une heure.</p>
+          </div>
+          <div className="ai-card">
+            <svg className="ai-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><rect x="5" y="3" width="14" height="18" rx="2" /><path d="M9 8h6M9 12h6M9 16h3" /></svg>
+            <h3>Devis instantané</h3>
+            <p>Un configurateur qui calcule un prix en direct. Le client repart avec une réponse, pas une attente.</p>
+          </div>
+          <div className="ai-card">
+            <svg className="ai-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M4 5h16v11H9l-4 4V5z" /><path d="M8 10h.01M12 10h.01M16 10h.01" /></svg>
+            <h3>Assistant IA / FAQ</h3>
+            <p>Un chatbot qui répond aux questions courantes, jour et nuit, dans le ton de votre maison.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* PL.03 — SUIVI */}
+      <section className="ai-section ai-reveal">
+        <div className="ai-sec-head">
+          <span className="ai-sec-ref">PL.03 — Suivi</span>
+          <h2 className="ai-sec-title">Une fois en ligne, je ne disparais pas.</h2>
+        </div>
+        <p className="ai-sec-lead">Votre outil vit avec votre commerce. L'accompagnement mensuel le garde rapide, visible et à jour — vous n'y pensez plus.</p>
+        <div className="ai-grid-3">
+          <div className="ai-card">
+            <div className="ai-idx">01 — Tenue</div>
+            <h3>Hébergement &amp; mises à jour</h3>
+            <p>Votre outil reste en ligne, rapide et sécurisé. Les mises à jour, c'est mon affaire, pas la vôtre.</p>
+          </div>
+          <div className="ai-card">
+            <div className="ai-idx">02 — Visibilité</div>
+            <h3>Référencement (SEO)</h3>
+            <p>On travaille pour que vos clients vous trouvent sur Google quand ils cherchent près de chez vous.</p>
+          </div>
+          <div className="ai-card">
+            <div className="ai-idx">03 — Évolutions</div>
+            <h3>IA &amp; nouvelles fonctions</h3>
+            <p>Relances automatiques, assistant IA, petites améliorations : votre outil grandit au fil de vos besoins.</p>
+          </div>
+        </div>
+        <p className="ai-note">
+          Pas de grille figée : chaque accompagnement est <b>calibré selon votre outil et votre besoin</b>.
+          Le tarif se décide ensemble, après un premier échange — sans engagement de votre part.
+        </p>
+      </section>
+
+      {/* PL.04 — RÉALISATIONS */}
+      <section className="ai-section ai-reveal" id="realisations">
+        <div className="ai-sec-head">
+          <span className="ai-sec-ref">PL.04 — Réalisations</span>
+          <h2 className="ai-sec-title">Des projets livrés, en ligne, qui tournent.</h2>
+        </div>
+        <p className="ai-sec-lead">Pas des maquettes de démonstration : des produits que j'ai conçus, développés et mis en ligne de bout en bout.</p>
+        <div className="ai-work">
+          <article className="ai-card">
+            <div className="ai-thumb">
+              <svg viewBox="0 0 200 125" preserveAspectRatio="xMidYMid meet">
+                <g stroke="var(--ai-outremer)" strokeWidth="1.4" fill="none">
+                  <polyline points="20,95 45,70 70,80 95,45 120,55 145,28 175,20" />
+                  <line x1="20" y1="105" x2="180" y2="105" stroke="var(--ai-pencil)" />
+                  <line x1="20" y1="20" x2="20" y2="105" stroke="var(--ai-pencil)" />
+                </g>
+                <circle cx="145" cy="28" r="3" fill="var(--ai-outremer)" />
+              </svg>
+            </div>
+            <div className="ai-idx">Micro-SaaS · B2C</div>
+            <h3>Screener Small Caps</h3>
+            <p>Un logiciel d'analyse financière complet, avec abonnements et intelligence artificielle. Conçu et déployé de A à Z.</p>
+            <div className="ai-stack"><span>Python</span><span>Machine Learning</span><span>Abonnements</span></div>
+            <div className="ai-live">● <a href="https://screener-smallcaps.fr" target="_blank" rel="noopener noreferrer">En ligne — screener-smallcaps.fr</a></div>
+          </article>
+
+          <article className="ai-card">
+            <div className="ai-thumb">
+              <svg viewBox="0 0 200 125" preserveAspectRatio="xMidYMid meet">
+                <g stroke="var(--ai-outremer)" strokeWidth="1.4" fill="none">
+                  <rect x="24" y="60" width="18" height="40" /><rect x="52" y="40" width="18" height="60" /><rect x="80" y="72" width="18" height="28" /><rect x="108" y="30" width="18" height="70" /><rect x="136" y="52" width="18" height="48" />
+                  <line x1="20" y1="100" x2="176" y2="100" stroke="var(--ai-pencil)" />
+                </g>
+              </svg>
+            </div>
+            <div className="ai-idx">Dashboard · Data</div>
+            <h3>Analytics pour boutiques Etsy</h3>
+            <p>Un tableau de bord qui transforme des données de vente brutes en décisions claires pour le vendeur.</p>
+            <div className="ai-stack"><span>API</span><span>Data</span><span>Dashboard</span></div>
+            <div className="ai-live">● Étude de cas</div>
+          </article>
+
+          <article className="ai-card">
+            <div className="ai-thumb">
+              <svg viewBox="0 0 200 125" preserveAspectRatio="xMidYMid meet">
+                <g stroke="var(--ai-outremer)" strokeWidth="1.4" fill="none">
+                  <circle cx="100" cy="62" r="34" /><path d="M100 62 L100 38" /><path d="M100 62 L118 62" />
+                </g>
+                <circle cx="100" cy="62" r="3" fill="var(--ai-outremer)" />
+              </svg>
+            </div>
+            <div className="ai-idx">App web · B2C</div>
+            <h3>Application Pomodoro</h3>
+            <p>Une application web soignée, avec espace personnel par utilisateur et interface moderne.</p>
+            <div className="ai-stack"><span>React</span><span>Vite</span><span>Tailwind</span></div>
+            <div className="ai-live">● <Link to="/pomodoro">En ligne</Link></div>
+          </article>
+        </div>
+      </section>
+
+      {/* PL.05 — À PROPOS */}
+      <section className="ai-section ai-reveal" id="apropos">
+        <div className="ai-sec-head">
+          <span className="ai-sec-ref">PL.05 — À propos</span>
+          <h2 className="ai-sec-title">Derrière Architecte IA.</h2>
+        </div>
+        <div className="ai-about">
+          <div className="ai-portrait"><span className="ai-ph">[ Portrait ]<br />photo à venir</span></div>
+          <div>
+            <p style={{ marginTop: 0 }}>
+              Je suis <b>Brice</b>, développeur web spécialisé en data et en IA, installé dans la <b>Loire</b>.
+              Avant de travailler pour des commerces, j'ai conçu et mis en ligne mes propres produits — dont un
+              logiciel d'analyse financière avec intelligence artificielle.
+            </p>
+            <p>
+              C'est cette même exigence — un outil qui marche vraiment, pensé avant d'être construit — que je mets
+              aujourd'hui au service des commerces d'ici, et partout en France à distance.
+            </p>
+            <div className="ai-cta-row" style={{ marginTop: 24 }}>
+              <Link className="ai-btn ai-btn-ghost ai-btn-sm" to="/about">Mon parcours en détail →</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PL.06 — CONTACT */}
+      <section className="ai-section ai-reveal" id="contact">
+        <div className="ai-sec-head">
+          <span className="ai-sec-ref">PL.06 — Contact</span>
+        </div>
+        <div className="ai-contact">
+          <div>
+            <p className="ai-title-x">On en parle 15&nbsp;minutes ?</p>
+            <p className="ai-sub">
+              Dites-moi votre métier et ce qui vous ferait gagner du temps. Je vous montre à quoi votre outil
+              pourrait ressembler — avant tout engagement.
+            </p>
+            <div className="ai-coord">
+              <div>✉︎ &nbsp;<a href="mailto:brice@architecte-ia.fr">brice@architecte-ia.fr</a></div>
+              <div>⏗ &nbsp;Andrézieux, Loire (42) — &amp; France à distance</div>
+            </div>
+          </div>
+
+          <form className="ai-fiche" onSubmit={handleContact}>
+            <div className="ai-fh"><span className="ai-mono">Fiche de brief</span><span className="ai-mono">PL.06 / 01</span></div>
+            <div className="ai-fb">
+              <div className="ai-field">
+                <label htmlFor="who">Vous / votre commerce</label>
+                <input id="who" name="who" type="text" placeholder="Ex : Salon Léa, coiffure" required />
+              </div>
+              <div className="ai-field">
+                <label htmlFor="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="vous@exemple.fr" required />
+              </div>
+              <div className="ai-field">
+                <label htmlFor="brief">Ce qui vous ferait gagner du temps</label>
+                <textarea id="brief" name="brief" rows="3" placeholder="Ex : que mes clients réservent en ligne sans m'appeler" required />
+              </div>
+              <button className="ai-btn ai-btn-primary" type="submit" style={{ justifyContent: 'center' }}>
+                Envoyer ma demande →
+              </button>
+            </div>
+          </form>
         </div>
       </section>
     </div>
