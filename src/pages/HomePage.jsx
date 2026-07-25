@@ -23,18 +23,21 @@ const HomePage = () => {
     return () => io.disconnect();
   }, []);
 
-  const handleContact = (e) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const who = form.who.value.trim();
-    const email = form.email.value.trim();
-    const brief = form.brief.value.trim();
-    const subject = encodeURIComponent(`Demande — ${who || 'nouveau projet'}`);
-    const body = encodeURIComponent(
-      `Bonjour Brice,\n\n${brief}\n\n— ${who}\nEmail : ${email}`
-    );
-    window.location.href = `mailto:brice@architecte-ia.fr?subject=${subject}&body=${body}`;
-  };
+  // Calendrier Cal.com (région EU) intégré en inline dans la section Contact.
+  // Le loader est chargé dans index.html ; ici on déclenche l'affichage inline.
+  useEffect(() => {
+    if (typeof window === 'undefined' || typeof window.Cal !== 'function') return;
+    window.Cal('inline', {
+      elementOrSelector: '#cal-inline',
+      calLink: 'brice-it0tty/15min',
+      layout: 'month_view',
+    });
+    window.Cal('ui', {
+      hideEventTypeDetails: false,
+      layout: 'month_view',
+      cssVarsPerTheme: { light: { 'cal-brand': '#1F35C4' } },
+    });
+  }, []);
 
   return (
     <div ref={rootRef} className="ai-wrap">
@@ -301,35 +304,21 @@ const HomePage = () => {
           <div>
             <p className="ai-title-x">On en parle 15&nbsp;minutes ?</p>
             <p className="ai-sub">
-              Dites-moi votre métier et ce qui vous ferait gagner du temps. Je vous montre à quoi votre outil
-              pourrait ressembler — avant tout engagement.
+              Choisissez directement un créneau qui vous arrange. Deux ou trois questions rapides au
+              moment de réserver me permettent de <b>préparer l'appel</b> — on ne perd pas de temps.
             </p>
             <div className="ai-coord">
-              <div>✉︎ &nbsp;<a href="mailto:brice@architecte-ia.fr">brice@architecte-ia.fr</a></div>
+              <div>✉︎ &nbsp;Vous préférez écrire ? <a href="mailto:brice@architecte-ia.fr">brice@architecte-ia.fr</a></div>
               <div>⏗ &nbsp;Andrézieux, Loire (42) — &amp; France à distance</div>
             </div>
           </div>
 
-          <form className="ai-fiche" onSubmit={handleContact}>
-            <div className="ai-fh"><span className="ai-mono">Fiche de brief</span><span className="ai-mono">PL.06 / 01</span></div>
+          <div className="ai-fiche">
+            <div className="ai-fh"><span className="ai-mono">Réserver un créneau</span><span className="ai-mono">PL.06 / 01</span></div>
             <div className="ai-fb">
-              <div className="ai-field">
-                <label htmlFor="who">Vous / votre commerce</label>
-                <input id="who" name="who" type="text" placeholder="Ex : Salon Léa, coiffure" required />
-              </div>
-              <div className="ai-field">
-                <label htmlFor="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="vous@exemple.fr" required />
-              </div>
-              <div className="ai-field">
-                <label htmlFor="brief">Ce qui vous ferait gagner du temps</label>
-                <textarea id="brief" name="brief" rows="3" placeholder="Ex : que mes clients réservent en ligne sans m'appeler" required />
-              </div>
-              <button className="ai-btn ai-btn-primary" type="submit" style={{ justifyContent: 'center' }}>
-                Envoyer ma demande →
-              </button>
+              <div id="cal-inline" className="ai-cal" />
             </div>
-          </form>
+          </div>
         </div>
       </section>
     </div>
