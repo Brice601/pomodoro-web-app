@@ -247,6 +247,9 @@ const HomePage = () => {
             <div className="ai-live">● <Link to="/pomodoro">En ligne</Link></div>
           </article>
         </div>
+        <div className="ai-cta-row" style={{ marginTop: 28 }}>
+          <Link className="ai-btn ai-btn-ghost ai-btn-sm" to="/realisations">Voir toutes les réalisations →</Link>
+        </div>
       </section>
 
       {/* PL.05 — À PROPOS */}
@@ -268,7 +271,7 @@ const HomePage = () => {
               aujourd'hui au service des commerces d'ici, et partout en France à distance.
             </p>
             <div className="ai-cta-row" style={{ marginTop: 24 }}>
-              <Link className="ai-btn ai-btn-ghost ai-btn-sm" to="/about">Mon parcours en détail →</Link>
+              <Link className="ai-btn ai-btn-ghost ai-btn-sm" to="/apropos">Mon parcours en détail →</Link>
             </div>
           </div>
         </div>

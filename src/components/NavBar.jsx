@@ -18,8 +18,8 @@ const Navbar = () => {
           {/* Desktop */}
           <nav className="ai-nav">
             <a href="/#outils">Ce que je construis</a>
-            <a href="/#realisations">Réalisations</a>
-            <Link to="/about">À propos</Link>
+            <Link to="/realisations">Réalisations</Link>
+            <Link to="/apropos">À propos</Link>
             <a className="ai-cta-link" href="/#contact">Contact →</a>
           </nav>
 
@@ -41,8 +41,8 @@ const Navbar = () => {
         {/* Mobile menu */}
         <div className={`ai-mobile${isMenuOpen ? ' open' : ''}`}>
           <a href="/#outils" onClick={close}>Ce que je construis</a>
-          <a href="/#realisations" onClick={close}>Réalisations</a>
-          <Link to="/about" onClick={close}>À propos</Link>
+          <Link to="/realisations" onClick={close}>Réalisations</Link>
+          <Link to="/apropos" onClick={close}>À propos</Link>
           <a href="/#contact" onClick={close}>Contact →</a>
         </div>
       </div>

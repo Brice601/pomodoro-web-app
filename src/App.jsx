@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'r
 import Navbar from './components/NavBar';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
-import AboutPage from './pages/AboutPage';
+import RealisationsPage from './pages/RealisationsPage';
+import AProposPage from './pages/AProposPage';
 import PomodoroDemo from './pages/PomodoroDemo';
 import ThankYouPage from './pages/ThankYouPage';
 import PomodoroApp from './components/PomodoroApp';
@@ -35,7 +36,10 @@ const AppContent = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<main><HomePage /></main>} />
-        <Route path="/about" element={<Contained><AboutPage /></Contained>} />
+        <Route path="/realisations" element={<main><RealisationsPage /></main>} />
+        <Route path="/apropos" element={<main><AProposPage /></main>} />
+        {/* Ancienne page À propos (Pomodoro) — redirigée vers la nouvelle vitrine */}
+        <Route path="/about" element={<Navigate to="/apropos" replace />} />
         <Route path="/pomodoro-demo" element={<Contained><PomodoroDemo /></Contained>} />
         <Route path="/pomodoro" element={<Contained><PomodoroServicePage /></Contained>} />
         <Route path="/thank-you" element={<Contained><ThankYouPage /></Contained>} />
