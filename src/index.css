@@ -146,7 +146,7 @@ body {
 /* Photo traitée en bichromie bleue (outremer) — cohérente avec le plan.
    S'applique automatiquement à /images/brice.jpg ; sinon le placeholder reste visible. */
 .ai-portrait-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;filter:grayscale(1) contrast(1.08) brightness(1.06);z-index:1;}
-.ai-portrait-duo{position:absolute;inset:0;background:var(--ai-outremer);mix-blend-mode:multiply;opacity:.46;z-index:2;pointer-events:none;}
+.ai-portrait-duo{position:absolute;inset:0;background:var(--ai-outremer);mix-blend-mode:multiply;opacity:.41;z-index:2;pointer-events:none;}
 .ai-portrait .ai-cornermark{z-index:3;}
 .ai-portrait .ai-cornermark.tl{top:6px;left:6px;}
 .ai-portrait .ai-cornermark.br{bottom:6px;right:6px;}

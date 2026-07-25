@@ -97,7 +97,7 @@ const HomePage = () => {
 
       {/* Bandeau preuve */}
       <div className="ai-cartouche">
-        <div className="ai-cell"><div className="ai-mono">Métier</div><div className="ai-v">Dév. web<br /><small>data &amp; IA</small></div></div>
+        <div className="ai-cell"><div className="ai-mono">Expérience</div><div className="ai-v">15 ans<br /><small>de commerce en ligne</small></div></div>
         <div className="ai-cell"><div className="ai-mono">Déjà en ligne</div><div className="ai-v">Logiciel complet<br /><small>conçu de A à Z</small></div></div>
         <div className="ai-cell"><div className="ai-mono">Sur mesure</div><div className="ai-v">100 %<br /><small>votre besoin</small></div></div>
         <div className="ai-cell"><div className="ai-mono">Commission</div><div className="ai-v">0 %<br /><small>c'est à vous</small></div></div>
@@ -259,16 +259,31 @@ const HomePage = () => {
           <h2 className="ai-sec-title">Derrière Architecte IA.</h2>
         </div>
         <div className="ai-about">
-          <div className="ai-portrait"><span className="ai-ph">[ Portrait ]<br />photo à venir</span></div>
+          <div className="ai-portrait">
+            <span className="ai-cornermark tl" /><span className="ai-cornermark br" />
+            <span className="ai-ph">[ Portrait ]<br />photo à venir</span>
+            <img
+              className="ai-portrait-img"
+              src="/images/profile-picture.jpg"
+              alt="Portrait de Brice"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+                const duo = e.currentTarget.nextElementSibling;
+                if (duo) duo.style.display = 'none';
+              }}
+            />
+            <span className="ai-portrait-duo" aria-hidden="true" />
+          </div>
           <div>
             <p style={{ marginTop: 0 }}>
-              Je suis <b>Brice</b>, développeur web spécialisé en data et en IA, installé dans la <b>Loire</b>.
-              Avant de travailler pour des commerces, j'ai conçu et mis en ligne mes propres produits — dont un
-              logiciel d'analyse financière avec intelligence artificielle.
+              Je suis <b>Brice</b>. Je ne viens pas de l'informatique : j'ai fait tourner ma propre
+              <b> boutique en ligne</b> pendant une quinzaine d'années. Le métier de commerçant, je le
+              connais de l'intérieur.
             </p>
             <p>
-              C'est cette même exigence — un outil qui marche vraiment, pensé avant d'être construit — que je mets
-              aujourd'hui au service des commerces d'ici, et partout en France à distance.
+              En cherchant à automatiser ma propre activité, je suis venu au développement puis à l'IA —
+              aujourd'hui en <b>fin de formation d'architecte en intelligence artificielle</b>. Je vous parle
+              donc en commerçant qui sait construire l'outil qui manque.
             </p>
             <div className="ai-cta-row" style={{ marginTop: 24 }}>
               <Link className="ai-btn ai-btn-ghost ai-btn-sm" to="/apropos">Mon parcours en détail →</Link>
