@@ -29,7 +29,7 @@ const HomePage = () => {
     if (typeof window === 'undefined' || typeof window.Cal !== 'function') return;
     window.Cal('inline', {
       elementOrSelector: '#cal-inline',
-      calLink: 'brice-it0tty/15min',
+      calLink: 'brice-aia/15min',
       layout: 'month_view',
     });
     window.Cal('ui', {
