@@ -135,6 +135,53 @@ const RealisationsPage = () => {
         </div>
       </section>
 
+      {/* Proposition en cours — Feuillantine */}
+      <section className="ai-section ai-reveal">
+        <div className="ai-sec-head">
+          <span className="ai-sec-ref">PL.04 / P — Proposition en cours</span>
+          <h2 className="ai-sec-title">Une proposition, pas encore livrée.</h2>
+        </div>
+        <p className="ai-sec-lead">
+          Pour montrer concrètement ce que je propose à un commerce local, je conçois parfois la
+          maquette <b>avant même le premier échange</b>. En voici une, actuellement en proposition.
+        </p>
+      </section>
+
+      <section className="ai-proj rev ai-reveal">
+        <div className="ai-proj-media">
+          <span className="ai-cornermark tl" /><span className="ai-cornermark br" />
+          <svg viewBox="0 0 220 140" role="img" aria-label="Fenêtre de navigateur affichant une route en perspective, en trait de plan.">
+            <g stroke="var(--ai-pencil)" strokeWidth="1">
+              <line x1="24" y1="24" x2="24" y2="116" /><line x1="24" y1="116" x2="196" y2="116" />
+            </g>
+            <rect x="42" y="30" width="140" height="86" fill="none" stroke="var(--ai-outremer)" strokeWidth="1.6" />
+            <line x1="42" y1="44" x2="182" y2="44" stroke="var(--ai-outremer)" strokeWidth="1.6" />
+            <circle cx="50" cy="37" r="2" fill="var(--ai-outremer)" /><circle cx="58" cy="37" r="2" fill="var(--ai-outremer)" /><circle cx="66" cy="37" r="2" fill="var(--ai-outremer)" />
+            <polyline points="98,116 108,56 116,56 126,116" fill="none" stroke="var(--ai-outremer)" strokeWidth="1.4" />
+            <g stroke="var(--ai-pencil)" strokeWidth="1.4">
+              <line x1="112" y1="62" x2="112" y2="72" /><line x1="112" y1="82" x2="112" y2="94" /><line x1="112" y1="104" x2="112" y2="114" />
+            </g>
+          </svg>
+        </div>
+        <div className="ai-proj-body">
+          <div className="ai-idx">PL.04 / P — Proposition commerciale</div>
+          <h2>Auto-école Feuillantine</h2>
+          <p>
+            Un site vitrine sur-mesure pour une auto-école de la Loire : <b>moderne, clair et pensé pour
+            les jeunes</b>, là où le site existant ne rendait pas justice à la qualité de l'accompagnement.
+            Conçu de bout en bout — design, contenu, pages, responsive.
+          </p>
+          <ul className="ai-points">
+            <li>Multi-pages : accueil, formations, monitrice, infos pratiques</li>
+            <li>Thème clair/sombre, polices auto-hébergées, zéro dépendance externe</li>
+            <li>Vrai contenu intégré ; réservation de créneaux prévue en option</li>
+            <li>La cliente resterait propriétaire de tout (code et fichiers)</li>
+          </ul>
+          <div className="ai-stack"><span>HTML/CSS</span><span>Design sur-mesure</span><span>Responsive</span><span>SEO local</span></div>
+          <div className="ai-live">● <a href="/feuillantine/index.html" target="_blank" rel="noopener noreferrer">Voir la maquette — proposition en cours</a></div>
+        </div>
+      </section>
+
       {/* Autres travaux */}
       <section className="ai-section ai-reveal">
         <div className="ai-sec-head">
