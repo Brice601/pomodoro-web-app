@@ -27,7 +27,6 @@ const Footer = () => {
 
         <div className="ai-foot-links">
           <a href="mailto:brice@architecte-ia.fr">Courriel</a>
-          <a href="https://github.com/Brice601" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
 
         <div className="ai-foot-legal ai-mono">
