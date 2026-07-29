@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"><!-- MAQUETTE : retirer au déploiement sur le domaine du client -->
+<title>Auto-école La Lycéenne · Permis B à Andrézieux-Bouthéon (42)</title>
+<meta name="description" content="École de conduite familiale depuis 2008. Permis B, conduite accompagnée, code et boîte auto — sur une R5 100 % électrique. Frédéric & Florence t'accompagnent jusqu'au permis, à Andrézieux-Bouthéon.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Familjen+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script defer src="assets/site.js"></script>
+
+<style>
+:root{
+  --bitume:#F1F2F4; --bitume-2:#E7E9EC;
+  --asphalte:#14161A; --asphalte-2:#1C1F26;
+  --rouge:#E4032B; --rouge-fonce:#B60024;
+  --gris:#8A9099; --gris-t:#585C63;
+  --jaune:#F4C531;
+  --blanc:#fff;
+  --display:'Bruno Ace','Arial Narrow',sans-serif;
+  --body:'Familjen Grotesk','Segoe UI',system-ui,sans-serif;
+  --mono:'Space Mono','Consolas',monospace;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bitume);color:var(--asphalte);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{margin:0;font-family:var(--display);font-weight:400;line-height:1.05;letter-spacing:-.005em}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:24px}
+:focus-visible{outline:3px solid var(--rouge);outline-offset:3px;border-radius:3px}
+section{position:relative}
+
+.eb{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--rouge);display:inline-flex;align-items:center;gap:9px}
+.eb::before{content:"";width:26px;height:3px;background:var(--rouge)}
+
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-weight:700;font-size:14px;letter-spacing:.02em;text-transform:uppercase;padding:15px 24px;border-radius:100px;border:2px solid var(--asphalte);background:var(--asphalte);color:var(--bitume);cursor:pointer;transition:transform .14s ease,background .14s,color .14s}
+.btn:hover{transform:translateY(-2px)}
+.btn--red{background:var(--rouge);border-color:var(--rouge);color:#fff}
+.btn--red:hover{background:var(--rouge-fonce);border-color:var(--rouge-fonce)}
+.btn--ghost{background:transparent;color:var(--asphalte)}
+.btn--ghost:hover{background:var(--asphalte);color:var(--bitume)}
+.btn .ar{transition:transform .14s}
+.btn:hover .ar{transform:translateX(4px)}
+
+/* ---------- NAV ---------- */
+header{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--bitume) 84%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--bitume-2)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand .mk{width:40px;height:40px;flex:none}
+.brand .name{font-family:var(--display);font-size:19px;line-height:1}
+.brand .name small{display:block;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);margin-top:4px}
+.nav-links{display:flex;gap:22px;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.nav-links a{color:var(--gris-t);transition:color .15s;position:relative;padding:4px 0}
+.nav-links a:hover{color:var(--asphalte)}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--rouge);transition:width .2s}
+.nav-links a:hover::after{width:100%}
+.nav-cta{padding:11px 18px;font-size:12px;white-space:nowrap}
+.burger{display:none;width:44px;height:40px;border:1px solid var(--bitume-2);background:#fff;border-radius:10px;cursor:pointer;flex-direction:column;gap:4px;align-items:center;justify-content:center;padding:0;margin-left:8px}
+.burger span{width:20px;height:2px;background:var(--asphalte);border-radius:2px;transition:.2s}
+header.nav-open .burger span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+header.nav-open .burger span:nth-child(2){opacity:0}
+header.nav-open .burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+@media(max-width:1050px){
+  .nav-links{display:none;position:absolute;top:74px;left:0;right:0;flex-direction:column;gap:0;background:var(--bitume);border-bottom:1px solid var(--bitume-2);padding:8px 24px 16px;box-shadow:0 24px 30px -22px rgba(0,0,0,.3);z-index:59}
+  header.nav-open .nav-links{display:flex}
+  .nav-links a{padding:13px 2px;font-size:14px;border-bottom:1px solid var(--bitume-2)}
+  .nav-links a:last-child{border-bottom:0}
+  .nav-links a::after{display:none}
+  .burger{display:flex}
+}
+
+/* ---------- HERO ---------- */
+.hero{padding:54px 0 42px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+.hero h1{font-size:clamp(46px,7.4vw,92px);text-transform:uppercase;line-height:1.02}
+.hero h1 .rw{position:relative;display:inline-block}
+.hero h1 .rw::after{content:"";position:absolute;left:-3%;right:-3%;bottom:.02em;height:.14em;background:var(--rouge);border-radius:4px;z-index:-1;transform:skewX(-5deg)}
+.hero .lead{margin:22px 0 0;max-width:46ch;font-size:18px;color:#3A3F47}
+.hero .lead b{color:var(--asphalte)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.chip{font-family:var(--mono);font-size:12.5px;font-weight:700;background:#fff;border:1px solid var(--bitume-2);border-radius:100px;padding:9px 15px;display:inline-flex;align-items:center;gap:8px}
+.chip .dot{width:8px;height:8px;border-radius:50%;background:var(--rouge);flex:none}
+.hero-photo{position:relative}
+.frame{position:relative;z-index:1;border-radius:20px;overflow:hidden;border:1px solid var(--bitume-2);box-shadow:0 30px 60px -30px rgba(20,22,26,.5);aspect-ratio:4/3.3;background:#ddd}
+.frame img{width:100%;height:100%;object-fit:cover;object-position:50% 42%;filter:contrast(1.04) saturate(1.03)}
+.frame .tag{position:absolute;left:14px;bottom:14px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--asphalte);color:#fff;padding:7px 12px;border-radius:100px;display:flex;align-items:center;gap:8px}
+.frame .tag .g{width:7px;height:7px;border-radius:50%;background:var(--jaune)}
+.hero-photo .stamp{position:absolute;z-index:3;top:-16px;right:16px;background:var(--rouge);color:#fff;font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.03em;text-transform:uppercase;padding:10px 14px;border-radius:100px;transform:rotate(4deg);box-shadow:0 10px 24px -10px rgba(228,3,43,.7)}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:28px}.hero-photo{order:-1}}
+
+/* ---------- MARQUEE ---------- */
+.marq{background:var(--asphalte);color:#fff;overflow:hidden;display:flex;border-block:2px solid var(--asphalte)}
+.marq__t{display:inline-flex;flex:none;align-items:center;gap:20px;padding:12px 10px;font-family:var(--display);font-size:clamp(15px,1.9vw,20px);text-transform:uppercase;white-space:nowrap;animation:slide 34s linear infinite}
+.marq__t i{width:9px;height:9px;transform:rotate(45deg);background:var(--jaune);flex:none}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- SECTION HEAD ---------- */
+.shead{max-width:660px;margin-bottom:8px}
+.shead h2{font-size:clamp(28px,4.4vw,46px);text-transform:uppercase;margin-top:12px}
+.shead p{color:#3A3F47;margin:14px 0 0;font-size:16.5px}
+.band{padding:74px 0}
+
+/* ---------- PARCOURS (la route) ---------- */
+.road{position:relative;margin-top:42px;padding:22px 0}
+.road::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:74px;transform:translateX(-50%);background:var(--asphalte);border-radius:40px}
+.road .centerline{position:absolute;left:50%;top:14px;bottom:14px;width:5px;transform:translateX(-50%);border-radius:4px;background:repeating-linear-gradient(to bottom,var(--jaune) 0 22px,transparent 22px 46px);animation:roll 1.5s linear infinite}
+@keyframes roll{to{background-position:0 46px}}
+.road .prog{position:absolute;left:50%;top:14px;width:7px;transform:translateX(-50%);border-radius:5px;background:var(--rouge);height:0;box-shadow:0 0 16px 2px rgba(228,3,43,.55);z-index:1;transition:height .1s linear}
+.road .prog::after{content:"";position:absolute;left:50%;bottom:-6px;width:16px;height:16px;transform:translateX(-50%);border-radius:50%;background:var(--rouge);box-shadow:0 0 0 4px var(--bitume),0 0 18px 3px rgba(228,3,43,.7)}
+.step{position:relative;display:grid;grid-template-columns:1fr 74px 1fr;align-items:center;padding:20px 0}
+.step .card{background:#fff;border:1px solid var(--bitume-2);border-radius:16px;padding:18px 20px;box-shadow:0 18px 40px -30px rgba(20,22,26,.4);max-width:360px;opacity:0;transform:translateY(24px);transition:opacity .5s,transform .5s}
+.step.in .card{opacity:1;transform:none}
+.step .num{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--rouge)}
+.step .card h3{font-size:19px;text-transform:uppercase;margin:8px 0 7px}
+.step .card p{margin:0;font-size:14.5px;color:#3A3F47}
+.step .pin{grid-column:2;justify-self:center;width:46px;height:46px;border-radius:50%;background:#fff;border:4px solid var(--rouge);color:var(--rouge);display:grid;place-items:center;font-family:var(--display);font-size:16px;z-index:2}
+.step.left .card{grid-column:1;justify-self:end;text-align:right}
+.step.right .card{grid-column:3;justify-self:start}
+@media(max-width:720px){
+  .road::before,.road .centerline,.road .prog{left:30px}
+  .step{grid-template-columns:60px 1fr;gap:14px}
+  .step .pin{grid-column:1}
+  .step.left .card,.step.right .card{grid-column:2;justify-self:start;text-align:left;max-width:none}
+}
+
+/* ---------- CHIFFRES ---------- */
+.stats{background:var(--asphalte);color:#fff}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat .n{font-family:var(--display);font-size:clamp(34px,5vw,54px);color:var(--jaune);line-height:1}
+.stat .n small{font-size:.5em}
+.stat .c{font-family:var(--mono);font-size:12.5px;letter-spacing:.03em;color:#C7CCD4;margin-top:10px;text-transform:uppercase}
+@media(max-width:720px){.stats-grid{grid-template-columns:1fr 1fr;gap:28px 18px}}
+
+/* ---------- FORMATIONS ---------- */
+.formations{background:var(--bitume)}
+.f-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:36px}
+.f-card{background:#fff;border:1px solid var(--bitume-2);border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:12px;position:relative;transition:transform .14s,box-shadow .14s}
+.f-card:hover{transform:translateY(-3px);box-shadow:0 26px 50px -34px rgba(20,22,26,.55)}
+.f-card .tag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rouge)}
+.f-card h3{font-size:23px;text-transform:uppercase;line-height:1.06}
+.f-card .desc{font-size:15px;color:#3A3F47;margin:0}
+.f-card .px{font-family:var(--display);font-size:26px}
+.f-card .px small{font-family:var(--mono);font-size:12px;color:var(--gris-t);font-weight:400}
+.f-card .fic{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--rouge);text-transform:uppercase}
+.f-card .actions{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding-top:6px}
+.more{background:none;border:0;padding:0;font-family:var(--mono);font-weight:700;font-size:12.5px;letter-spacing:.03em;color:var(--asphalte);cursor:pointer;border-bottom:2px solid var(--jaune)}
+.more:hover{color:var(--rouge)}
+@media(max-width:720px){.f-grid{grid-template-columns:1fr}}
+
+dialog.modal{max-width:560px;width:calc(100% - 32px);border:0;border-radius:18px;background:#fff;color:var(--asphalte);padding:0;box-shadow:0 40px 80px -30px rgba(20,22,26,.6)}
+dialog.modal::backdrop{background:rgba(20,22,26,.55);backdrop-filter:blur(2px)}
+.m-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:24px 24px 6px}
+.m-head .tag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--rouge);text-transform:uppercase;display:block;margin-bottom:6px}
+.m-head h3{font-size:24px;text-transform:uppercase}
+.m-close{background:var(--asphalte);color:#fff;border:0;width:34px;height:34px;border-radius:50%;flex:none;cursor:pointer;font-size:16px}
+.m-body{padding:6px 24px 22px;font-size:14.5px;color:#3A3F47;display:flex;flex-direction:column;gap:11px}
+.m-body b{color:var(--asphalte)}
+.m-price{font-family:var(--mono);font-size:13px;background:var(--bitume);border-radius:10px;padding:12px 14px;color:var(--asphalte)}
+.m-foot{padding:0 24px 24px}
+
+/* ---------- FINANCEMENT ---------- */
+.finance .f2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:34px}
+.acard{background:#fff;border:1px solid var(--bitume-2);border-radius:16px;padding:22px}
+.acard .amt{font-family:var(--display);font-size:22px;color:var(--rouge)}
+.acard h4{font-size:16px;text-transform:uppercase;margin:2px 0 8px;font-family:var(--display)}
+.acard p{margin:0;font-size:14.5px;color:#3A3F47}
+@media(max-width:720px){.finance .f2{grid-template-columns:1fr}}
+
+/* ---------- PARC AUTO (dark) ---------- */
+.fleet{background:var(--asphalte);color:var(--bitume)}
+.fleet .eb{color:var(--jaune)}.fleet .eb::before{background:var(--jaune)}
+.fleet-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.fleet h2{font-size:clamp(26px,4vw,42px);text-transform:uppercase;color:#fff;margin-top:12px}
+.fleet p{color:#B9BEC7;max-width:46ch;margin:16px 0 0}
+.fleet .pics{display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:1fr 1fr;gap:12px;height:100%}
+.fleet .pics img{width:100%;height:100%;object-fit:cover;border-radius:14px;border:1px solid #2A2E36}
+.fleet .pics .big{grid-row:1/3}
+@media(max-width:860px){.fleet-grid{grid-template-columns:1fr;gap:24px}.fleet .pics{height:auto}}
+
+/* ---------- ÉQUIPE ---------- */
+.team-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center;margin-top:20px}
+.team-photo{border-radius:20px;overflow:hidden;border:1px solid var(--bitume-2);aspect-ratio:4/3.4;box-shadow:0 30px 60px -34px rgba(20,22,26,.5)}
+.team-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.people{display:flex;flex-direction:column;gap:18px;margin-top:22px}
+.person{background:#fff;border:1px solid var(--bitume-2);border-radius:14px;padding:18px 20px}
+.person .nm{font-family:var(--display);font-size:18px;text-transform:uppercase}
+.person .rl{font-family:var(--mono);font-size:11.5px;color:var(--rouge);text-transform:uppercase;letter-spacing:.04em;margin:5px 0 8px}
+.person p{margin:0;font-size:14.5px;color:#3A3F47}
+.values{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.values span{font-family:var(--mono);font-size:12px;font-weight:700;background:var(--bitume);border:1px solid var(--bitume-2);border-radius:100px;padding:8px 14px}
+@media(max-width:860px){.team-grid{grid-template-columns:1fr;gap:24px}}
+
+/* ---------- AVIS ---------- */
+.avis{background:var(--bitume)}
+.a-top{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.a-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+.avis-card{background:#fff;border:1px solid var(--bitume-2);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.stars{color:var(--rouge);letter-spacing:2px;font-size:15px}
+.avis-card blockquote{margin:0;font-size:14.5px;color:#2C3138;line-height:1.5}
+.avis-card .by{display:flex;align-items:center;gap:10px;margin-top:auto}
+.avis-card .av{width:38px;height:38px;border-radius:50%;background:var(--asphalte);color:#fff;display:grid;place-items:center;font-family:var(--display);font-size:15px;flex:none}
+.avis-card .by b{font-size:14px}.avis-card .by span{display:block;font-family:var(--mono);font-size:11px;color:var(--gris-t)}
+@media(max-width:900px){.a-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.a-grid{grid-template-columns:1fr}}
+
+/* ---------- CONTACT ---------- */
+.contact{background:var(--asphalte);color:var(--bitume)}
+.contact .eb{color:var(--jaune)}.contact .eb::before{background:var(--jaune)}
+.c-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:44px;margin-top:20px}
+.contact h2{color:#fff;font-size:clamp(26px,4vw,42px);text-transform:uppercase}
+.c-info{margin-top:26px;display:flex;flex-direction:column;gap:16px}
+.c-row{display:flex;gap:12px;font-size:15px}
+.c-row .ic{width:34px;height:34px;border-radius:8px;background:var(--asphalte-2);border:1px solid #2A2E36;display:grid;place-items:center;color:var(--jaune);flex:none}
+.c-row b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris);margin-bottom:2px}
+.c-row .sm{font-size:12px;color:var(--gris)}
+/* form */
+.book{background:#fff;color:var(--asphalte);border-radius:20px;padding:26px}
+.book h3{font-family:var(--display);font-size:20px;text-transform:uppercase}
+.book .evo{font-size:12.5px;color:#3A3F47;background:var(--bitume);border:1px dashed var(--gris);border-radius:10px;padding:11px 13px;margin:12px 0 2px}
+.book .evo b{color:var(--asphalte)}
+.book .evo .evo-tag{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rouge);display:block;margin-bottom:4px}
+.seg{display:flex;gap:8px;margin:16px 0 6px;background:var(--bitume);padding:5px;border-radius:100px}
+.seg button{flex:1;font-family:var(--mono);font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.02em;border:0;background:none;padding:11px;border-radius:100px;cursor:pointer;color:var(--gris-t);transition:.15s}
+.seg button[aria-selected="true"]{background:var(--asphalte);color:#fff}
+.panel{display:none;flex-direction:column;gap:12px;margin-top:14px}
+.panel.on{display:flex}
+.field label{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gris-t);display:block;margin-bottom:6px}
+.field input,.field select,.field textarea{width:100%;font-family:var(--body);font-size:15px;padding:12px 14px;border:1px solid var(--bitume-2);border-radius:10px;background:var(--bitume);color:var(--asphalte)}
+.field textarea{resize:vertical;min-height:80px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.slots{display:flex;gap:8px;flex-wrap:wrap}
+.slots label{font-family:var(--mono);font-size:12px;border:1px solid var(--bitume-2);border-radius:100px;padding:8px 13px;cursor:pointer;display:inline-flex;gap:7px;align-items:center;background:var(--bitume)}
+.slots input{accent-color:var(--rouge)}
+.notice{background:var(--bitume);border:1px dashed var(--gris);border-radius:12px;padding:14px 16px;font-size:14px;color:#3A3F47}
+.okmsg{display:none;background:#0E7A3C;color:#fff;border-radius:12px;padding:14px 16px;font-size:14.5px;font-family:var(--mono)}
+.okmsg.on{display:block}
+@media(max-width:860px){.c-grid{grid-template-columns:1fr;gap:26px}.row2{grid-template-columns:1fr}}
+
+/* ---------- FOOTER ---------- */
+footer{background:#0F1115;color:var(--bitume);padding:52px 0 30px}
+.foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.foot .brand .name{color:#fff}
+.foot>div p{color:#8A9099;font-size:14px;max-width:34ch;margin:14px 0 0}
+.foot-links{display:flex;gap:44px;flex-wrap:wrap}
+.foot-col b{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8A9099;display:block;margin-bottom:12px}
+.foot-col a{display:block;color:#D7DAE0;font-size:14.5px;padding:4px 0}
+.foot-col a:hover{color:var(--rouge)}
+.foot-base{margin-top:40px;padding-top:20px;border-top:1px solid #23262D;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:var(--mono);font-size:11.5px;color:#6B7079}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .marq__t,.road .centerline{animation:none}
+  .step .card{opacity:1;transform:none}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="loop" viewBox="0 0 40 40">
+  <path d="M8 30 C8 14, 32 26, 32 12" fill="none" stroke="#14161A" stroke-width="5" stroke-linecap="round"/>
+  <path d="M8 30 C8 14, 32 26, 32 12" fill="none" stroke="#E4032B" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 7"/>
+  <circle cx="8" cy="30" r="3.4" fill="#E4032B"/>
+</symbol></defs></svg>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="La Lycéenne, accueil">
+      <svg class="mk" aria-hidden="true"><use href="#loop"/></svg>
+      <span class="name">La Lycéenne<small>Auto-école · Andrézieux-Bouthéon</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="#parcours">Le parcours</a>
+      <a href="#formations">Formations</a>
+      <a href="#financement">Financement</a>
+      <a href="#equipe">L'équipe</a>
+      <a href="#avis">Avis</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn--red nav-cta" href="#contact">Je m'inscris</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eb">Auto-école à Andrézieux-Bouthéon · depuis 2008</span>
+        <h1>Ta route<br>commence <span class="rw">ici</span>.</h1>
+        <p class="lead">Chez Frédéric et Florence, <b>on n'achète pas le permis : on apprend à le passer.</b> Du premier créneau au jour J, sur des voitures récentes — dont une R5 100 % électrique.</p>
+        <div class="hero-cta">
+          <a class="btn btn--red" href="#contact">Je m'inscris <span class="ar" aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost" href="#parcours">Voir le parcours</a>
+        </div>
+        <div class="chips">
+          <span class="chip"><span class="dot"></span>150 € d'aide région</span>
+          <span class="chip"><span class="dot"></span>80 % de réussite au code</span>
+          <span class="chip"><span class="dot"></span>R5 100 % électrique</span>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <span class="stamp">Depuis 2008</span>
+        <div class="frame">
+          <img src="assets/r5-face.jpg" alt="La Renault R5 E-Tech blanche de l'auto-école La Lycéenne devant l'agence">
+          <span class="tag"><span class="g"></span>R5 E-Tech · 100 % électrique</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marq" aria-hidden="true">
+    <div class="marq__t" id="marq">
+      <span>Permis B</span><i></i><span>Conduite accompagnée</span><i></i><span>Code</span><i></i><span>Boîte auto</span><i></i><span>Aide région 150 €</span><i></i><span>Permis à 1 €/jour</span><i></i><span>Andrézieux-Bouthéon</span><i></i>
+    </div>
+  </div>
+
+  <!-- PARCOURS -->
+  <section class="band" id="parcours">
+    <div class="wrap">
+      <div class="shead">
+        <span class="eb">Le parcours</span>
+        <h2>Ton permis, étape par étape</h2>
+        <p>Une route claire, du premier rendez-vous au jour J. Tu sais toujours où tu en es — et ce qu'il te reste à parcourir.</p>
+      </div>
+      <div class="road" id="road">
+        <div class="centerline" aria-hidden="true"></div>
+        <div class="prog" id="prog" aria-hidden="true"></div>
+        <div class="step left" data-step><div class="card"><div class="num">01 · Départ</div><h3>L'évaluation</h3><p>On mesure ton point de départ pour fixer ton nombre d'heures et un devis clair. Puis on monte ton dossier ensemble.</p></div><div class="pin">1</div></div>
+        <div class="step right" data-step><div class="pin">2</div><div class="card"><div class="num">02 · Le code</div><h3>Le code, avec Florence</h3><p>Des séances en salle chaque semaine, animées et corrigées par Florence, avec des thématiques et des examens blancs avant le jour J.</p></div></div>
+        <div class="step left" data-step><div class="card"><div class="num">03 · Au volant</div><h3>La conduite</h3><p>Avec Frédéric et Florence, sur la Clio ou la R5 électrique selon ta formation. Des leçons à ton rythme, en boîte manuelle ou automatique.</p></div><div class="pin">3</div></div>
+        <div class="step right" data-step><div class="pin">4</div><div class="card"><div class="num">04 · Le jour J</div><h3>L'examen</h3><p>Présentation une fois toutes tes compétences validées. On t'accompagne à bord pour que tu partes serein.</p></div></div>
+        <div class="step left" data-step><div class="card"><div class="num">05 · Arrivée</div><h3>Le permis</h3><p>Un point après l'examen, et te voilà vraiment sur la route. Bienvenue chez les conducteurs.</p></div><div class="pin">5</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHIFFRES -->
+  <section class="band stats">
+    <div class="wrap stats-grid">
+      <div class="stat"><div class="n">80<small>%</small></div><div class="c">de réussite au code</div></div>
+      <div class="stat"><div class="n">60<small>%</small></div><div class="c">de réussite en conduite</div></div>
+      <div class="stat"><div class="n">2008</div><div class="c">+ de 15 ans d'expérience</div></div>
+      <div class="stat"><div class="n">100<small>%</small></div><div class="c">électrique (notre R5)</div></div>
+    </div>
+  </section>
+
+  <!-- FORMATIONS -->
+  <section class="band formations" id="formations">
+    <div class="wrap">
+      <div class="shead">
+        <span class="eb">Les formations</span>
+        <h2>Quatre façons de décrocher ton permis</h2>
+        <p>Manuelle ou automatique, tôt ou classique : on t'aide à choisir la formation qui te ressemble. <b style="color:var(--rouge)">Prix ci-dessous fictifs</b> — à remplacer par la grille réelle de l'école.</p>
+      </div>
+      <div class="f-grid">
+        <div class="f-card">
+          <span class="tag">Dès 17 ans · manuelle</span>
+          <h3>Permis B</h3>
+          <p class="desc">Le permis complet, en boîte manuelle, pour rouler partout sans limite.</p>
+          <div class="px">1 290 € <small>forfait</small></div><div class="fic">Prix fictif</div>
+          <div class="actions"><a class="more" href="permis-b.html">Voir la formation +</a><a class="btn btn--red" href="#contact" style="padding:11px 18px;font-size:12px">Je m'inscris</a></div>
+        </div>
+        <div class="f-card">
+          <span class="tag">Dès 15 ans · AAC</span>
+          <h3>Conduite accompagnée</h3>
+          <p class="desc">Commence tôt, roule beaucoup, réussis mieux. La voie royale vers un permis serein.</p>
+          <div class="px">1 390 € <small>forfait</small></div><div class="fic">Prix fictif</div>
+          <div class="actions"><a class="more" href="conduite-accompagnee.html">Voir la formation +</a><a class="btn btn--red" href="#contact" style="padding:11px 18px;font-size:12px">Je m'inscris</a></div>
+        </div>
+        <div class="f-card">
+          <span class="tag">En salle · avec Florence</span>
+          <h3>Formation au code</h3>
+          <p class="desc">Le code sans stress, en salle, avec quelqu'un pour t'expliquer vraiment.</p>
+          <div class="px">250 € <small>forfait</small></div><div class="fic">Prix fictif</div>
+          <div class="actions"><a class="more" href="formation-code.html">Voir la formation +</a><a class="btn btn--red" href="#contact" style="padding:11px 18px;font-size:12px">Je m'inscris</a></div>
+        </div>
+        <div class="f-card">
+          <span class="tag">Auto · sur R5 électrique</span>
+          <h3>Permis boîte auto</h3>
+          <p class="desc">Moins d'heures, moins de stress, le permis plus vite — et la porte ouverte vers la manuelle.</p>
+          <div class="px">1 090 € <small>forfait</small></div><div class="fic">Prix fictif</div>
+          <div class="actions"><a class="more" href="permis-boite-auto.html">Voir la formation +</a><a class="btn btn--red" href="#contact" style="padding:11px 18px;font-size:12px">Je m'inscris</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINANCEMENT -->
+  <section class="band finance" id="financement">
+    <div class="wrap">
+      <div class="shead">
+        <span class="eb">Financement & aides</span>
+        <h2>Des coups de pouce pour payer</h2>
+        <p>Le permis a un coût — mais tu n'es pas seul pour le financer. On t'explique tout et on monte les dossiers avec toi.</p>
+      </div>
+      <div class="f2">
+        <div class="acard"><div class="amt">150 €</div><h4>Aide de la région</h4><p>Auvergne-Rhône-Alpes, pour les candidats de 17 ans engagés dans un permis B. Renseignements auprès de l'auto-école.</p></div>
+        <div class="acard"><div class="amt">1 €/jour</div><h4>Permis à 1 €/jour</h4><p>Un prêt à taux zéro pour étaler le coût de ta formation, sans intérêts à ta charge (jeunes de 16 à 25 ans).</p></div>
+        <div class="acard"><div class="amt">Forez</div><h4>Mission Locale du Forez</h4><p>En partenariat avec l'État et la commune, la Mission Locale participe au financement du permis des jeunes qu'elle identifie.</p></div>
+        <div class="acard"><div class="amt">3× / 4×</div><h4>Facilités de paiement</h4><p>Paiement en plusieurs fois possible. Parles-en avec nous, on trouve une solution adaptée. <span style="color:var(--gris-t)">⟨modalités à confirmer⟩</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARC AUTO -->
+  <section class="band fleet">
+    <div class="wrap fleet-grid">
+      <div>
+        <span class="eb">Le parc auto</span>
+        <h2>Une Clio et une R5 100 % électrique</h2>
+        <p>Deux voitures récentes et bien entretenues. Selon ta formation, tu apprends sur la <b style="color:#fff">Clio</b> (boîte manuelle) ou sur la nouvelle <b style="color:#fff">Renault 5 E-Tech</b> (boîte automatique) — et tu passes ton examen sur la voiture que tu connais par cœur.</p>
+        <div style="display:flex;gap:26px;margin-top:22px;font-family:var(--mono);font-size:13px;color:#fff">
+          <div><b style="display:block;font-family:var(--display);font-size:24px;color:var(--jaune)">2</b>véhicules récents</div>
+          <div><b style="display:block;font-family:var(--display);font-size:24px;color:var(--jaune)">1</b>R5 100 % élec.</div>
+          <div><b style="display:block;font-family:var(--display);font-size:24px;color:var(--jaune)">B78</b>passerelle 7 h</div>
+        </div>
+      </div>
+      <div class="pics">
+        <img class="big" src="assets/r5-cote.jpg" alt="La Renault 5 E-Tech blanche de profil">
+        <img src="assets/clio-cote.jpg" alt="La Clio de l'auto-école de profil">
+        <img src="assets/r5-bord.jpg" alt="Le tableau de bord de la R5 électrique">
+      </div>
+    </div>
+  </section>
+
+  <!-- ÉQUIPE -->
+  <section class="band" id="equipe">
+    <div class="wrap">
+      <div class="shead">
+        <span class="eb">L'équipe</span>
+        <h2>Une auto-école familiale, pas une usine à permis</h2>
+        <p>La Lycéenne, c'est Frédéric et Florence, qui ont créé leur école à Andrézieux-Bouthéon en 2008. Depuis, la même conviction : ici, l'humain passe avant tout. On prend le temps, on rassure, et on ne lâche personne en route.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-photo"><img src="assets/equipe.jpg" alt="Frédéric et Florence Courtilat, les moniteurs de l'auto-école La Lycéenne"></div>
+        <div>
+          <div class="people">
+            <div class="person"><div class="nm">Frédéric</div><div class="rl">Enseignant de la conduite</div><p>Moniteur diplômé depuis 1999. Au volant de la Clio comme de la R5, il adapte chaque leçon à ton rythme pour te faire progresser en confiance.</p></div>
+            <div class="person"><div class="nm">Florence</div><div class="rl">Enseignante de la conduite · BEPECASER</div><p>Titulaire du BEPECASER, elle enseigne la conduite au même titre que Frédéric — et anime en plus les séances de code, où elle reprend les points difficiles pour te mettre en confiance avant l'examen.</p></div>
+          </div>
+          <div class="values"><span>Patience</span><span>Bienveillance</span><span>Convivialité</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVIS -->
+  <section class="band avis" id="avis">
+    <div class="wrap">
+      <div class="a-top">
+        <div class="shead" style="margin:0">
+          <span class="eb">Les avis</span>
+          <h2>Ils l'ont eu chez nous</h2>
+          <p>Ce qu'en disent celles et ceux qui viennent de décrocher leur permis, sur notre fiche Google.</p>
+        </div>
+        <a class="btn btn--ghost" href="#" aria-label="Voir tous nos avis sur Google (lien à compléter)">Voir sur Google <span class="ar">→</span></a>
+      </div>
+      <div class="a-grid">
+        <figure class="avis-card"><div class="stars" aria-label="5 sur 5">★★★★★</div><blockquote>« Excellente auto-école, je recommande à 1000 %. Florence et Frédéric nous accompagnent de A à Z. Un grand plaisir d'avoir passé mon permis du premier coup malgré des circonstances compliquées. Foncez ! »</blockquote><figcaption class="by"><span class="av">M</span><span><b>Malorie</b><span>Permis B</span></span></figcaption></figure>
+        <figure class="avis-card"><div class="stars" aria-label="5 sur 5">★★★★★</div><blockquote>« Frédéric et Florence sont investis du début à la fin : gentillesse, encouragements, bienveillance et bons conseils. Ils vous mettent en confiance rapidement. »</blockquote><figcaption class="by"><span class="av">J</span><span><b>Julie B.</b><span>Permis B</span></span></figcaption></figure>
+        <figure class="avis-card"><div class="stars" aria-label="5 sur 5">★★★★★</div><blockquote>« Mes 3 enfants ont eu leur permis du 1er coup. Très à l'écoute et d'un professionnalisme exemplaire. Vous pouvez leur faire confiance les yeux fermés. »</blockquote><figcaption class="by"><span class="av">P</span><span><b>Pascale D.</b>Parent d'élèves</span></figcaption></figure>
+        <figure class="avis-card"><div class="stars" aria-label="5 sur 5">★★★★★</div><blockquote>« J'ai eu mon permis du 1er coup : je me sens en confiance et en parfaite sécurité sur la route ! Professionnels, bienveillants et encourageants, pour le permis comme pour le code. »</blockquote><figcaption class="by"><span class="av">S</span><span><b>Solenn P.</b><span>Permis B</span></span></figcaption></figure>
+        <figure class="avis-card"><div class="stars" aria-label="5 sur 5">★★★★★</div><blockquote>« Après une mauvaise expérience dans une autre auto-école, Florence et Frédéric ont su m'accompagner avec patience et bienveillance. »</blockquote><figcaption class="by"><span class="av">O</span><span><b>Océane L.</b><span>Permis B</span></span></figcaption></figure>
+        <figure class="avis-card"><div class="stars" aria-label="5 sur 5">★★★★★</div><blockquote>« J'ai obtenu mon permis du premier coup. Les voitures sont parfaites pour apprendre, tout est mis en place pour réussir. Si vous avez un doute, foncez ! »</blockquote><figcaption class="by"><span class="av">M</span><span><b>Maé C.</b><span>Permis B</span></span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="band contact" id="contact">
+    <div class="wrap">
+      <div class="c-grid">
+        <div>
+          <span class="eb">On t'attend</span>
+          <h2>Prêt à démarrer ?</h2>
+          <p style="color:#B9BEC7;max-width:42ch;margin-top:14px">Passe à l'agence ou laisse-nous un message : on te recontacte pour caler ton inscription, ton évaluation et ta première heure.</p>
+          <div class="c-info">
+            <div class="c-row"><span class="ic" aria-hidden="true">◆</span><div><b>Adresse</b>7 rue Colette, 42160 Andrézieux-Bouthéon</div></div>
+            <div class="c-row"><span class="ic" aria-hidden="true">✆</span><div><b>Téléphone</b>09 70 35 46 29 · 06 20 11 14 50</div></div>
+            <div class="c-row"><span class="ic" aria-hidden="true">◷</span><div><b>Horaires accueil</b>Lun–ven 16h–19h · Sam 10h–12h (hors vacances)</div></div>
+            <div class="c-row"><span class="ic" aria-hidden="true">@</span><div><b>Email</b>lalyceenne@yahoo.fr</div></div>
+          </div>
+        </div>
+
+        <div class="book">
+          <h3>Demander un créneau</h3>
+          <p class="evo"><span class="evo-tag">Évolution possible</span>Ce formulaire peut devenir un <b>agenda de réservation en temps réel</b> (créneaux disponibles + rappels automatiques par SMS), ou un <b>espace élève</b> avec compte et solde d'heures. On l'active selon vos besoins.</p>
+          <div class="seg" role="tablist" aria-label="Es-tu déjà élève ?">
+            <button role="tab" aria-selected="true" data-panel="p-eleve">Déjà élève</button>
+            <button role="tab" aria-selected="false" data-panel="p-nouveau">Pas encore élève</button>
+          </div>
+
+          <form class="panel on" id="p-eleve" onsubmit="return laLyc.submit(event,'eleve')">
+            <div class="row2">
+              <div class="field"><label for="e-prenom">Prénom</label><input id="e-prenom" required></div>
+              <div class="field"><label for="e-nom">Nom</label><input id="e-nom" required></div>
+            </div>
+            <div class="row2">
+              <div class="field"><label for="e-tel">Téléphone</label><input id="e-tel" type="tel" required></div>
+              <div class="field"><label for="e-mail">Email</label><input id="e-mail" type="email"></div>
+            </div>
+            <div class="field"><label for="e-type">Type de leçon</label><select id="e-type"><option>Conduite — boîte manuelle (Clio)</option><option>Conduite — boîte auto (R5 électrique)</option><option>Autre / je ne sais pas</option></select></div>
+            <div class="row2">
+              <div class="field"><label for="e-date">Date souhaitée</label><input id="e-date" type="date"></div>
+              <div class="field"><label for="e-time">Plutôt…</label><select id="e-time"><option>Peu importe</option><option>Matin</option><option>Après-midi</option><option>Soirée</option></select></div>
+            </div>
+            <div class="field"><label>Autres jours qui t'arrangent</label><div class="slots">
+              <label><input type="checkbox">Lun</label>
+              <label><input type="checkbox">Mar</label>
+              <label><input type="checkbox">Mer</label>
+              <label><input type="checkbox">Jeu</label>
+              <label><input type="checkbox">Ven</label>
+              <label><input type="checkbox">Sam</label>
+            </div></div>
+            <button class="btn btn--red" type="submit">Envoyer ma demande <span class="ar">→</span></button>
+            <div class="okmsg" id="ok-eleve">Merci ! On te recontacte par SMS ou téléphone pour caler ton créneau. <span style="opacity:.8">(Démo — le formulaire sera relié à l'auto-école.)</span></div>
+          </form>
+
+          <div class="panel" id="p-nouveau">
+            <div class="notice"><b>Bienvenue !</b> Avant de réserver une heure de conduite, on commence par une <b>évaluation de départ</b> : elle fixe ton nombre d'heures et ton devis. Laisse-nous tes coordonnées, on s'occupe du reste.</div>
+            <form onsubmit="return laLyc.submit(event,'nouveau')" style="display:flex;flex-direction:column;gap:12px;margin-top:12px">
+              <div class="row2">
+                <div class="field"><label for="n-prenom">Prénom</label><input id="n-prenom" required></div>
+                <div class="field"><label for="n-nom">Nom</label><input id="n-nom" required></div>
+              </div>
+              <div class="row2">
+                <div class="field"><label for="n-tel">Téléphone</label><input id="n-tel" type="tel" required></div>
+                <div class="field"><label for="n-mail">Email</label><input id="n-mail" type="email"></div>
+              </div>
+              <div class="field"><label for="n-form">Formation visée</label><select id="n-form"><option>Permis B (manuelle)</option><option>Conduite accompagnée (AAC)</option><option>Permis boîte automatique</option><option>Formation au code</option><option>Je ne sais pas encore</option></select></div>
+              <div class="field"><label for="n-msg">Message</label><textarea id="n-msg" placeholder="Une question, ta situation…"></textarea></div>
+              <button class="btn btn--red" type="submit">Je demande mon évaluation <span class="ar">→</span></button>
+              <div class="okmsg" id="ok-nouveau">Merci ! On te recontacte très vite pour ton évaluation de départ. <span style="opacity:.8">(Démo — le formulaire sera relié à l'auto-école.)</span></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- MODALES FORMATIONS -->
+<dialog class="modal" id="m-b"><div class="m-head"><div><span class="tag">Dès 17 ans · manuelle</span><h3>Permis B</h3></div><button class="m-close" aria-label="Fermer">✕</button></div><div class="m-body"><p><b>Pour qui :</b> dès 17 ans, aucune expérience requise.</p><p><b>Comment ça se passe :</b> évaluation de départ → code en salle avec Florence → conduite avec Frédéric (20 h minimum) → examen une fois tes compétences validées. Permis B et B78.</p><p><b>Inclus :</b> évaluation, accès aux séances de code, leçons sur véhicule récent, suivi personnalisé jusqu'au jour J.</p><div class="m-price"><b>Forfait Permis B — 1 290 €</b> · heure supplémentaire 48 € · <span style="color:var(--rouge)">prix fictifs, à remplacer</span></div></div><div class="m-foot"><a class="btn btn--red" href="#contact" onclick="this.closest('dialog').close()">Je m'inscris</a></div></dialog>
+
+<dialog class="modal" id="m-aac"><div class="m-head"><div><span class="tag">Dès 15 ans · AAC</span><h3>Conduite accompagnée</h3></div><button class="m-close" aria-label="Fermer">✕</button></div><div class="m-body"><p><b>Pour qui :</b> dès 15 ans. Idéale pour prendre de l'expérience avant l'examen.</p><p><b>Comment ça se passe :</b> formation initiale (code + 20 h) → rendez-vous pédagogique avec ton accompagnateur → tu conduis avec un proche pendant 1 an et 3 000 km minimum → examen possible dès 17 ans.</p><p><b>Pourquoi c'est top :</b> meilleur taux de réussite, plus d'expérience, et un délai probatoire réduit une fois le permis en poche.</p><div class="m-price"><b>Forfait Conduite accompagnée — 1 390 €</b> · <span style="color:var(--rouge)">prix fictif, à remplacer</span></div></div><div class="m-foot"><a class="btn btn--red" href="#contact" onclick="this.closest('dialog').close()">Je m'inscris</a></div></dialog>
+
+<dialog class="modal" id="m-code"><div class="m-head"><div><span class="tag">En salle · avec Florence</span><h3>Formation au code</h3></div><button class="m-close" aria-label="Fermer">✕</button></div><div class="m-body"><p><b>Comment ça se passe :</b> des séances en salle animées et corrigées par Florence, dans une salle claire et équipée. Suivi individuel, thématiques (alcool, vitesse, priorités…) selon tes difficultés, et examens blancs réguliers avant le jour J.</p><p><b>Le plus :</b> ici, le code n'est pas qu'une appli — il y a quelqu'un pour répondre à tes questions.</p><div class="m-price"><b>Forfait Code — 250 €</b> · <span style="color:var(--rouge)">prix fictif, à remplacer</span></div></div><div class="m-foot"><a class="btn btn--red" href="#contact" onclick="this.closest('dialog').close()">Je m'inscris</a></div></dialog>
+
+<dialog class="modal" id="m-auto"><div class="m-head"><div><span class="tag">Auto · sur R5 électrique</span><h3>Permis boîte auto</h3></div><button class="m-close" aria-label="Fermer">✕</button></div><div class="m-body"><p><b>Pour qui :</b> ceux qui veulent apprendre plus simplement, ou décrocher le permis rapidement.</p><p><b>Comment ça se passe :</b> minimum de 13 leçons (au lieu de 20), sur véhicule récent — dont notre R5 100 % électrique. Tu peux ensuite conduire une manuelle grâce à la passerelle B78 → B (formation courte de 7 h).</p><p><b>Inclus :</b> évaluation, code, leçons boîte auto, préparation à l'examen.</p><div class="m-price"><b>Forfait Boîte auto — 1 090 €</b> · <span style="color:var(--rouge)">prix fictif, à remplacer</span></div></div><div class="m-foot"><a class="btn btn--red" href="#contact" onclick="this.closest('dialog').close()">Je m'inscris</a></div></dialog>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#top"><svg class="mk" aria-hidden="true" style="width:38px;height:38px"><use href="#loop"/></svg><span class="name" style="color:#fff">La Lycéenne<small>Auto-école · Andrézieux-Bouthéon</small></span></a>
+        <p>L'auto-école familiale qui prend le temps de t'apprendre à conduire, à Andrézieux-Bouthéon. Agréée préfecture · n° d'agrément ⟨à compléter⟩.</p>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col"><b>Formations</b><a href="permis-b.html">Permis B</a><a href="conduite-accompagnee.html">Conduite accompagnée</a><a href="formation-code.html">Code</a><a href="permis-boite-auto.html">Boîte auto</a></div>
+        <div class="foot-col"><b>La Lycéenne</b><a href="#parcours">Le parcours</a><a href="#equipe">L'équipe</a><a href="#avis">Avis</a><a href="#contact">Nous trouver</a></div>
+        <div class="foot-col"><b>Infos</b><a href="infos-pratiques.html">Infos pratiques</a><a href="#financement">Financement & aides</a><a href="mentions-legales.html">Mentions légales</a></div>
+      </div>
+    </div>
+    <div class="foot-base"><span>© 2026 Auto-école La Lycéenne</span><span>Maquette — Architecte IA</span></div>
+  </div>
+</footer>
+
+<script>
+window.laLyc = {
+  submit:function(e,which){
+    e.preventDefault();
+    document.getElementById('ok-'+which).classList.add('on');
+    return false;
+  }
+};
+(function(){
+  // segmented control
+  var seg=document.querySelectorAll('.seg button');
+  seg.forEach(function(b){b.addEventListener('click',function(){
+    seg.forEach(function(x){x.setAttribute('aria-selected','false')});
+    b.setAttribute('aria-selected','true');
+    document.querySelectorAll('.book .panel').forEach(function(p){p.classList.remove('on')});
+    document.getElementById(b.dataset.panel).classList.add('on');
+  })});
+  // modals
+  document.querySelectorAll('.more').forEach(function(b){b.addEventListener('click',function(){var d=document.getElementById(b.dataset.modal);if(d&&d.showModal)d.showModal();})});
+  document.querySelectorAll('dialog.modal').forEach(function(d){
+    d.querySelector('.m-close').addEventListener('click',function(){d.close()});
+    d.addEventListener('click',function(e){if(e.target===d)d.close()});
+  });
+  // reveal steps
+  var steps=document.querySelectorAll('[data-step]');
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion:reduce)').matches){
+    steps.forEach(function(s){s.classList.add('in')});
+  } else {
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.3});
+    steps.forEach(function(s){io.observe(s)});
+  }
+  // road progress (la route se trace)
+  var road=document.getElementById('road'), prog=document.getElementById('prog');
+  if(road&&prog&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
+    var tick=function(){
+      var r=road.getBoundingClientRect(), vh=innerHeight;
+      var p=(vh*0.5 - r.top)/r.height;
+      p=Math.max(0,Math.min(1,p));
+      prog.style.height=(p*(road.clientHeight-28))+'px';
+    };
+    addEventListener('scroll',tick,{passive:true}); addEventListener('resize',tick); tick();
+  } else if(prog){prog.style.height=(road.clientHeight-28)+'px'}
+})();
+</script>
+</html>
