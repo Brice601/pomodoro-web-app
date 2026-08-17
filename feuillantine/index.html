@@ -4,111 +4,261 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Site hors ligne — Architecte IA</title>
-<link rel="icon" href="/favicon-minuteur.svg">
+<title>Maquette hors ligne — Architecte IA</title>
+<link rel="icon" type="image/svg+xml" href="/favicon-minuteur.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
+  /* Système de design « atelier de l'architecte » — extrait de src/index.css */
   :root{
-    --bg:#0e1013;
-    --card:#16191e;
-    --line:#262b33;
-    --text:#eef1f5;
-    --muted:#a0a8b4;
-    --accent:#c8f042;
+    --ai-paper:#ECEAE3;
+    --ai-sheet:#F7F5EF;
+    --ai-ink:#17191E;
+    --ai-ink-soft:#55565b;
+    --ai-outremer:#1F35C4;
+    --ai-pencil:#C3BFB2;
+    --ai-grid:rgba(23,25,30,.045);
+    --ai-disp:"Archivo","Arial Black","Helvetica Neue",sans-serif;
+    --ai-sans:"Hanken Grotesk","Segoe UI",system-ui,-apple-system,sans-serif;
+    --ai-mono:"Space Mono",ui-monospace,"Cascadia Code",Consolas,monospace;
   }
   *{box-sizing:border-box}
-  html,body{height:100%}
   body{
     margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    line-height:1.6;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:24px;
+    background:var(--ai-paper);
+    background-image:
+      linear-gradient(var(--ai-grid) 1px,transparent 1px),
+      linear-gradient(90deg,var(--ai-grid) 1px,transparent 1px);
+    background-size:34px 34px;
+    color:var(--ai-ink);
+    font-family:var(--ai-sans);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
   }
-  .card{
-    width:100%;
-    max-width:620px;
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:16px;
-    padding:40px 36px;
-  }
-  .tag{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    font-size:.78rem;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--muted);
-    border:1px solid var(--line);
-    border-radius:999px;
-    padding:6px 12px;
-    margin-bottom:22px;
-  }
-  .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block}
-  h1{
-    font-size:clamp(1.6rem,4vw,2.1rem);
-    line-height:1.25;
-    margin:0 0 18px;
-    letter-spacing:-.01em;
-  }
-  p{margin:0 0 16px;color:var(--muted)}
-  p.lead{color:var(--text)}
-  strong.hl{color:var(--text)}
-  .sep{height:1px;background:var(--line);margin:28px 0}
-  .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
-  .btn{
-    display:inline-block;
-    padding:12px 20px;
-    border-radius:10px;
-    text-decoration:none;
-    font-weight:600;
-    font-size:.95rem;
-    border:1px solid var(--line);
-    color:var(--text);
-    transition:border-color .15s ease, transform .15s ease;
-  }
-  .btn:hover{border-color:var(--muted);transform:translateY(-1px)}
-  .btn--accent{background:var(--accent);border-color:var(--accent);color:#12150c}
-  .sign{margin:26px 0 0;font-size:.9rem;color:var(--muted)}
-  .sign strong{color:var(--text);font-weight:600}
-  a{color:inherit}
+  .ai-mono{font-family:var(--ai-mono);text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:var(--ai-ink-soft);}
+  .ai-wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+  /* header */
+  .ai-header{background:color-mix(in srgb,var(--ai-paper) 90%,transparent);border-bottom:1px solid var(--ai-pencil);}
+  .ai-head-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;}
+  .ai-brandwrap{display:flex;flex-direction:column;gap:3px;text-decoration:none;color:var(--ai-ink);}
+  .ai-brand{font-family:var(--ai-disp);font-weight:900;letter-spacing:-.02em;font-size:18px;display:flex;align-items:center;gap:10px;}
+  .ai-brand .ai-tick{color:var(--ai-outremer);}
+  .ai-tag{font-size:10px;letter-spacing:.14em;padding-left:28px;}
+
+  /* boutons */
+  .ai-btn{font-family:var(--ai-mono);font-size:13px;letter-spacing:.04em;text-decoration:none;padding:14px 22px;display:inline-flex;align-items:center;gap:10px;border:1px solid var(--ai-ink);text-transform:uppercase;cursor:pointer;background:transparent;color:var(--ai-ink);transition:background .18s ease,color .18s ease,border-color .18s ease;}
+  .ai-btn-primary{background:var(--ai-outremer);color:#fff;border-color:var(--ai-outremer);}
+  .ai-btn-primary:hover{background:var(--ai-ink);border-color:var(--ai-ink);}
+  .ai-btn-ghost:hover{background:var(--ai-ink);color:var(--ai-paper);}
+  .ai-btn:focus-visible{outline:2px solid var(--ai-outremer);outline-offset:2px;}
+
+  /* bloc principal */
+  .ai-hero{padding:52px 0 8px;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;}
+  @media(max-width:900px){.ai-hero{grid-template-columns:1fr;gap:28px;padding-top:32px;}}
+  .ai-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:26px;flex-wrap:wrap;}
+  .ai-eyebrow .ai-rule{flex:1;height:1px;background:var(--ai-pencil);min-width:30px;}
+  .ai-eyebrow .ai-dot{color:var(--ai-outremer);}
+  .ai-h1{font-family:var(--ai-disp);font-weight:900;font-size:clamp(30px,4.6vw,50px);line-height:1.02;letter-spacing:-.025em;margin:0 0 22px;text-wrap:balance;}
+  .ai-u{color:var(--ai-outremer);position:relative;white-space:nowrap;}
+  .ai-u::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:3px;background:var(--ai-outremer);}
+  .ai-lede{font-size:clamp(16px,1.6vw,18.5px);color:var(--ai-ink-soft);max-width:48ch;margin:0 0 18px;}
+  .ai-lede b{color:var(--ai-ink);font-weight:600;}
+  .ai-cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:28px;}
+
+  /* planche technique */
+  .ai-plate{position:relative;}
+  .ai-plate svg.ai-draw{width:100%;height:auto;display:block;}
+  .ai-cornermark{position:absolute;width:14px;height:14px;}
+  .ai-cornermark.tl{top:-2px;left:-2px;border-top:2px solid var(--ai-outremer);border-left:2px solid var(--ai-outremer);}
+  .ai-cornermark.br{bottom:-2px;right:-2px;border-bottom:2px solid var(--ai-outremer);border-right:2px solid var(--ai-outremer);}
+  .ai-plate-cap{margin-top:14px;text-align:center;}
+  .ai-plate-cap b{color:var(--ai-outremer);}
+  .pl-ln{stroke:var(--ai-outremer);stroke-width:1.4;fill:none;}
+  .pl-lnk{stroke:var(--ai-ink);stroke-width:1.4;fill:none;}
+  .pl-fl{fill:var(--ai-sheet);}
+  .pl-dim{stroke:var(--ai-pencil);stroke-width:1;}
+  .pl-an{font-family:var(--ai-mono);font-size:9.5px;letter-spacing:.1em;fill:var(--ai-ink-soft);text-transform:uppercase;}
+  .pl-anb{font-family:var(--ai-mono);font-size:9.5px;letter-spacing:.1em;fill:var(--ai-outremer);text-transform:uppercase;}
+
+  /* cartouche */
+  .ai-cartouche{margin-top:46px;border:1px solid var(--ai-pencil);display:grid;grid-template-columns:repeat(3,1fr);background:var(--ai-sheet);}
+  @media(max-width:720px){.ai-cartouche{grid-template-columns:1fr;}}
+  .ai-cell{padding:16px 18px;border-right:1px solid var(--ai-pencil);}
+  .ai-cell:last-child{border-right:0;}
+  @media(max-width:720px){.ai-cell{border-right:0;border-bottom:1px solid var(--ai-pencil);}.ai-cell:last-child{border-bottom:0;}}
+  .ai-cell .ai-v{font-family:var(--ai-disp);font-weight:900;font-size:15px;letter-spacing:-.01em;margin-top:4px;}
+  .ai-cell .ai-v small{color:var(--ai-ink-soft);font-weight:900;}
+
+  /* section RDV */
+  .ai-section{padding:56px 0 66px;border-top:1px solid var(--ai-pencil);margin-top:56px;}
+  .ai-sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:22px;flex-wrap:wrap;}
+  .ai-sec-ref{font-family:var(--ai-mono);font-size:12px;letter-spacing:.14em;color:var(--ai-outremer);border:1px solid var(--ai-outremer);padding:4px 9px;text-transform:uppercase;white-space:nowrap;}
+  .ai-sec-title{font-family:var(--ai-disp);font-weight:900;font-size:clamp(24px,3.2vw,36px);line-height:1.04;letter-spacing:-.02em;margin:0;flex:1;min-width:260px;}
+  .ai-sec-lead{color:var(--ai-ink-soft);max-width:58ch;margin:0 0 28px;font-size:17px;}
+  .ai-calbox{border:1px solid var(--ai-pencil);background:var(--ai-sheet);padding:8px;position:relative;}
+  #cal-inline{width:100%;min-height:620px;overflow:auto;}
+  .ai-mailline{margin-top:20px;color:var(--ai-ink-soft);font-size:15.5px;}
+  .ai-mailline a{color:var(--ai-outremer);font-weight:600;}
+
+  /* pied de page */
+  .ai-foot{border-top:1px solid var(--ai-pencil);background:var(--ai-sheet);padding:26px 0;}
+  .ai-titleblock{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--ai-pencil);}
+  @media(max-width:720px){.ai-titleblock{grid-template-columns:repeat(2,1fr);}}
+  .ai-tb{padding:14px 16px;border-right:1px solid var(--ai-pencil);}
+  .ai-tb:last-child{border-right:0;}
+  .ai-tb .ai-v{font-family:var(--ai-disp);font-weight:900;font-size:13px;margin-top:4px;}
+  .ai-foot-legal{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:16px;}
 </style>
 </head>
 <body>
-  <main class="card">
-    <span class="tag"><span class="dot"></span> Page hors ligne</span>
 
-    <h1>Ce site de démonstration n'est plus accessible en ligne.</h1>
+<header class="ai-header">
+  <div class="ai-wrap ai-head-row">
+    <a class="ai-brandwrap" href="https://architecte-ia.fr/">
+      <span class="ai-brand"><span class="ai-tick">◆</span> ARCHITECTE IA</span>
+      <span class="ai-tag ai-mono">Web · Data · IA — Andrézieux (42)</span>
+    </a>
+    <a class="ai-btn ai-btn-ghost" href="https://architecte-ia.fr/">Voir le site</a>
+  </div>
+</header>
 
-    <p class="lead">
-      Il s'agissait d'une maquette réalisée sur mesure et mise en ligne pour
-      une durée limitée, le temps de la présentation. Cette période étant
-      passée, la démonstration a été retirée du public.
-    </p>
+<main class="ai-wrap">
 
-    <p>
-      La maquette n'est pas perdue : elle est conservée et peut être
-      <strong class="hl">réactivée sur simple demande</strong>, en quelques
-      minutes, si vous souhaitez la revoir ou en reparler.
-    </p>
+  <section class="ai-hero">
+    <div>
+      <div class="ai-eyebrow ai-mono">
+        <span>PL.00 — Planche archivée</span><span class="ai-dot">◆</span><span>Hors ligne</span>
+        <span class="ai-rule"></span>
+      </div>
 
-    <div class="sep"></div>
+      <p class="ai-h1">Cette maquette n'est plus <span class="ai-u">en ligne.</span></p>
 
-    <p>Vous êtes au bon endroit&nbsp;? Écrivez-moi, je m'en occupe.</p>
+      <p class="ai-lede">
+        C'était une <b>maquette dessinée sur mesure</b>, publiée pour une durée limitée,
+        le temps de la présentation. Cette période est passée&nbsp;: la démonstration a
+        été retirée du public.
+      </p>
+      <p class="ai-lede">
+        Elle n'est pas perdue pour autant. La planche est <b>archivée et remise en ligne
+        sur simple demande</b>, en quelques minutes.
+      </p>
 
-    <div class="actions">
-      <a class="btn btn--accent" href="mailto:brice@architecte-ia.fr?subject=R%C3%A9activation%20de%20la%20maquette">brice@architecte-ia.fr</a>
-      <a class="btn" href="https://architecte-ia.fr/">Voir mon site</a>
+      <div class="ai-cta-row">
+        <a class="ai-btn ai-btn-primary" href="#rdv">Réserver 15 min →</a>
+        <a class="ai-btn ai-btn-ghost" href="mailto:brice@architecte-ia.fr?subject=R%C3%A9activation%20de%20la%20maquette">Écrire un courriel</a>
+      </div>
     </div>
 
-    <p class="sign">
-      <strong>Brice de la Parra</strong> — Architecte IA · Création de sites internet · Andrézieux&#8209;Bouthéon&nbsp;(42)
+    <div class="ai-plate">
+      <span class="ai-cornermark tl"></span><span class="ai-cornermark br"></span>
+      <svg class="ai-draw" viewBox="0 0 440 340" role="img"
+           aria-label="Planche technique roulée et rangée : la maquette est archivée, prête à être redéployée.">
+        <!-- cote gauche -->
+        <line class="pl-dim" x1="46" y1="52" x2="46" y2="288"></line>
+        <line class="pl-dim" x1="42" y1="52" x2="50" y2="52"></line>
+        <line class="pl-dim" x1="42" y1="288" x2="50" y2="288"></line>
+        <text class="pl-an" x="30" y="188" transform="rotate(-90 30 188)">Archivé · intact</text>
+
+        <!-- feuille au fond -->
+        <rect class="pl-fl pl-dim" x="82" y="66" width="248" height="200"></rect>
+        <rect class="pl-fl pl-lnk" x="70" y="52" width="248" height="200"></rect>
+
+        <!-- contenu de la planche, esquissé -->
+        <rect class="pl-ln" x="86" y="68" width="216" height="26"></rect>
+        <text class="pl-anb" x="94" y="85">Maquette — écran d'accueil</text>
+        <rect class="pl-ln" x="86" y="104" width="104" height="66"></rect>
+        <rect class="pl-ln" x="198" y="104" width="104" height="20"></rect>
+        <rect class="pl-ln" x="198" y="130" width="104" height="14"></rect>
+        <rect class="pl-ln" x="198" y="150" width="104" height="14"></rect>
+        <rect class="pl-ln" x="86" y="182" width="66" height="18"></rect>
+        <rect class="pl-ln" x="160" y="182" width="66" height="18"></rect>
+        <rect class="pl-ln" x="234" y="182" width="68" height="18"></rect>
+        <rect x="86" y="216" width="92" height="22" fill="var(--ai-outremer)"></rect>
+        <text class="pl-an" x="98" y="231" fill="#fff">Réactiver</text>
+
+        <!-- bandeau « retirée » -->
+        <line class="pl-lnk" x1="70" y1="252" x2="318" y2="52" stroke-dasharray="7 6"></line>
+
+        <!-- annotations à droite -->
+        <line class="pl-dim" x1="318" y1="96" x2="392" y2="96"></line>
+        <circle cx="318" cy="96" r="2.4" fill="var(--ai-outremer)"></circle>
+        <text class="pl-an" x="332" y="93">Retirée</text><text class="pl-an" x="332" y="105">du public</text>
+        <line class="pl-dim" x1="318" y1="176" x2="392" y2="176"></line>
+        <circle cx="318" cy="176" r="2.4" fill="var(--ai-outremer)"></circle>
+        <text class="pl-an" x="332" y="173">Conservée</text><text class="pl-an" x="332" y="185">à l'identique</text>
+        <line class="pl-dim" x1="318" y1="227" x2="392" y2="227"></line>
+        <circle cx="318" cy="227" r="2.4" fill="var(--ai-outremer)"></circle>
+        <text class="pl-an" x="332" y="224">Remise</text><text class="pl-an" x="332" y="236">en ligne : 1 mot</text>
+
+        <!-- cote basse -->
+        <line class="pl-dim" x1="70" y1="300" x2="330" y2="300"></line>
+        <line class="pl-dim" x1="70" y1="296" x2="70" y2="304"></line>
+        <line class="pl-dim" x1="330" y1="296" x2="330" y2="304"></line>
+        <text class="pl-an" x="128" y="316">échelle 1:1 — sur mesure</text>
+      </svg>
+      <p class="ai-plate-cap ai-mono">Planche rangée — <b>prête à ressortir du tube.</b></p>
+    </div>
+  </section>
+
+  <div class="ai-cartouche">
+    <div class="ai-cell"><div class="ai-mono">Statut</div><div class="ai-v">Hors ligne<br><small>retirée du public</small></div></div>
+    <div class="ai-cell"><div class="ai-mono">Sources</div><div class="ai-v">Conservées<br><small>rien n'est perdu</small></div></div>
+    <div class="ai-cell"><div class="ai-mono">Réactivation</div><div class="ai-v">Quelques minutes<br><small>sur simple demande</small></div></div>
+  </div>
+
+  <section class="ai-section" id="rdv">
+    <div class="ai-sec-head">
+      <span class="ai-sec-ref">PL.01 — Reprendre contact</span>
+      <h2 class="ai-sec-title">15 minutes suffisent pour la remettre en ligne.</h2>
+    </div>
+    <p class="ai-sec-lead">
+      Choisissez un créneau qui vous arrange&nbsp;: on regarde la maquette ensemble et,
+      si elle vous convient, je la republie dans la foulée. Sans engagement.
     </p>
-  </main>
+
+    <div class="ai-calbox">
+      <div id="cal-inline"></div>
+    </div>
+
+    <p class="ai-mailline">
+      Vous préférez écrire&nbsp;? <a href="mailto:brice@architecte-ia.fr?subject=R%C3%A9activation%20de%20la%20maquette">brice@architecte-ia.fr</a>
+    </p>
+  </section>
+
+</main>
+
+<footer class="ai-foot">
+  <div class="ai-wrap">
+    <div class="ai-titleblock">
+      <div class="ai-tb"><div class="ai-mono">Projet</div><div class="ai-v">ARCHITECTE IA — WEB · DATA · IA</div></div>
+      <div class="ai-tb"><div class="ai-mono">Échelle</div><div class="ai-v">1:1</div></div>
+      <div class="ai-tb"><div class="ai-mono">Zone</div><div class="ai-v">LOIRE (42) + FR</div></div>
+      <div class="ai-tb"><div class="ai-mono">Dessiné par</div><div class="ai-v">BRICE · ANDRÉZIEUX</div></div>
+    </div>
+    <div class="ai-foot-legal ai-mono">
+      <span>© 2026 Architecte IA</span>
+      <span><a href="https://architecte-ia.fr/" style="color:inherit;text-decoration:none">architecte-ia.fr</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Cal.com — loader officiel, identique à celui de la vitrine -->
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", { origin: "https://cal.com" });
+  Cal("inline", {
+    elementOrSelector: "#cal-inline",
+    calLink: "brice-aia/15min",
+    layout: "month_view"
+  });
+  Cal("ui", {
+    hideEventTypeDetails: false,
+    layout: "month_view",
+    cssVarsPerTheme: { light: { "cal-brand": "#1F35C4" } }
+  });
+</script>
+
 </body>
 </html>
