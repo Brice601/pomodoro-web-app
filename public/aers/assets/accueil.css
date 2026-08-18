@@ -1,0 +1,145 @@
+/* ===========================================================
+   AERS Chauve — styles propres à la page d'accueil
+   Complète style.css (qui porte le socle commun)
+   =========================================================== */
+
+/* ---------- HERO (registre nuit) ---------- */
+.hero{position:relative;background:var(--nuit);color:var(--craie);overflow:hidden}
+.hero-img{position:absolute;inset:0}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:50% 64%;filter:grayscale(1) contrast(1.12) brightness(.6)}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(102deg,var(--nuit) 3%,rgba(18,19,26,.95) 36%,rgba(18,19,26,.4) 76%,rgba(18,19,26,.62))}
+.hero-in{position:relative;padding-block:74px 62px;min-height:min(76vh,590px);display:flex;flex-direction:column;justify-content:center}
+.hero h1{font-size:clamp(40px,7.2vw,84px);max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--vert)}
+.hero .promesse{max-width:52ch;color:#C7C7D1;font-size:18.5px;margin:22px 0 0}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero .btn--ghost{border-color:#585C6A;color:var(--craie)}
+.hero .btn--ghost:hover{background:var(--craie);color:var(--nuit);border-color:var(--craie)}
+
+/* ---------- BANDEAU DE PREUVE ---------- */
+.preuve{position:relative;background:var(--nuit-2);border-top:1px solid var(--nuit-3);color:var(--craie)}
+.preuve .in{display:grid;grid-template-columns:auto 1px 1fr auto;gap:28px;align-items:center;padding-block:22px}
+.preuve .note{display:flex;align-items:flex-start;gap:14px}
+.preuve .note b{font-family:var(--moteur);font-weight:700;font-size:66px;line-height:.76;color:var(--vert)}
+.preuve .note span{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gris);line-height:1.55;padding-top:6px}
+.preuve .note span i{display:block;font-style:normal;color:var(--craie);font-size:12.5px}
+.preuve .sep{background:var(--nuit-3);align-self:stretch}
+.preuve .themes{display:flex;flex-wrap:wrap;gap:8px}
+.preuve .themes b{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#B9B9C4;border:1px solid var(--nuit-3);border-radius:20px;padding:7px 13px;font-weight:400}
+.preuve .labels{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gris);text-align:right;line-height:1.8}
+.preuve .labels em{font-style:normal;color:var(--vert)}
+
+/* ---------- LE PARCOURS GUIDÉ ---------- */
+.wedge{background:var(--craie-2);padding:58px 0}
+.wedge .in{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.wedge h2{font-size:clamp(28px,4.2vw,44px)}
+.wedge p{color:var(--gris-t);max-width:52ch;margin:16px 0 0}
+.wedge .demo{background:var(--blanc);border:1px solid #DCD5C8;border-radius:12px;padding:22px 24px;box-shadow:0 22px 40px -30px rgba(0,0,0,.42)}
+.wedge .demo .qq{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.02em;margin-bottom:14px}
+.wedge .demo .fake{border:2px solid var(--craie-2);border-radius:9px;padding:12px 14px;font-size:15.5px;font-weight:500;margin-bottom:9px}
+.wedge .demo .fake.on{border-color:var(--petrole);background:var(--petrole-l)}
+.wedge .demo .fake small{display:block;font-family:var(--mono);font-size:11px;color:var(--gris-t);margin-top:3px;font-weight:400}
+.wedge .demo .out{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--vert-ink);border-top:1px dashed #D3CBBD;margin-top:14px;padding-top:13px;line-height:1.8}
+
+/* ---------- LES QUATRE FAMILLES ---------- */
+.familles{padding:62px 0}
+.f-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:30px}
+.f-card{position:relative;background:var(--blanc);border:1px solid var(--craie-2);border-radius:12px;padding:24px 24px 22px;text-decoration:none;color:var(--nuit);overflow:hidden;transition:.16s}
+.f-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--fc)}
+.f-card:hover{transform:translateY(-3px);box-shadow:0 20px 34px -26px rgba(0,0,0,.45);border-color:#D9D1C3}
+/* le chiffre porte du texte sur fond blanc → variante « ink » obligatoire */
+.f-card .n{font-family:var(--moteur);font-weight:700;font-size:52px;line-height:.8;color:var(--fci,var(--fc))}
+.f-card h3{font-size:22px;margin:10px 0 8px}
+.f-card>p{font-size:15.5px;color:var(--gris-t);margin:0}
+.f-card ul{list-style:none;margin:14px 0 0;padding:0;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--gris-t);line-height:1.95}
+.f-card .go{display:inline-block;margin-top:16px;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--vert-ink)}
+
+/* ---------- ÉQUIPE ET FRISE ---------- */
+.equipe{background:var(--nuit);color:var(--craie);padding:64px 0}
+.equipe h2{color:var(--craie);font-size:clamp(28px,4.2vw,44px)}
+.equipe .lead{color:#B9B9C4;max-width:60ch;margin-top:16px}
+.gens{display:grid;grid-template-columns:repeat(7,1fr);gap:14px;margin-top:38px}
+.gens figure{margin:0}
+.gens .ph{aspect-ratio:1;border-radius:10px;overflow:hidden;background:var(--nuit-2);border:1px solid var(--nuit-3);margin-bottom:11px}
+.gens .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;filter:grayscale(1) contrast(1.06)}
+.gens .an{font-family:var(--moteur);font-weight:700;font-size:26px;line-height:1;color:var(--vert)}
+.gens figcaption{font-size:14.5px;line-height:1.4;margin-top:5px}
+.gens figcaption b{display:block;font-weight:600}
+.gens figcaption span{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--gris);display:block;margin-top:4px;line-height:1.5}
+.equipe .socle{border-top:1px solid var(--nuit-3);margin-top:36px;padding-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px}
+.equipe .socle div b{display:block;font-family:var(--moteur);font-weight:700;font-size:34px;color:var(--craie);line-height:1}
+.equipe .socle div span{font-size:15px;color:#B9B9C4;display:block;margin-top:6px}
+
+/* ---------- CONDUITE ADAPTÉE ---------- */
+.adapte{padding:60px 0;background:var(--craie-2)}
+.adapte .in{display:grid;grid-template-columns:1fr 1fr;gap:38px}
+.adapte h2{font-size:clamp(26px,3.8vw,38px)}
+.adapte p{color:var(--gris-t);margin-top:14px}
+.adapte ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.adapte li{background:var(--blanc);border:1px solid #DCD5C8;border-left:3px solid var(--vert);border-radius:0 9px 9px 0;padding:13px 16px;font-size:15.5px}
+.adapte .qui{font-family:var(--mono);font-size:12px;letter-spacing:.05em;color:var(--vert-ink);margin-top:18px;line-height:1.7}
+
+/* ---------- AIDES EN BREF ---------- */
+.aides-bref{padding:60px 0}
+.ab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(156px,1fr));gap:12px;margin-top:28px}
+.ab{background:var(--blanc);border:1px solid var(--craie-2);border-radius:10px;padding:18px}
+.ab b{display:block;font-family:var(--moteur);font-weight:700;font-size:30px;line-height:1;color:var(--vert-ink)}
+.ab span{display:block;font-size:14.5px;color:var(--gris-t);margin-top:7px;line-height:1.45}
+
+/* ---------- INFOS PRATIQUES ---------- */
+.infos{background:var(--nuit);color:var(--craie);padding:60px 0}
+.infos h2{color:var(--craie);font-size:clamp(26px,3.8vw,38px)}
+.i-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:20px;margin-top:30px}
+.i-grid>div{background:var(--nuit-2);border:1px solid var(--nuit-3);border-radius:11px;padding:22px}
+.i-grid h4{color:var(--craie);font-size:18px;margin-bottom:12px}
+.i-grid p,.i-grid li{font-size:15.5px;color:#B9B9C4;line-height:1.75}
+.i-grid ul{list-style:none;margin:0;padding:0}
+.i-grid a{color:var(--vert);text-decoration:none}
+.i-grid a:hover{text-decoration:underline}
+.i-grid .gros{font-family:var(--moteur);font-weight:700;font-size:30px;color:var(--vert);display:block;margin-bottom:4px}
+.i-grid .pale{color:#6B6B76}
+
+/* ---------- réserve : emplacement de contenu à fournir ---------- */
+.reserve{border:1px dashed #4A4D5A;border-radius:10px;padding:18px 20px;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--gris);line-height:1.8}
+.reserve b{color:var(--vert);display:block;margin-bottom:5px;letter-spacing:.11em;text-transform:uppercase}
+
+@media(max-width:980px){
+  .preuve .in{grid-template-columns:1fr;gap:18px}
+  .preuve .sep{display:none}
+  .preuve .labels{text-align:left}
+  .wedge .in,.adapte .in{grid-template-columns:1fr;gap:26px}
+  .gens{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:560px){
+  .gens{grid-template-columns:repeat(2,1fr)}
+  .hero-in{padding-block:54px 44px}
+}
+
+/* ---------- AVIS (registre nuit) ---------- */
+.avis{background:var(--nuit);color:var(--craie);padding:64px 0;border-top:1px solid var(--nuit-3)}
+.avis h2{color:var(--craie);font-size:clamp(28px,4.2vw,44px)}
+.avis .chapo{display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-top:20px}
+.avis .gros{font-family:var(--moteur);font-weight:700;font-size:88px;line-height:.76;color:var(--vert)}
+.avis .chapo p{color:#B9B9C4;max-width:48ch;margin:0}
+.avis .chapo p b{color:var(--craie);display:block;font-family:var(--mono);font-size:12px;
+  letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.murs{columns:2;column-gap:16px;margin-top:34px}
+.mur{background:var(--nuit-2);border:1px solid var(--nuit-3);border-radius:12px;padding:20px 22px;
+  margin-bottom:16px;break-inside:avoid}
+.mur .etoiles{color:var(--f-moto);font-size:14px;letter-spacing:2px}
+.mur blockquote{margin:11px 0 0;font-size:15.5px;line-height:1.65;color:#D2D2DB}
+.mur .qui{display:flex;justify-content:space-between;gap:12px;align-items:baseline;
+  margin-top:14px;padding-top:12px;border-top:1px solid var(--nuit-3);flex-wrap:wrap}
+.mur .qui b{font-size:15px;font-weight:600;color:var(--craie)}
+.mur .qui span{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--gris)}
+.mur .rep{margin-top:14px;padding:13px 15px;background:var(--nuit);border-left:3px solid var(--vert);
+  border-radius:0 8px 8px 0}
+.mur .rep b{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--vert);margin-bottom:5px}
+.mur .rep p{margin:0;font-size:14.5px;color:#B9B9C4;line-height:1.6}
+.avis .pied{margin-top:26px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.avis .pied .src{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--gris);line-height:1.7}
+.avis .btn--ghost{border-color:#585C6A;color:var(--craie)}
+.avis .btn--ghost:hover{background:var(--craie);color:var(--nuit);border-color:var(--craie)}
+
+@media(max-width:860px){ .murs{columns:1} }

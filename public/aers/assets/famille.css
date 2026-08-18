@@ -1,0 +1,113 @@
+/* ===========================================================
+   AERS Chauve — pages de famille (Auto, Remorque)
+   La couleur de famille se pilote par --fc / --fci, posées sur <body>.
+   Voir style.css pour les variables --f-auto, --f-remorque et leurs « ink ».
+   =========================================================== */
+
+/* ---------- HERO AVEC PHOTO ---------- */
+.f-hero{position:relative;background:var(--nuit);color:var(--craie);overflow:hidden}
+.f-hero .img{position:absolute;inset:0}
+.f-hero .img img{width:100%;height:100%;object-fit:cover;object-position:50% 54%;
+  filter:grayscale(1) contrast(1.12) brightness(.58)}
+.f-hero .img::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(100deg,var(--nuit) 4%,rgba(18,19,26,.94) 40%,rgba(18,19,26,.42) 78%,rgba(18,19,26,.6))}
+.f-hero .in{position:relative;padding-block:66px 56px;min-height:min(62vh,470px);
+  display:flex;flex-direction:column;justify-content:center}
+.f-hero h1{font-size:clamp(36px,6.4vw,74px);max-width:18ch}
+.f-hero h1 em{font-style:normal;color:var(--fcl,var(--fc))}
+.f-hero .sous{max-width:54ch;color:#C7C7D1;font-size:18.5px;margin-top:22px}
+.f-hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.f-hero .btn{background:var(--fcl,var(--fc));border-color:var(--fcl,var(--fc));color:var(--nuit)}
+.f-hero .btn:hover{filter:brightness(.9)}
+.f-hero .btn--ghost{background:transparent;border-color:#585C6A;color:var(--craie)}
+.f-hero .btn--ghost:hover{background:var(--craie);color:var(--nuit);border-color:var(--craie)}
+.f-hero .eb{color:var(--fcl,var(--fc))}
+.f-hero .eb::before{background:var(--fcl,var(--fc))}
+
+/* chiffres en plaques sous le titre */
+.plaqs{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));margin-top:40px;
+  border-top:1px solid var(--nuit-3)}
+.plaqs div{padding:18px 16px 4px;border-right:1px solid var(--nuit-3)}
+.plaqs div:last-child{border-right:0}
+.plaqs b{display:block;font-family:var(--moteur);font-weight:700;font-size:clamp(34px,4.4vw,52px);
+  line-height:.92;color:var(--fcl,var(--fc))}
+.plaqs span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gris);margin-top:8px;line-height:1.6}
+
+/* ---------- LE COMPARATIF ---------- */
+.compa{background:var(--craie-2);padding:58px 0}
+.compa h2{font-size:clamp(26px,4vw,40px)}
+.compa .lead{color:var(--gris-t);max-width:64ch;margin-top:14px}
+.tab{margin-top:30px;overflow-x:auto;background:var(--blanc);border:1px solid #DCD5C8;border-radius:12px}
+.tab table{width:100%;border-collapse:collapse;min-width:620px}
+.tab th,.tab td{text-align:left;padding:15px 18px;border-bottom:1px solid var(--craie-2);font-size:15.5px}
+.tab thead th{background:var(--nuit);color:var(--craie);font-family:var(--display);font-weight:800;
+  font-size:17px;letter-spacing:-.01em;border-bottom:0;position:sticky;top:0}
+.tab thead th:first-child{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--gris)}
+.tab tbody th{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--gris-t);white-space:nowrap;background:var(--craie)}
+.tab td b{font-family:var(--moteur);font-weight:700;font-size:22px;color:var(--fci);line-height:1;
+  display:block;margin-bottom:2px}
+.tab tr:last-child th,.tab tr:last-child td{border-bottom:0}
+.tab .fort{background:#F4FBF6}
+.compa .note{font-family:var(--mono);font-size:11.5px;color:var(--gris-t);margin-top:16px;line-height:1.7}
+
+/* ---------- LES FICHES ---------- */
+.f-list{padding:60px 0}
+.fiche{background:var(--blanc);border:1px solid var(--craie-2);border-left:4px solid var(--fc);
+  border-radius:0 12px 12px 0;padding:28px 30px;margin-top:18px}
+.fiche-h{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap}
+.fiche h3{font-size:26px}
+.fiche .engin{font-family:var(--mono);font-size:11px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--fci);border:1px solid var(--craie-2);border-radius:5px;padding:7px 11px;white-space:nowrap}
+.fiche>p{color:var(--gris-t);margin-top:12px;max-width:72ch}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;
+  background:var(--craie);border:1px solid var(--craie-2);color:var(--gris-t);padding:7px 12px;border-radius:5px}
+.tag b{color:var(--nuit)}
+.fiche .liste{margin:16px 0 0;padding-top:15px;border-top:1px dashed #D3CBBD}
+.fiche .liste ul{margin:0;padding-left:20px;font-size:15.5px;color:var(--gris-t);display:grid;gap:5px}
+.fiche .liste ul li b{color:var(--nuit)}
+.fiche .plus{margin-top:16px;padding-top:15px;border-top:1px dashed #D3CBBD;font-size:15.5px;color:var(--gris-t)}
+.fiche .plus b{color:var(--nuit)}
+.fiche .lien{display:inline-block;margin-top:16px;font-family:var(--mono);font-size:11.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--fci);text-decoration:none;
+  border-bottom:2px solid var(--fc);padding-bottom:2px}
+
+/* ---------- LES RENDEZ-VOUS PÉDAGOGIQUES ---------- */
+.rvp{background:var(--nuit);color:var(--craie);padding:58px 0}
+.rvp h2{color:var(--craie);font-size:clamp(26px,3.8vw,38px)}
+.rvp .lead{color:#B9B9C4;max-width:62ch;margin-top:14px}
+.jalons{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:32px}
+.jalon{background:var(--nuit-2);border:1px solid var(--nuit-3);border-radius:11px;padding:20px 22px;
+  position:relative}
+.jalon::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--fcl,var(--fc))}
+.jalon .km{font-family:var(--moteur);font-weight:700;font-size:32px;line-height:1;color:var(--fcl,var(--fc))}
+.jalon b{display:block;font-size:16.5px;margin-top:8px}
+.jalon span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--gris);
+  margin-top:7px;line-height:1.65}
+
+/* ---------- RENVOI ---------- */
+.renvoi{padding:54px 0;background:var(--craie)}
+.renvoi .in{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
+.renvoi h2{font-size:clamp(24px,3.4vw,34px)}
+.renvoi p{color:var(--gris-t);margin-top:14px}
+.renvoi ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.renvoi li{background:var(--blanc);border:1px solid var(--craie-2);border-left:3px solid var(--fc);
+  border-radius:0 9px 9px 0;padding:13px 16px;font-size:15.5px}
+
+/* ---------- CTA ---------- */
+.f-cta{background:var(--nuit-2);border-top:1px solid var(--nuit-3);color:var(--craie);padding:52px 0}
+.f-cta .in{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
+.f-cta h2{color:var(--craie);font-size:clamp(24px,3.4vw,34px);max-width:26ch}
+.f-cta p{color:#B9B9C4;margin-top:12px;max-width:48ch}
+.f-cta .btn{background:var(--fcl,var(--fc));border-color:var(--fcl,var(--fc));color:var(--nuit)}
+.f-cta .btn:hover{filter:brightness(.9)}
+.f-cta .btn--ghost{background:transparent;border-color:#585C6A;color:var(--craie)}
+.f-cta .btn--ghost:hover{background:var(--craie);color:var(--nuit);border-color:var(--craie)}
+
+@media(max-width:860px){
+  .renvoi .in{grid-template-columns:1fr;gap:24px}
+  .plaqs div{border-right:0;border-bottom:1px solid var(--nuit-3)}
+}

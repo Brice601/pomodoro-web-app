@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Maquettes de démonstration client — non publiques, ne pas indexer.
+Disallow: /aers/
+Disallow: /feuillantine/
+Disallow: /lyceenne-xed2h/
