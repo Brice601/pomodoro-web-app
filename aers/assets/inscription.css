@@ -1,0 +1,116 @@
+/* ===========================================================
+   AERS Chauve — page M'INSCRIRE
+   Registre craie : on lit, on coche, on remplit.
+   =========================================================== */
+
+/* ---------- LES TROIS ÉTAPES ---------- */
+.etapes{padding:44px 0 8px}
+.et-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:28px}
+.et{background:var(--blanc);border:1px solid var(--craie-2);border-radius:12px;padding:24px;position:relative}
+.et .num{font-family:var(--moteur);font-weight:700;font-size:46px;line-height:.85;color:var(--vert-ink)}
+.et h3{font-size:20px;margin:10px 0 8px}
+.et p{font-size:15.5px;color:var(--gris-t);margin:0}
+.et .tel{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:14px;color:var(--vert-ink);
+  text-decoration:none;border-bottom:2px solid var(--vert);padding-bottom:2px}
+.et .tel:hover{color:var(--nuit)}
+
+/* ---------- LE SÉLECTEUR DE DOSSIER ---------- */
+.dossier{padding:56px 0}
+.dossier .in{display:grid;grid-template-columns:.85fr 1.15fr;gap:34px;align-items:start;margin-top:28px}
+.choix{display:grid;gap:9px}
+.choix button{display:block;width:100%;text-align:left;background:var(--blanc);border:2px solid var(--craie-2);
+  border-radius:10px;padding:14px 16px;font-family:var(--body);font-size:16.5px;font-weight:500;
+  color:var(--nuit);cursor:pointer;transition:.14s}
+.choix button:hover{border-color:var(--gris)}
+.choix button[aria-pressed="true"]{border-color:var(--petrole);background:var(--petrole-l);
+  box-shadow:inset 0 0 0 1px var(--petrole)}
+.choix button small{display:block;font-family:var(--mono);font-size:11px;font-weight:400;color:var(--gris-t);
+  margin-top:4px;letter-spacing:.03em;line-height:1.5}
+
+/* la liste résultante */
+.liste{background:var(--blanc);border:1px solid var(--craie-2);border-radius:12px;padding:28px 30px;
+  position:sticky;top:92px}
+.liste .haut{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;
+  padding-bottom:16px;border-bottom:2px solid var(--nuit)}
+.liste h3{font-size:24px}
+.liste .cpt{font-family:var(--mono);font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--gris-t)}
+.papiers{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:11px}
+.papiers li{display:flex;align-items:flex-start;gap:12px;font-size:16.5px;padding-bottom:11px;
+  border-bottom:1px solid var(--craie-2)}
+.papiers li:last-child{border-bottom:0;padding-bottom:0}
+.papiers li::before{content:"";flex:none;width:17px;height:17px;margin-top:4px;
+  border:2px solid var(--vert);border-radius:4px;background:var(--blanc)}
+.papiers li em{font-style:normal;display:block;font-family:var(--mono);font-size:11.5px;color:var(--gris-t);
+  margin-top:4px;line-height:1.55}
+.encart{background:var(--craie);border-left:3px solid var(--vert);border-radius:0 8px 8px 0;
+  padding:15px 17px;font-size:15.5px;color:var(--gris-t);margin-top:20px}
+.encart b{color:var(--nuit)}
+.liste .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;padding-top:18px;
+  border-top:1px dashed #D3CBBD}
+
+/* ---------- E-PHOTOS : le point qui bloque les dossiers ---------- */
+.ephoto{background:var(--craie-2);padding:56px 0}
+.ephoto .in{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+.ephoto h2{font-size:clamp(26px,3.8vw,38px)}
+.ephoto p{color:var(--gris-t);margin-top:14px}
+.deux{display:grid;gap:12px}
+.deux>div{background:var(--blanc);border:1px solid #DCD5C8;border-radius:11px;padding:20px 22px}
+.deux .oui{border-left:4px solid var(--vert)}
+.deux .non{border-left:4px solid #C0553F}
+.deux h4{font-size:18px;margin-bottom:8px;display:flex;align-items:center;gap:9px}
+.deux h4 i{font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 8px;border-radius:4px}
+.deux .oui h4 i{background:var(--vert);color:var(--nuit)}
+.deux .non h4 i{background:#C0553F;color:#fff}
+.deux p{font-size:15.5px;margin-top:0;color:var(--gris-t)}
+
+/* ---------- FORMULAIRE ---------- */
+.demande{background:var(--nuit);color:var(--craie);padding:60px 0}
+.demande h2{color:var(--craie);font-size:clamp(26px,3.8vw,38px)}
+.demande .lead{color:#B9B9C4;max-width:58ch;margin-top:14px}
+.form-shell{background:var(--nuit-2);border:1px solid var(--nuit-3);border-radius:12px;
+  padding:28px 30px;margin-top:30px;max-width:760px}
+.rappel{background:var(--nuit);border:1px solid var(--nuit-3);border-radius:9px;padding:14px 16px;
+  margin-bottom:22px;font-size:15px;color:#B9B9C4}
+.rappel b{color:var(--vert);font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;display:block;margin-bottom:5px}
+.champs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.champ{display:flex;flex-direction:column;gap:6px}
+.champ.full{grid-column:1/-1}
+.champ label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#B9B9C4}
+.champ input,.champ textarea,.champ select{background:var(--nuit);border:2px solid var(--nuit-3);
+  border-radius:7px;padding:12px 13px;color:var(--craie);font-family:var(--body);font-size:16px}
+.champ input:focus,.champ textarea:focus,.champ select:focus{outline:none;border-color:var(--vert)}
+.champ .aide{font-family:var(--mono);font-size:11px;color:var(--gris)}
+.creneaux{display:flex;flex-wrap:wrap;gap:9px}
+.creneaux label{display:flex;align-items:center;gap:8px;background:var(--nuit);border:2px solid var(--nuit-3);
+  border-radius:8px;padding:11px 14px;cursor:pointer;font-size:15px;color:var(--craie)}
+.creneaux input{accent-color:var(--vert);width:17px;height:17px}
+.creneaux label:has(input:checked){border-color:var(--vert)}
+.form-foot{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:22px}
+.form-foot .tel{font-family:var(--mono);font-size:12.5px;color:#B9B9C4;text-decoration:none}
+.form-foot .tel b{color:var(--vert)}
+.nocap{font-family:var(--mono);font-size:11.5px;color:var(--gris);margin-top:16px;line-height:1.7}
+.nocap b{color:var(--vert)}
+
+/* ---------- HORAIRES ---------- */
+.quand{padding:56px 0}
+.q-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(226px,1fr));gap:16px;margin-top:28px}
+.q-grid>div{background:var(--blanc);border:1px solid var(--craie-2);border-radius:11px;padding:22px}
+.q-grid h4{font-size:18px;margin-bottom:12px}
+.q-grid ul{list-style:none;margin:0;padding:0;font-size:15.5px;color:var(--gris-t);line-height:1.9}
+.q-grid .ferme{color:#A79C8B}
+.q-grid .gros{font-family:var(--moteur);font-weight:700;font-size:30px;color:var(--vert-ink);
+  display:block;text-decoration:none;line-height:1}
+
+@media(max-width:900px){
+  .dossier .in,.ephoto .in{grid-template-columns:1fr;gap:26px}
+  .liste{position:static}
+}
+@media(max-width:600px){ .champs{grid-template-columns:1fr} }
+@media print{
+  header,footer,.demo-flag,.etapes,.ephoto,.demande,.quand,.choix,.liste .actions{display:none}
+  body{background:#fff}
+  .liste{border:2px solid #000;position:static}
+  .papiers li::before{border-color:#000}
+}

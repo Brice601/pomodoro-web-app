@@ -1,0 +1,99 @@
+/* ===========================================================
+   AERS Chauve — page MOTO
+   La page la plus dure du site : la police moteur à pleine échelle,
+   le plein cadre, et pas un gramme de chrome.
+   =========================================================== */
+
+/* ---------- HERO MOTO ---------- */
+.m-hero{background:var(--nuit);color:var(--craie);position:relative;overflow:hidden;padding:0}
+.m-hero::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(120% 90% at 82% 18%,rgba(82,192,122,.10),transparent 62%)}
+.m-hero .in{position:relative;padding-block:64px 54px}
+.m-hero .titre{font-family:var(--moteur);font-weight:700;text-transform:uppercase;
+  font-size:clamp(72px,17vw,206px);line-height:.78;letter-spacing:-.008em;margin:6px 0 0}
+.m-hero .titre em{font-style:normal;color:var(--vert)}
+.m-hero .sous{max-width:56ch;color:#C7C7D1;font-size:18.5px;margin:42px 0 0}
+.m-hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.m-hero .btn--ghost{border-color:#585C6A;color:var(--craie)}
+.m-hero .btn--ghost:hover{background:var(--craie);color:var(--nuit);border-color:var(--craie)}
+
+/* les cylindrées en plaques, sous le titre */
+.cyl{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:0;
+  margin-top:44px;border-top:1px solid var(--nuit-3)}
+.cyl div{padding:20px 18px 4px;border-right:1px solid var(--nuit-3)}
+.cyl div:last-child{border-right:0}
+.cyl b{display:block;font-family:var(--moteur);font-weight:700;font-size:clamp(38px,5vw,58px);
+  line-height:.9;color:var(--vert)}
+.cyl span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gris);margin-top:8px;line-height:1.6}
+.cyl i{font-style:normal;display:block;color:#B9B9C4;font-family:var(--body);font-size:14.5px;margin-top:5px}
+
+/* ---------- LE PARCOURS MOTO EN UN COUP D'ŒIL ---------- */
+.echelle{background:var(--nuit-2);border-top:1px solid var(--nuit-3);color:var(--craie);padding:46px 0}
+.echelle h2{color:var(--craie);font-size:clamp(24px,3.4vw,34px)}
+.echelle .lead{color:#B9B9C4;max-width:64ch;margin-top:14px}
+.marches{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:12px;margin-top:30px}
+.marche{background:var(--nuit);border:1px solid var(--nuit-3);border-radius:10px;padding:18px;
+  position:relative;overflow:hidden}
+.marche::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--f-moto)}
+.marche .age{font-family:var(--moteur);font-weight:700;font-size:34px;line-height:1;color:var(--f-moto)}
+.marche b{display:block;font-size:16.5px;margin-top:8px}
+.marche span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--gris);margin-top:6px;line-height:1.6}
+
+/* ---------- LES FORMATIONS (registre craie) ---------- */
+.m-form{padding:62px 0}
+.fiche{background:var(--blanc);border:1px solid var(--craie-2);border-left:4px solid var(--f-moto);
+  border-radius:0 12px 12px 0;padding:28px 30px;margin-top:18px}
+.fiche-h{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap}
+.fiche h3{font-size:26px}
+.fiche .engin{font-family:var(--mono);font-size:11px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--f-moto-ink);border:1px solid var(--craie-2);border-radius:5px;padding:7px 11px;white-space:nowrap}
+.fiche>p{color:var(--gris-t);margin-top:12px;max-width:70ch}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;
+  background:var(--craie);border:1px solid var(--craie-2);color:var(--gris-t);padding:7px 12px;border-radius:5px}
+.tag b{color:var(--nuit)}
+.fiche .plus{margin-top:16px;padding-top:15px;border-top:1px dashed #D3CBBD;font-size:15.5px;color:var(--gris-t)}
+.fiche .plus b{color:var(--nuit)}
+
+/* ---------- L'EXAMEN ---------- */
+.examen{background:var(--craie-2);padding:58px 0}
+.examen .in{display:grid;grid-template-columns:.95fr 1.05fr;gap:38px}
+.examen h2{font-size:clamp(26px,3.8vw,38px)}
+.examen p{color:var(--gris-t);margin-top:14px}
+.epreuves{display:grid;gap:10px;margin:0;padding:0;list-style:none;counter-reset:e}
+.epreuves li{counter-increment:e;background:var(--blanc);border:1px solid #DCD5C8;border-radius:10px;
+  padding:15px 18px 15px 56px;position:relative;font-size:15.5px}
+.epreuves li::before{content:counter(e);position:absolute;left:16px;top:12px;
+  font-family:var(--moteur);font-weight:700;font-size:26px;color:var(--f-moto-ink);line-height:1}
+.epreuves li b{display:block;margin-bottom:2px}
+.epreuves li span{color:var(--gris-t)}
+
+/* ---------- LE PARC ---------- */
+.parc{background:var(--nuit);color:var(--craie);padding:60px 0}
+.parc h2{color:var(--craie);font-size:clamp(26px,3.8vw,38px)}
+.parc .lead{color:#B9B9C4;max-width:62ch;margin-top:14px}
+.motos{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:16px;margin-top:32px}
+.moto-card{background:var(--nuit-2);border:1px solid var(--nuit-3);border-radius:12px;overflow:hidden}
+.moto-card .cadre{aspect-ratio:4/3;background:
+  repeating-linear-gradient(112deg,#23252F 0 2px,#1A1C24 2px 6px);
+  display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--nuit-3);padding:16px}
+.moto-card .cadre span{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+  color:#6B6B76;text-align:center;line-height:1.7}
+.moto-card .txt{padding:20px}
+.moto-card .cc{font-family:var(--moteur);font-weight:700;font-size:40px;line-height:.9;color:var(--vert)}
+.moto-card h3{font-size:19px;margin:8px 0 4px}
+.moto-card p{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris);margin:0}
+
+/* ---------- CTA FINAL ---------- */
+.m-cta{background:var(--nuit-2);border-top:1px solid var(--nuit-3);color:var(--craie);padding:52px 0}
+.m-cta .in{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
+.m-cta h2{color:var(--craie);font-size:clamp(24px,3.4vw,34px);max-width:24ch}
+.m-cta p{color:#B9B9C4;margin-top:12px;max-width:46ch}
+.m-cta .btn--ghost{border-color:#585C6A;color:var(--craie)}
+.m-cta .btn--ghost:hover{background:var(--craie);color:var(--nuit);border-color:var(--craie)}
+
+@media(max-width:820px){
+  .examen .in{grid-template-columns:1fr;gap:26px}
+  .cyl div{border-right:0;border-bottom:1px solid var(--nuit-3)}
+}

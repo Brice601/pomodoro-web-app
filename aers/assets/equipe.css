@@ -1,0 +1,104 @@
+/* ===========================================================
+   AERS Chauve — page L'ÉQUIPE
+   Registre nuit : c'est une page d'identité, pas une page de travail.
+   Le composant central est la frise d'ancienneté — inimitable.
+   =========================================================== */
+
+/* ---------- EN-TÊTE SOMBRE ---------- */
+.e-hero{background:var(--nuit);color:var(--craie);position:relative;overflow:hidden}
+.e-hero::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(110% 80% at 88% 10%,rgba(82,192,122,.09),transparent 60%)}
+.e-hero .in{position:relative;padding-block:54px 44px}
+.e-hero h1{font-size:clamp(34px,5.6vw,62px);max-width:22ch}
+.e-hero h1 em{font-style:normal;color:var(--vert)}
+.e-hero .lead{max-width:60ch;color:#C7C7D1;font-size:18.5px;margin-top:20px}
+
+/* ---------- LA FRISE ---------- */
+.frise{background:var(--nuit-2);border-top:1px solid var(--nuit-3);color:var(--craie);padding:46px 0}
+.frise h2{color:var(--craie);font-size:clamp(24px,3.4vw,32px)}
+.frise .lead{color:#B9B9C4;max-width:62ch;margin-top:12px}
+.rail{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:0;margin-top:34px;
+  border-top:2px solid var(--nuit-3)}
+.rail div{padding:18px 10px 6px 14px;border-left:1px solid var(--nuit-3);position:relative}
+.rail div:first-child{border-left:0;padding-left:0}
+.rail div::before{content:"";position:absolute;top:-2px;left:0;width:100%;height:2px;background:var(--nuit-3)}
+.rail div.on::before{background:var(--vert)}
+.rail b{display:block;font-family:var(--moteur);font-weight:700;font-size:clamp(24px,3vw,34px);
+  line-height:1;color:var(--vert)}
+.rail span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--gris);margin-top:8px;line-height:1.6}
+.rail .maison b{color:var(--craie)}
+
+/* ---------- LES FICHES ---------- */
+.gens{padding:60px 0;background:var(--nuit);color:var(--craie)}
+.gens h2{color:var(--craie);font-size:clamp(26px,3.8vw,40px)}
+.gens>.wrap>.lead{color:#B9B9C4;max-width:62ch;margin-top:14px}
+.g-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:16px;margin-top:34px;
+  align-items:start} /* pas de stretch : sinon les fiches courtes se retrouvent avec 200 px de vide */
+/* Grille resserrée volontairement : 4 des 7 portraits fournis ne font que 300 px de
+   côté. À 4 colonnes ils sont affichés sous leur taille native, donc nets. Si des
+   photos en haute définition arrivent, on peut repasser à 3 colonnes (minmax 276px). */
+.pers{background:var(--nuit-2);border:1px solid var(--nuit-3);border-radius:13px;overflow:hidden;
+  display:flex;flex-direction:column}
+.pers .ph{aspect-ratio:1;overflow:hidden;background:var(--nuit-3);position:relative}
+.pers .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;filter:grayscale(1) contrast(1.07)}
+.pers .an{position:absolute;left:0;bottom:0;font-family:var(--moteur);font-weight:700;font-size:30px;
+  line-height:1;color:var(--nuit);background:var(--vert);padding:7px 13px 5px;border-radius:0 9px 0 0}
+.pers .txt{padding:20px 22px 22px;flex:1;display:flex;flex-direction:column}
+.pers h3{font-size:21px}
+.pers .role{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--vert);margin:8px 0 0;line-height:1.7}
+.pers .depuis{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--gris);margin:5px 0 0}
+.pers .quoi{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:6px;font-size:15px;color:#B9B9C4}
+.pers .quoi li{padding-left:14px;position:relative;line-height:1.5}
+.pers .quoi li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:1px;
+  background:var(--nuit-3)}
+.pers .badges{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.pers .badges span{font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+  border:1px solid var(--vert);color:var(--vert);border-radius:20px;padding:5px 10px}
+.pers .mot{margin-top:16px;padding-top:14px;border-top:1px solid var(--nuit-3);font-size:15px;
+  color:#C7C7D1;line-height:1.6}
+.pers .mot b{color:var(--craie);font-weight:600}
+
+/* ---------- CE QUI NE SE VOIT PAS ---------- */
+.socle{padding:58px 0;background:var(--craie)}
+.socle h2{font-size:clamp(26px,3.8vw,38px)}
+.socle .lead{color:var(--gris-t);max-width:64ch;margin-top:14px}
+.s-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:16px;margin-top:30px}
+.s-card{background:var(--blanc);border:1px solid var(--craie-2);border-radius:12px;padding:24px}
+.s-card b{display:block;font-family:var(--moteur);font-weight:700;font-size:44px;line-height:.86;
+  color:var(--vert-ink)}
+.s-card h3{font-size:18px;margin:12px 0 8px}
+.s-card p{font-size:15.5px;color:var(--gris-t);margin:0}
+
+/* ---------- CE QU'ILS DISENT ---------- */
+.dits{padding:58px 0;background:var(--craie-2)}
+.dits h2{font-size:clamp(26px,3.8vw,38px)}
+.dits .lead{color:var(--gris-t);max-width:64ch;margin-top:14px}
+.d-grid{columns:2;column-gap:16px;margin-top:30px}
+.dit{background:var(--blanc);border:1px solid #DCD5C8;border-radius:12px;padding:20px 22px;margin-bottom:16px;
+  break-inside:avoid}
+.dit .et{color:var(--f-moto-ink);font-size:14px;letter-spacing:2px}
+.dit blockquote{margin:10px 0 0;font-size:15.5px;line-height:1.65;color:var(--gris-t)}
+.dit blockquote b{color:var(--nuit);font-weight:600}
+.dit .qui{margin-top:13px;padding-top:11px;border-top:1px solid var(--craie-2);
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.dit .qui b{font-size:15px}
+.dit .qui span{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--gris)}
+
+/* ---------- CTA ---------- */
+.e-cta{background:var(--nuit);color:var(--craie);padding:54px 0}
+.e-cta .in{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
+.e-cta h2{color:var(--craie);font-size:clamp(24px,3.4vw,34px);max-width:26ch}
+.e-cta p{color:#B9B9C4;margin-top:12px;max-width:48ch}
+.e-cta .btn--ghost{border-color:#585C6A;color:var(--craie)}
+.e-cta .btn--ghost:hover{background:var(--craie);color:var(--nuit);border-color:var(--craie)}
+
+@media(max-width:900px){
+  .rail{grid-template-columns:repeat(4,1fr);border-top:0}
+  .rail div{border-left:0;border-top:2px solid var(--nuit-3);padding-left:0}
+  .rail div::before{display:none}
+  .rail div.on{border-top-color:var(--vert)}
+  .d-grid{columns:1}
+}
