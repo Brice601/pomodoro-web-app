@@ -25,8 +25,20 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Le lien LinkedIn est réciproque du sameAs déclaré dans index.html : le site
+            pointe vers le profil, le profil pointe vers le site. C'est ce couple qui
+            consolide l'association d'identité. Malt reste volontairement absent d'ici :
+            un visiteur déjà sur le site ne doit pas être renvoyé vers une place de
+            marché où il devient un prospect de la plateforme. */}
         <div className="ai-foot-links">
           <a href="mailto:brice@architecte-ia.fr">Courriel</a>
+          <a
+            href="https://www.linkedin.com/in/brice-de-la-parra"
+            target="_blank"
+            rel="me noopener noreferrer"
+          >
+            LinkedIn
+          </a>
         </div>
 
         <div className="ai-foot-legal ai-mono">
