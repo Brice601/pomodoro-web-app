@@ -1,11 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon-minuteur.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Architecte IA — Mini-applications web sur mesure pour les commerces</title>
     <meta name="description" content="Je conçois et je construis des mini-applications web sur mesure pour les commerces de la Loire — et partout en France à distance. Réservation, prise de RDV, devis, assistant IA. Sans commission." />
+    <link rel="canonical" href="https://architecte-ia.fr/" />
+
+    <!-- Open Graph / LinkedIn / Facebook.
+         Ces balises sont STATIQUES à dessein : les robots de LinkedIn et Facebook n'exécutent
+         pas le JavaScript. Elles servent d'aperçu par défaut pour toutes les URL du site.
+         Le composant <Seo> met à jour les mêmes balises côté client pour Google, qui, lui, rend le JS. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Architecte IA" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:url" content="https://architecte-ia.fr/" />
+    <meta property="og:title" content="Architecte IA — Outils web sur mesure pour les commerces" />
+    <meta property="og:description" content="Sites et applications web sur mesure pour commerces, artisans et indépendants : prise de rendez-vous, réservation, devis, assistants IA. Maquette avant tout engagement, vous restez propriétaire de votre outil." />
+    <meta property="og:image" content="https://architecte-ia.fr/images/og-architecte-ia.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Architecte IA — outils web sur mesure pour les commerces" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Architecte IA — Outils web sur mesure pour les commerces" />
+    <meta name="twitter:description" content="Sites et applications web sur mesure pour commerces, artisans et indépendants. Maquette avant tout engagement, vous restez propriétaire de votre outil." />
+    <meta name="twitter:image" content="https://architecte-ia.fr/images/og-architecte-ia.jpg" />
+
+    <!-- Identité : Person + entreprise + site. Statique pour être lisible sans exécution de JS.
+         Le nœud ProfilePage est injecté par la page /apropos elle-même. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://architecte-ia.fr/#brice",
+          "name": "Brice de la Parra",
+          "givenName": "Brice",
+          "familyName": "de la Parra",
+          "jobTitle": "Développeur web & data indépendant",
+          "description": "Commerçant pendant vingt ans, aujourd'hui développeur : je construis des outils web sur mesure pour les commerces, et mes propres produits.",
+          "url": "https://architecte-ia.fr/apropos",
+          "image": "https://architecte-ia.fr/images/profile-picture.jpg",
+          "email": "brice@architecte-ia.fr",
+          "worksFor": { "@id": "https://architecte-ia.fr/#organisation" },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Andrézieux-Bouthéon",
+            "addressRegion": "Auvergne-Rhône-Alpes",
+            "addressCountry": "FR"
+          },
+          "knowsAbout": [
+            "Développement web",
+            "React",
+            "Python",
+            "Intelligence artificielle",
+            "Machine learning",
+            "Référencement naturel",
+            "E-commerce"
+          ],
+          "sameAs": [
+            "https://www.linkedin.com/in/brice-de-la-parra",
+            "https://www.malt.fr/profile/bricedelaparra"
+          ]
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://architecte-ia.fr/#organisation",
+          "name": "Architecte IA",
+          "url": "https://architecte-ia.fr",
+          "image": "https://architecte-ia.fr/images/og-architecte-ia.jpg",
+          "email": "brice@architecte-ia.fr",
+          "founder": { "@id": "https://architecte-ia.fr/#brice" },
+          "description": "Conception et développement de sites et d'applications web sur mesure pour les commerces, artisans et indépendants : prise de rendez-vous, réservation, devis, assistants IA.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Andrézieux-Bouthéon",
+            "addressRegion": "Auvergne-Rhône-Alpes",
+            "addressCountry": "FR"
+          },
+          "areaServed": [
+            { "@type": "AdministrativeArea", "name": "Loire (42)" },
+            { "@type": "City", "name": "Saint-Étienne" },
+            { "@type": "City", "name": "Lyon" },
+            { "@type": "Country", "name": "France" }
+          ],
+          "knowsLanguage": ["fr", "en"],
+          "sameAs": [
+            "https://www.linkedin.com/in/brice-de-la-parra",
+            "https://www.malt.fr/profile/bricedelaparra"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://architecte-ia.fr/#site",
+          "url": "https://architecte-ia.fr",
+          "name": "Architecte IA",
+          "inLanguage": "fr-FR",
+          "publisher": { "@id": "https://architecte-ia.fr/#organisation" }
+        }
+      ]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -32,7 +130,7 @@
         }
       }(window.location))
     </script>
-    <script type="module" crossorigin src="/assets/index-mhCLCAu0.js"></script>
+    <script type="module" crossorigin src="/assets/index-BY4qhfv2.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-DsQ5ci1a.css">
   </head>
   <body>
