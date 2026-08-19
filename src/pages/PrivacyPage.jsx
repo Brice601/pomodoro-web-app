@@ -1,10 +1,16 @@
 // src/pages/PrivacyPage.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Seo from '../components/Seo';
 
 const PrivacyPage = () => {
   return (
     <div className="py-12">
+      <Seo
+        title="Politique de confidentialité | Architecte IA"
+        description="Traitement des données personnelles, cookies et mesure d'audience sur le site Architecte IA."
+        path="/privacy"
+      />
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-lg shadow-lg p-8">

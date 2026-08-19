@@ -5,6 +5,7 @@ import FAQItem from '../components/FAQItem';
 import VideoPlayer from '../components/VideoPlayer';
 import CouponCode from '../components/CouponCode';
 import { trackDownloadTemplate, trackPurchaseAttempt, trackFileUpload, trackCouponUsage } from '../utils/analyticsUtils';
+import Seo from '../components/Seo';
 
 const PomodoroServicePage = () => {
   const navigate = useNavigate();
@@ -181,6 +182,11 @@ const PomodoroServicePage = () => {
 
   return (
     <div className="py-12">
+      <Seo
+        title="Pomodoro — suivi du temps et rapports d'activité | Architecte IA"
+        description="Application Pomodoro : suivi du temps passé par projet et rapports exploitables. Une des applications conçues et développées par Architecte IA."
+        path="/pomodoro"
+      />
       <div className="container mx-auto px-4">
         {/* Hero Section */}
         <div className="text-center mb-16">

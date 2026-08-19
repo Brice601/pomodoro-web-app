@@ -1,10 +1,16 @@
 // src/pages/TermsPage.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Seo from '../components/Seo';
 
 const TermsPage = () => {
   return (
     <div className="py-12">
+      <Seo
+        title="Conditions générales | Architecte IA"
+        description="Conditions générales d'utilisation et de vente des services et applications Architecte IA."
+        path="/terms"
+      />
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-lg shadow-lg p-8">

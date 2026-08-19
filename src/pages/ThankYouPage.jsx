@@ -1,6 +1,7 @@
 // src/pages/ThankYouPage.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Seo from '../components/Seo';
 
 const ThankYouPage = () => {
   const [csvContent, setCsvContent] = useState(null);
@@ -73,6 +74,13 @@ Cordialement
   
   return (
     <div className="py-12">
+      {/* Page de confirmation : utile au visiteur, sans intérêt dans l'index Google. */}
+      <Seo
+        title="Merci | Architecte IA"
+        description="Confirmation de votre demande."
+        path="/thank-you"
+        noindex
+      />
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto text-center">
           <div className="bg-white rounded-lg shadow-lg p-8 mb-8">

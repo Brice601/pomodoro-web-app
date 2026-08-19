@@ -1,6 +1,7 @@
 // src/pages/HomePage.jsx
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import Seo from '../components/Seo';
 
 const HomePage = () => {
   const rootRef = useRef(null);
@@ -41,6 +42,11 @@ const HomePage = () => {
 
   return (
     <div ref={rootRef} className="ai-wrap">
+      <Seo
+        title="Architecte IA — Outils web sur mesure pour les commerces | Loire (42)"
+        description="Sites et applications web sur mesure pour commerces, artisans et indépendants : prise de rendez-vous, réservation, devis, assistants IA. Maquette avant tout engagement, vous restez propriétaire de votre outil."
+        path="/"
+      />
       <h1 className="ai-sr-only">
         Architecte IA — mini-applications web sur mesure pour les commerces de la Loire et de toute la France.
       </h1>

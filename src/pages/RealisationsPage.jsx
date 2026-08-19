@@ -1,6 +1,7 @@
 // src/pages/RealisationsPage.jsx
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import Seo from '../components/Seo';
 
 const RealisationsPage = () => {
   const rootRef = useRef(null);
@@ -25,6 +26,12 @@ const RealisationsPage = () => {
 
   return (
     <div ref={rootRef} className="ai-wrap">
+      <Seo
+        title="Réalisations — applications et sites en ligne | Architecte IA"
+        description="Screener Small Caps en production, tableau de bord Etsy, application Pomodoro, site vitrine pour un commerce local : ce que j'ai conçu et développé, et qui tourne aujourd'hui."
+        path="/realisations"
+      />
+
       {/* En-tête de planche */}
       <header className="ai-page-head">
         <div className="ai-eyebrow ai-mono">

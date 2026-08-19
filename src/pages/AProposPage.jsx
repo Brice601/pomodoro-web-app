@@ -1,6 +1,19 @@
 // src/pages/AProposPage.jsx
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import Seo from '../components/Seo';
+
+// Défini hors du composant : identité stable, l'effet de <Seo> ne se relance pas à chaque rendu.
+const PROFILE_JSONLD = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  '@id': 'https://architecte-ia.fr/apropos#profilepage',
+  url: 'https://architecte-ia.fr/apropos',
+  name: 'À propos — Brice de la Parra, Architecte IA',
+  inLanguage: 'fr-FR',
+  isPartOf: { '@id': 'https://architecte-ia.fr/#site' },
+  mainEntity: { '@id': 'https://architecte-ia.fr/#brice' },
+};
 
 const AProposPage = () => {
   const rootRef = useRef(null);
@@ -25,6 +38,13 @@ const AProposPage = () => {
 
   return (
     <div ref={rootRef} className="ai-wrap">
+      <Seo
+        title="À propos — Brice de la Parra | Architecte IA"
+        description="Commerçant pendant vingt ans, aujourd'hui développeur web & data. Je construis des outils sur mesure pour les commerces, depuis Andrézieux-Bouthéon (42) et partout en France à distance."
+        path="/apropos"
+        jsonLd={PROFILE_JSONLD}
+      />
+
       {/* En-tête de planche */}
       <header className="ai-page-head">
         <div className="ai-eyebrow ai-mono">
@@ -53,9 +73,10 @@ const AProposPage = () => {
         </div>
         <div className="ai-prose">
           <p style={{ marginTop: 0 }}>
-            Je suis <b>Brice</b>. Je ne viens pas de l'informatique : j'ai passé une quinzaine d'années
-            à faire tourner ma propre <b>boutique en ligne</b>. Le métier de commerçant, ses contraintes
-            et ce qui fait vraiment gagner du temps, je le connais de l'intérieur.
+            Je suis <b>Brice</b>. Je ne viens pas de l'informatique : j'ai passé <b>vingt ans</b> à la
+            tête de mes propres commerces — un magasin multimarque, puis ma <b>boutique en ligne</b>.
+            Le métier de commerçant, ses contraintes et ce qui fait vraiment gagner du temps, je le
+            connais de l'intérieur.
           </p>
           <p>
             C'est en cherchant à <b>automatiser</b> ma propre activité que je suis venu au développement,
@@ -75,8 +96,8 @@ const AProposPage = () => {
         <ul className="ai-timeline">
           <li>
             <div className="ai-yr">Le commerce</div>
-            <h3>Une quinzaine d'années de vente en ligne</h3>
-            <p>Ma propre boutique : commandes, clients, logistique, au quotidien. J'ai appris le métier de commerçant sur le terrain, pas dans un livre.</p>
+            <h3>Vingt ans à mon compte</h3>
+            <p>D'abord un magasin multimarque, puis ma propre boutique en ligne : commandes, clients, logistique, au quotidien. J'ai appris le métier de commerçant sur le terrain, pas dans un livre.</p>
           </li>
           <li>
             <div className="ai-yr">L'automatisation</div>

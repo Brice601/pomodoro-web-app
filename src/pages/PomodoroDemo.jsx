@@ -1,6 +1,7 @@
 // src/pages/PomodoroDemo.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Seo from '../components/Seo';
 
 const PomodoroDemo = () => {
   // État pour le timer
@@ -139,6 +140,11 @@ const PomodoroDemo = () => {
 
   return (
     <div className="py-12">
+      <Seo
+        title="Démo Pomodoro — essayer l'application | Architecte IA"
+        description="Démonstration interactive de l'application Pomodoro : minuteur, sessions et suivi du temps, directement dans le navigateur."
+        path="/pomodoro-demo"
+      />
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold mb-8 text-center text-gray-800">
