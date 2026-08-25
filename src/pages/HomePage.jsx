@@ -43,12 +43,12 @@ const HomePage = () => {
   return (
     <div ref={rootRef} className="ai-wrap">
       <Seo
-        title="Architecte IA — Outils web sur mesure pour les commerces | Loire (42)"
-        description="Sites et applications web sur mesure pour commerces, artisans et indépendants : prise de rendez-vous, réservation, devis, assistants IA. Maquette avant tout engagement, vous restez propriétaire de votre outil."
+        title="Architecte IA — J'automatise ce qui vous prend du temps | Loire (42)"
+        description="Automatisation sur mesure pour commerces, artisans et indépendants : relances, avis, stock, rapports, connexion entre vos outils actuels. Maquette avant tout engagement, vous restez propriétaire de votre outil."
         path="/"
       />
       <h1 className="ai-sr-only">
-        Architecte IA — mini-applications web sur mesure pour les commerces de la Loire et de toute la France.
+        Architecte IA — automatisation sur mesure pour les commerces de la Loire et de toute la France.
       </h1>
 
       {/* PL.00 — HERO */}
@@ -58,10 +58,11 @@ const HomePage = () => {
             <span>PL.00 — Vitrine</span><span className="ai-dot">◆</span><span>Loire (42) + France à distance</span>
             <span className="ai-rule" />
           </div>
-          <p className="ai-h1">Votre commerce mérite mieux qu'une <span className="ai-u">page d'horaires.</span></p>
+          <p className="ai-h1">Ce qui vous prend du temps chaque semaine, <span className="ai-u">je peux l'automatiser.</span></p>
           <p className="ai-lede">
-            Je conçois et je construis des <b>mini-applications web sur mesure</b> — réservation, prise de RDV,
-            devis instantané, chatbot. Des outils simples, <b>sans commission</b>, qui travaillent pour vous.
+            Relances clients, réponses aux avis, suivi de stock, rapports de vente : des tâches répétitives qui
+            s'accumulent chaque jour. Je construis <b>l'automatisation sur mesure</b> qui vous les enlève —
+            <b> sans commission</b>, sans changer vos outils actuels.
           </p>
           <div className="ai-cta-row">
             <a className="ai-btn ai-btn-primary" href="#contact">Réserver un appel de 15 min →</a>
@@ -116,23 +117,23 @@ const HomePage = () => {
       <section className="ai-section ai-reveal">
         <div className="ai-sec-head">
           <span className="ai-sec-ref">PL.01 — Constat</span>
-          <h2 className="ai-sec-title">Votre site affiche vos horaires. Et après ?</h2>
+          <h2 className="ai-sec-title">Le temps que vous ne comptez plus.</h2>
         </div>
         <div className="ai-grid-3">
           <div className="ai-card">
             <div className="ai-idx">A —</div>
-            <h3>Un site qui informe, mais ne travaille pas</h3>
-            <p>Il affiche l'adresse et les horaires. Aucun outil pour réserver, prendre RDV ou demander un devis. Le visiteur repart sans rien faire.</p>
+            <h3>Le temps qui part dans les tâches répétitives</h3>
+            <p>Relancer un client, répondre à un avis, mettre à jour un stock, faire un rapport de vente — chaque tâche prend 5 minutes, mais elles s'accumulent chaque jour.</p>
           </div>
           <div className="ai-card">
             <div className="ai-idx">B —</div>
-            <h3>Le téléphone qui sonne pour tout</h3>
-            <p>Chaque réservation, chaque question, c'est vous qui décrochez — souvent pendant le service. Du temps que vous ne passez pas sur votre métier.</p>
+            <h3>Vous refaites toujours le même geste</h3>
+            <p>Le genre de tâche qu'on pourrait déléguer... si on avait quelqu'un à qui la confier. Un outil peut le faire à votre place, sans y penser.</p>
           </div>
           <div className="ai-card">
             <div className="ai-idx">C —</div>
-            <h3>Les plateformes qui se servent au passage</h3>
-            <p>Réservation, prise de RDV… les grandes plateformes prennent une commission sur ce qui devrait vous revenir entièrement.</p>
+            <h3>Le temps gagné, c'est du temps sur votre métier</h3>
+            <p>Ce n'est pas remplacer votre méthode — c'est retirer ce qui ne demande pas votre jugement, pour garder ce qui en a besoin.</p>
           </div>
         </div>
       </section>
@@ -141,29 +142,42 @@ const HomePage = () => {
       <section className="ai-section ai-reveal" id="outils">
         <div className="ai-sec-head">
           <span className="ai-sec-ref">PL.02 — Ouvrage</span>
-          <h2 className="ai-sec-title">Je construis l'outil qui manque à votre site.</h2>
+          <h2 className="ai-sec-title">J'automatise ce qui vous fait perdre du temps.</h2>
         </div>
-        <p className="ai-sec-lead">Sur mesure, à vos couleurs, sans commission. Voici les plus demandés — le vôtre sera taillé pour votre métier.</p>
-        <div className="ai-grid-4">
+        <p className="ai-sec-lead">
+          Ce sont des exemples, pas un catalogue figé — chaque automatisation est construite en fonction de ce
+          qui vous pèse vraiment. Sur mesure, sans commission, et ça reste à vous.
+        </p>
+        <div className="ai-grid-3">
           <div className="ai-card">
-            <svg className="ai-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M3 9h18M8 3v4M16 3v4" /><rect x="7" y="13" width="3" height="3" fill="currentColor" stroke="none" /></svg>
-            <h3>Réservation en ligne</h3>
-            <p>Vos clients réservent une table, un créneau, 24h/24. Vous récupérez votre téléphone.</p>
+            <svg className="ai-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><rect x="3" y="4" width="8" height="8" rx="1.5" /><rect x="13" y="4" width="8" height="8" rx="1.5" /><rect x="3" y="16" width="8" height="4" rx="1.5" /><path d="M11 8h2M17 12v4M13 18h4" /></svg>
+            <h3>Deux outils qui ne se parlent pas ? Ils vont se parler.</h3>
+            <p>Caisse, stock, réseaux sociaux, agenda : chacun dans son coin, à ressaisir à la main. Je construis le pont entre vos outils actuels — sans tout changer.</p>
+          </div>
+          <div className="ai-card">
+            <svg className="ai-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><rect x="4" y="3" width="12" height="16" rx="1.5" /><path d="M7 7h6M7 11h6M7 15h3" /><path d="M17 14l3 3-3 3" /></svg>
+            <h3>Le stock qui se met à jour tout seul depuis vos factures</h3>
+            <p>Une facture fournisseur arrive, le stock se met à jour sans ressaisie ligne par ligne. Fini le tableur qu'on remplit le soir.</p>
           </div>
           <div className="ai-card">
             <svg className="ai-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 3" /></svg>
-            <h3>Prise de RDV</h3>
-            <p>Un agenda que vos clients remplissent seuls. Fini les allers-retours pour caler une heure.</p>
+            <h3>Le rappel qui pense à la retouche pour vous</h3>
+            <p>Une pièce en dépôt, une retouche prête : le client reçoit un rappel automatique. Vous ne courez plus après lui, et rien ne dort en réserve.</p>
           </div>
           <div className="ai-card">
-            <svg className="ai-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><rect x="5" y="3" width="14" height="18" rx="2" /><path d="M9 8h6M9 12h6M9 16h3" /></svg>
-            <h3>Devis instantané</h3>
-            <p>Un configurateur qui calcule un prix en direct. Le client repart avec une réponse, pas une attente.</p>
+            <svg className="ai-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M3 17l5-5 4 4 8-8" /><path d="M15 8h5v5" /></svg>
+            <h3>Une veille sur vos concurrents, sans y passer du temps</h3>
+            <p>Un concurrent change ses prix, ouvre une promo : vous le savez sans surveiller ses réseaux chaque semaine.</p>
           </div>
           <div className="ai-card">
-            <svg className="ai-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M4 5h16v11H9l-4 4V5z" /><path d="M8 10h.01M12 10h.01M16 10h.01" /></svg>
-            <h3>Assistant IA / FAQ</h3>
-            <p>Un chatbot qui répond aux questions courantes, jour et nuit, dans le ton de votre maison.</p>
+            <svg className="ai-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><rect x="3" y="12" width="4" height="8" /><rect x="10" y="7" width="4" height="13" /><rect x="17" y="3" width="4" height="17" /></svg>
+            <h3>Toutes vos ventes, un seul endroit pour les lire</h3>
+            <p>Ventes, stock, avis clients : trois outils, trois écrans différents aujourd'hui. Un seul tableau de bord qui les réunit.</p>
+          </div>
+          <div className="ai-card">
+            <svg className="ai-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M3 9h18M8 3v4M16 3v4" /><rect x="7" y="13" width="3" height="3" fill="currentColor" stroke="none" /></svg>
+            <h3>Le rendez-vous en ligne, sans l'abonnement à vie</h3>
+            <p>Vos clients réservent seuls, 24h/24 — sans le loyer mensuel d'une plateforme. Payé une fois, il vous appartient.</p>
           </div>
         </div>
       </section>
