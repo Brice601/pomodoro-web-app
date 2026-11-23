@@ -108,7 +108,7 @@ const HomePage = () => {
       {/* Bandeau preuve */}
       <div className="ai-cartouche">
         <div className="ai-cell"><div className="ai-mono">Expérience</div><div className="ai-v">15 ans<br /><small>de commerce en ligne</small></div></div>
-        <div className="ai-cell"><div className="ai-mono">Déjà en ligne</div><div className="ai-v">Logiciel complet<br /><small>conçu de A à Z</small></div></div>
+        <div className="ai-cell"><div className="ai-mono">Déjà en ligne</div><div className="ai-v">Pause Panier<br /><small>appli conçue de A à Z</small></div></div>
         <div className="ai-cell"><div className="ai-mono">Sur mesure</div><div className="ai-v">100 %<br /><small>votre besoin</small></div></div>
         <div className="ai-cell"><div className="ai-mono">Commission</div><div className="ai-v">0 %<br /><small>c'est à vous</small></div></div>
       </div>
@@ -224,6 +224,24 @@ const HomePage = () => {
             <div className="ai-thumb">
               <svg viewBox="0 0 200 125" preserveAspectRatio="xMidYMid meet">
                 <g stroke="var(--ai-outremer)" strokeWidth="1.4" fill="none">
+                  <polyline points="36,30 50,30 64,84 150,84 162,46 56,46" />
+                  <circle cx="74" cy="96" r="6" /><circle cx="140" cy="96" r="6" />
+                </g>
+                <rect x="96" y="54" width="6" height="22" fill="var(--ai-outremer)" />
+                <rect x="110" y="54" width="6" height="22" fill="var(--ai-outremer)" />
+              </svg>
+            </div>
+            <div className="ai-idx">Appli · Grand public</div>
+            <h3>Pause Panier</h3>
+            <p>Une appli gratuite contre les achats impulsifs : on note l'envie, on attend 48 heures, on décide à froid. Avec un coach IA en option.</p>
+            <div className="ai-stack"><span>Appli web</span><span>IA</span><span>Paiement</span></div>
+            <div className="ai-live">● <a href="https://pausepanier.fr" target="_blank" rel="noopener noreferrer">En ligne — pausepanier.fr</a></div>
+          </article>
+
+          <article className="ai-card">
+            <div className="ai-thumb">
+              <svg viewBox="0 0 200 125" preserveAspectRatio="xMidYMid meet">
+                <g stroke="var(--ai-outremer)" strokeWidth="1.4" fill="none">
                   <polyline points="20,95 45,70 70,80 95,45 120,55 145,28 175,20" />
                   <line x1="20" y1="105" x2="180" y2="105" stroke="var(--ai-pencil)" />
                   <line x1="20" y1="20" x2="20" y2="105" stroke="var(--ai-pencil)" />
@@ -235,7 +253,7 @@ const HomePage = () => {
             <h3>Screener Small Caps</h3>
             <p>Un logiciel d'analyse financière complet, avec abonnements et intelligence artificielle. Conçu et déployé de A à Z.</p>
             <div className="ai-stack"><span>Python</span><span>Machine Learning</span><span>Abonnements</span></div>
-            <div className="ai-live">● <a href="https://screener-smallcaps.fr" target="_blank" rel="noopener noreferrer">En ligne — screener-smallcaps.fr</a></div>
+            <div className="ai-live">● Démonstration sur demande</div>
           </article>
 
           <article className="ai-card">
@@ -254,21 +272,6 @@ const HomePage = () => {
             <div className="ai-live">● Étude de cas</div>
           </article>
 
-          <article className="ai-card">
-            <div className="ai-thumb">
-              <svg viewBox="0 0 200 125" preserveAspectRatio="xMidYMid meet">
-                <g stroke="var(--ai-outremer)" strokeWidth="1.4" fill="none">
-                  <circle cx="100" cy="62" r="34" /><path d="M100 62 L100 38" /><path d="M100 62 L118 62" />
-                </g>
-                <circle cx="100" cy="62" r="3" fill="var(--ai-outremer)" />
-              </svg>
-            </div>
-            <div className="ai-idx">App web · B2C</div>
-            <h3>Application Pomodoro</h3>
-            <p>Une application web soignée, avec espace personnel par utilisateur et interface moderne.</p>
-            <div className="ai-stack"><span>React</span><span>Vite</span><span>Tailwind</span></div>
-            <div className="ai-live">● <Link to="/pomodoro">En ligne</Link></div>
-          </article>
         </div>
         <div className="ai-cta-row" style={{ marginTop: 28 }}>
           <Link className="ai-btn ai-btn-ghost ai-btn-sm" to="/realisations">Voir toutes les réalisations →</Link>

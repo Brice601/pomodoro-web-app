@@ -80,8 +80,9 @@ const AProposPage = () => {
           </p>
           <p>
             C'est en cherchant à <b>automatiser</b> ma propre activité que je suis venu au développement,
-            puis à l'intelligence artificielle. Aujourd'hui je conçois des outils web sur mesure — dont un
-            logiciel avec IA <Link to="/realisations">déjà en ligne</Link>. Je ne vous parle donc pas en
+            puis à l'intelligence artificielle. Aujourd'hui je conçois des outils web sur mesure, et mes propres
+            applications : la dernière, <a href="https://pausepanier.fr" target="_blank" rel="noopener noreferrer">Pause Panier</a>,
+            aide à éviter les achats impulsifs. Je ne vous parle donc pas en
             technicien, mais en <b>commerçant qui sait construire l'outil qui manque</b>.
           </p>
         </div>
@@ -129,8 +130,8 @@ const AProposPage = () => {
           </p>
         </div>
         <p className="ai-note">
-          En toute transparence : la certification n'est <b>pas encore obtenue</b> — elle se valide en{' '}
-          <b>octobre 2026</b>. En attendant, ce sont mes réalisations <b>déjà en ligne</b> qui parlent pour moi.
+          En toute transparence : la certification n'est <b>pas encore obtenue</b> — elle est prévue
+          en <b>2027</b>. En attendant, ce sont mes réalisations <b>déjà en ligne</b> qui parlent pour moi.
         </p>
       </section>
 

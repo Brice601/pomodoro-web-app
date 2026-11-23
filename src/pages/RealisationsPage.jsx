@@ -28,7 +28,7 @@ const RealisationsPage = () => {
     <div ref={rootRef} className="ai-wrap">
       <Seo
         title="Réalisations — applications et sites en ligne | Architecte IA"
-        description="Screener Small Caps en production, tableau de bord Etsy, application Pomodoro, site vitrine pour un commerce local : ce que j'ai conçu et développé, et qui tourne aujourd'hui."
+        description="Pause Panier, l'appli contre les achats impulsifs, Screener Small Caps, tableau de bord Etsy, application Pomodoro, site vitrine pour un commerce local : ce que j'ai conçu et développé."
         path="/realisations"
       />
 
@@ -44,6 +44,42 @@ const RealisationsPage = () => {
           de bout en bout</b>. Chacun est présenté par ce qu'il apporte — la technique vient après.
         </p>
       </header>
+
+      {/* 00 — Pause Panier */}
+      <section className="ai-proj rev ai-reveal" id="pause-panier">
+        <div className="ai-proj-media">
+          <span className="ai-cornermark tl" /><span className="ai-cornermark br" />
+          <svg viewBox="0 0 220 140" role="img" aria-label="Panier d'achat avec un symbole pause, en trait de plan.">
+            <g stroke="var(--ai-pencil)" strokeWidth="1">
+              <line x1="24" y1="20" x2="24" y2="116" /><line x1="24" y1="116" x2="200" y2="116" />
+            </g>
+            <g fill="none" stroke="var(--ai-outremer)" strokeWidth="1.6">
+              <polyline points="46,40 60,40 74,92 160,92 172,54 66,54" />
+              <circle cx="84" cy="104" r="6" /><circle cx="150" cy="104" r="6" />
+            </g>
+            <rect x="106" y="62" width="6" height="22" fill="var(--ai-outremer)" />
+            <rect x="120" y="62" width="6" height="22" fill="var(--ai-outremer)" />
+            <text className="pl-anb" x="150" y="34">48 H</text>
+          </svg>
+        </div>
+        <div className="ai-proj-body">
+          <div className="ai-idx">PL.04 / 00 — Application grand public</div>
+          <h2>Pause Panier</h2>
+          <p>
+            Une application gratuite pour <b>éviter les achats impulsifs</b>. Quand une envie d'achat arrive,
+            on la note, on attend 48 heures, puis on décide à froid. Lou, la mascotte, aide à tenir le coup,
+            et l'argent non dépensé remplit un objectif d'épargne.
+          </p>
+          <ul className="ai-points">
+            <li>Gratuite, sans inscription ni publicité ; le journal reste sur le téléphone</li>
+            <li>Rappel au bout de 48 heures, bilan, fonctionne même hors connexion</li>
+            <li>Un article se met en pause directement depuis une boutique en ligne</li>
+            <li>Version payante, Pause Panier+, avec un coach IA et une sauvegarde chiffrée</li>
+          </ul>
+          <div className="ai-stack"><span>Application web installable</span><span>IA</span><span>Paiement en ligne</span><span>Données protégées</span></div>
+          <div className="ai-live">● <a href="https://pausepanier.fr" target="_blank" rel="noopener noreferrer">En ligne — pausepanier.fr</a></div>
+        </div>
+      </section>
 
       {/* 01 — Screener Small Caps */}
       <section className="ai-proj ai-reveal">
@@ -71,11 +107,11 @@ const RealisationsPage = () => {
           <ul className="ai-points">
             <li>Conçu de A à Z : données, algorithme, interface, facturation</li>
             <li>Un modèle de machine learning (XGBoost) qui attribue un score à chaque valeur</li>
-            <li>Abonnements mensuels en ligne — le produit encaisse tout seul</li>
-            <li>En production, ouvert au public aujourd'hui</li>
+            <li>Paiement par abonnement intégré au produit</li>
+            <li>Mis en production de bout en bout : hébergement, paiement, mises à jour</li>
           </ul>
           <div className="ai-stack"><span>Python</span><span>Machine Learning</span><span>XGBoost</span><span>Abonnements</span></div>
-          <div className="ai-live">● <a href="https://screener-smallcaps.fr" target="_blank" rel="noopener noreferrer">En ligne — screener-smallcaps.fr</a></div>
+          <div className="ai-live">● Démonstration sur demande</div>
         </div>
       </section>
 
